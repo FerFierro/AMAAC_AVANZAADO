@@ -14,6 +14,7 @@ import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_LUGAR
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_PROFESIONES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VERBOS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCALES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.TIPO_PIC_NORMAL;
 
 public class DataManager {
@@ -136,6 +137,32 @@ public class DataManager {
         dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCALES, "Ii", 1, R.raw.i, R.raw.aprendevovala, R.raw.cancionvocales));
         dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCALES, "Oo", 1, R.raw.o, R.raw.aprendevovala, R.raw.cancionvocales));
         dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCALES, "Uu", 1, R.raw.u, R.raw.aprendevovala, R.raw.cancionvocales));
+
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Bb", 1, R.raw.a, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Cc", 1, R.raw.e, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Dd", 1, R.raw.i, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ee", 1, R.raw.o, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ff", 1, R.raw.u, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Gg", 1, R.raw.a, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Hh", 1, R.raw.e, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Jj", 1, R.raw.i, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Kk", 1, R.raw.o, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ll", 1, R.raw.u, R.raw.aprendevovala, R.raw.cancionvocales));
+
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ll", 1, R.raw.a, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Mm", 1, R.raw.e, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Nn", 1, R.raw.i, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Pp", 1, R.raw.o, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Qq", 1, R.raw.u, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Rr", 1, R.raw.a, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ss", 1, R.raw.e, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Tt", 1, R.raw.i, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Vv", 1, R.raw.o, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ww", 1, R.raw.u, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Xx", 1, R.raw.o, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Yy", 1, R.raw.u, R.raw.aprendevovala, R.raw.cancionvocales));
+        dbHandler.agregarPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Zz", 1, R.raw.o, R.raw.aprendevovala, R.raw.cancionvocales));
+
         System.out.println("Se cargaron todos los datos en la bd");
     }
     //</editor-fold>

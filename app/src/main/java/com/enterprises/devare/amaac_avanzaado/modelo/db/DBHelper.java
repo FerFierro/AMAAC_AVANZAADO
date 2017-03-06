@@ -185,10 +185,10 @@ public class DBHelper extends SQLiteOpenHelper {
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO count() ">
-    public int count() {
+    public int count(int categoria) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor mCount = db.rawQuery("select count(*) from " + TABLE_PICTOGRAMA, null);
+        Cursor mCount = db.rawQuery("select count(*) from " + TABLE_PICTOGRAMA+" where CATEGORIA="+categoria, null);
         mCount.moveToFirst();
         int count = mCount.getInt(0);
         mCount.close();

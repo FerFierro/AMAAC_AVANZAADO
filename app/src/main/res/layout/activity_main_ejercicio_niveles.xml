@@ -5,6 +5,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/recycler_view_nivel_vocales"/>
+    <include layout="@layout/recycler_view_ejercicio_niveles"/>
 
 </android.support.design.widget.CoordinatorLayout>

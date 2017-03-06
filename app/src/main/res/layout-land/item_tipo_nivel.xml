@@ -5,7 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/activity_horizontal_margin"
-    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
     app:cardElevation="0dp"
     app:cardMaxElevation="0dp"
     card_view:cardCornerRadius="0dp">
@@ -28,8 +29,8 @@
 
             <ImageView
                 android:id="@+id/iv_card_nivel"
-                android:layout_width="115dp"
-                android:layout_height="115dp"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
                 android:layout_gravity="center"
                 android:padding="24dp"
                 app:src="@drawable/ic_android_muestra"
@@ -46,7 +47,6 @@
             android:text="@string/txt_vocales"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Button" />
-
 
         <LinearLayout
             android:layout_width="match_parent"

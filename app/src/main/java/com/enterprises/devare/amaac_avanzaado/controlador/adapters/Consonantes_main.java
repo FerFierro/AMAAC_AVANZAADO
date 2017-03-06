@@ -1,6 +1,5 @@
 package com.enterprises.devare.amaac_avanzaado.controlador.adapters;
 
-import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,21 +13,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
-import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
-import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
+import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
 import java.util.List;
 
-import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCALES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES;
 
-public class Vocales_main extends AppCompatActivity {
+public class Consonantes_main extends AppCompatActivity {
 
     //<editor-fold desc="DECLARION DE VARIABLES">
 
     MediaPlayer mPlayer;
     private boolean fabStateVolume = false;
-    VocalesAdaptador adapter;
+    ConsonantesAdaptador adapter;
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
 
@@ -41,16 +39,10 @@ public class Vocales_main extends AppCompatActivity {
         db = new DBHelper(this);
 
         recycler_ejercicios = (RecyclerView) findViewById(R.id.reciclador_ejercicio_niveles);
-        InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(CAT_VOCALES));
+        InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(CAT_CONSONANTES));
 
     }
 
-    //<editor-fold desc="MÉTODO iniciarDatos_Vocales_main() CARGA DE DATOS">
-    public void iniciarDatos_Vocales_main(Context contexto){
-        DataManager datos = new DataManager();
-        datos.Init_Contenido_niveles(contexto);
-    }
-    //</editor-fold>
 
     //<editor-fold desc="MÉTODO InitAdapter()">
     public void InitAdapter(RecyclerView mRecyclerView, List<Pictograma> items) {
@@ -58,7 +50,7 @@ public class Vocales_main extends AppCompatActivity {
         System.out.println("Entre a InitAdapter");
 
         assert mRecyclerView != null;
-        adapter = new VocalesAdaptador(items);
+        adapter = new ConsonantesAdaptador(items);
         System.out.println(items.get(4));
 
         setupRecyclerView(mRecyclerView, adapter);
@@ -67,7 +59,7 @@ public class Vocales_main extends AppCompatActivity {
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO setupRecyclerView()">
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView, VocalesAdaptador items) {
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView, ConsonantesAdaptador items) {
 
         System.out.println("Entre a setupRecyclerView");
 
@@ -81,12 +73,12 @@ public class Vocales_main extends AppCompatActivity {
     //</editor-fold>
 
     //<editor-fold desc="CLASE VocalesAdaptador">
-    public class VocalesAdaptador extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public class ConsonantesAdaptador extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private List<Pictograma> mValues;
 
         //<editor-fold desc="CONSTRUCTOR VocalesAdaptado()">
-        public VocalesAdaptador(List<Pictograma> mValues) {
+        public ConsonantesAdaptador(List<Pictograma> mValues) {
             this.mValues = mValues;
         }
         //</editor-fold>
@@ -97,7 +89,7 @@ public class Vocales_main extends AppCompatActivity {
 
             View view;
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_ejercicio_preestablecido, parent, false);
-            return new VocalesViewHolder(view);
+            return new ConsonantesViewHolder(view);
 
         }
         //</editor-fold>
@@ -109,9 +101,9 @@ public class Vocales_main extends AppCompatActivity {
             final Pictograma object = mValues.get(position);
             System.out.println(object.getNombre());
 
-            ((VocalesViewHolder) holder).mVTextVocal.setText(object.getNombre());
+            ((ConsonantesViewHolder) holder).mVTextVocal.setText(object.getNombre());
 
-            ((VocalesViewHolder) holder).mfab1.setOnClickListener(new View.OnClickListener() {
+            ((ConsonantesViewHolder) holder).mfab1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (fabStateVolume) {
@@ -119,21 +111,21 @@ public class Vocales_main extends AppCompatActivity {
                             mPlayer.stop();
 
                         }
-                        ((VocalesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_play);
+                        ((ConsonantesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_play);
                         fabStateVolume = false;
 
                     } else {
-                        mPlayer = MediaPlayer.create(Vocales_main.this, object.getIdSonido());
+                        mPlayer = MediaPlayer.create(Consonantes_main.this, object.getIdSonido());
                         mPlayer.setLooping(true);
                         mPlayer.start();
-                        ((VocalesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_toast_megaphone_2);
+                        ((ConsonantesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_toast_megaphone_2);
                         fabStateVolume = true;
 
                     }
                 }
             });
 
-            ((VocalesViewHolder) holder).mfab2.setOnClickListener(new View.OnClickListener() {
+            ((ConsonantesViewHolder) holder).mfab2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (fabStateVolume) {
@@ -141,14 +133,14 @@ public class Vocales_main extends AppCompatActivity {
                             mPlayer.stop();
 
                         }
-                        ((VocalesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_play);
+                        ((ConsonantesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_play);
                         fabStateVolume = false;
 
                     } else {
-                        mPlayer = MediaPlayer.create(Vocales_main.this, object.getIdSonido2());
+                        mPlayer = MediaPlayer.create(Consonantes_main.this, object.getIdSonido2());
                         mPlayer.setLooping(true);
                         mPlayer.start();
-                        ((VocalesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_toast_megaphone_2);
+                        ((ConsonantesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_toast_megaphone_2);
                         fabStateVolume = true;
 
                     }
@@ -156,7 +148,7 @@ public class Vocales_main extends AppCompatActivity {
             });
 
 
-            ((VocalesViewHolder) holder).mfab3.setOnClickListener(new View.OnClickListener() {
+            ((ConsonantesViewHolder) holder).mfab3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (fabStateVolume) {
@@ -164,14 +156,14 @@ public class Vocales_main extends AppCompatActivity {
                             mPlayer.stop();
 
                         }
-                        ((VocalesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_play);
+                        ((ConsonantesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_play);
                         fabStateVolume = false;
 
                     } else {
-                        mPlayer = MediaPlayer.create(Vocales_main.this, object.getIdSonido3());
+                        mPlayer = MediaPlayer.create(Consonantes_main.this, object.getIdSonido3());
                         mPlayer.setLooping(true);
                         mPlayer.start();
-                        ((VocalesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_toast_megaphone_2);
+                        ((ConsonantesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_toast_megaphone_2);
                         fabStateVolume = true;
 
                     }
@@ -189,11 +181,11 @@ public class Vocales_main extends AppCompatActivity {
         }
 
         //<editor-fold desc="CLASE VocalesViewHolder">
-        public class VocalesViewHolder extends RecyclerView.ViewHolder {
+        public class ConsonantesViewHolder extends RecyclerView.ViewHolder {
             private TextView mVTextVocal;
             public FloatingActionButton mfab1, mfab2, mfab3;
 
-            public VocalesViewHolder(View itemView) {
+            public ConsonantesViewHolder(View itemView) {
                 super(itemView);
 
                 mVTextVocal = (TextView) itemView.findViewById(R.id.tv_card_ejercicio_preestablecido);

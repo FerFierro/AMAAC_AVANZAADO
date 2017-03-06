@@ -14,9 +14,10 @@ public class Pictograma {
     public static final int CAT_LUGARES =5;
     public static final int CAT_ANIMALES =6;
     public static final int CAT_VOCALES=7;
-    public static final int CAT_BISILABAS=8;
-    public static final int CAT_TRISILABAS=9;
-    public static final int CAT_POLISILABAS=10;
+    public static final int CAT_CONSONANTES=8;
+    public static final int CAT_BISILABAS=9;
+    public static final int CAT_TRISILABAS=10;
+    public static final int CAT_POLISILABAS=11;
     //</editor-fold>
 
     private int id;

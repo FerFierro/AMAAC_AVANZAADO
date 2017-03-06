@@ -10,6 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
+import com.enterprises.devare.amaac_avanzaado.controlador.adapters.IniciarNivel_main;
+import com.enterprises.devare.amaac_avanzaado.controlador.adapters.Vocales_main;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
 
 public class IniciarConfiguraciones extends AppCompatActivity {
@@ -18,6 +20,12 @@ public class IniciarConfiguraciones extends AppCompatActivity {
     TextView loadText;
     private ProgressBar progressBar;
     //</editor-fold>
+
+    //<editor-fold desc="VARIABLES DE REFERENCIA">
+    IniciarNivel_main init_IniciarNivel_main= new IniciarNivel_main();
+    Vocales_main init_Vocales_main=new Vocales_main();
+    //</editor-fold>
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +40,18 @@ public class IniciarConfiguraciones extends AppCompatActivity {
         progressBar.setProgress(0);
 
         AsyncTaskCargaDatos ATCargaDatos = new AsyncTaskCargaDatos(this);
+        inicializarDBAMAAC();
+
         ATCargaDatos.execute();
 
     }
+
+    //<editor-fold desc="SE CARGAN TODOS LOS DATOS DE LA APLICACION AMAAC">
+    private void inicializarDBAMAAC() {
+        init_IniciarNivel_main.iniciarDatos_IniciarNivel_main(this);
+        init_Vocales_main.iniciarDatos_Vocales_main(this);
+    }
+    //</editor-fold>
 
     //<editor-fold desc="MÉTODO inicializarcomponentesUI()">
     private void inicializarcomponentesUI() {
