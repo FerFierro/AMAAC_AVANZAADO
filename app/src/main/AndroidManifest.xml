@@ -80,9 +80,32 @@
             android:name=".controlador.adapters.Comunicador_main"
             android:theme="@style/AppFullScreenTheme"/>
 
-        <activity android:name=".controlador.adapters.IniciarNivel_main" />
-        <activity android:name=".controlador.adapters.Vocales_main" />
-        <activity android:name=".controlador.adapters.Consonantes_main" />
+        <activity
+            android:name=".controlador.adapters.IniciarNivel_main"
+            android:label="Niveles"
+            android:parentActivityName=".controlador.activitys.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="controlador.activitys.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".controlador.adapters.Vocales_main"
+            android:label="Vocales"
+            android:parentActivityName=".controlador.adapters.IniciarNivel_main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+        </activity>
+
+        <activity
+            android:name=".controlador.adapters.Consonantes_main"
+            android:label="Consonantes"
+            android:parentActivityName=".controlador.adapters.IniciarNivel_main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+        </activity>
 
     </application>
 
