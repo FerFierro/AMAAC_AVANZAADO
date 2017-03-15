@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_background_ninos"
     android:fitsSystemWindows="true"
-    android:background="@color/colorPrimary_light"
     tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.TecnicaListActivity">
 
     <!--Esta es el principal archivo de diseño para el archivo TecnicaListActivity.java -->

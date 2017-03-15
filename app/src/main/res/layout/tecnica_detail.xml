@@ -5,85 +5,131 @@
     android:id="@+id/content_tecnicas_relajacion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/colorPrimary_alpha_launcher"
     android:orientation="vertical"
-    android:weightSum="1"
-    >
-
-
-
-
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary_light"
-        android:layout_weight=".15"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryMenu"
+        android:elevation="10dp"
+        android:orientation="vertical">
 
-        >
+        <TextView
+            android:id="@+id/titulo"
+            style="@style/TextAppearance.AppCompat.Title.Inverse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingLeft="5dp"
+            android:textColor="@color/colorMenuPrimaryText"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/textHeadline" />
 
         <TextView
             android:id="@+id/fecha"
+            style="@style/TextAppearance.AppCompat.Subhead.Inverse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:text="fecha_oculta"
-            />
-
-        <TextView
-            android:id="@+id/tecnica_detail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:textIsSelectable="true"
-            tools:context="modelo.TecnicaDetailFragment"
-            />
-
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:textColor="@color/colorMenuTertiaryText"
+            android:textSize="@dimen/textSubheading"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:background="@color/colorPrimary_alpha_launcher"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/imagen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="matrix"
+            app:srcCompat="@drawable/ic_menu_guia_padre_customer_service_1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="13dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:scrollbarStyle="outsideOverlay">
+
+        <TextView
+            android:id="@+id/contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:text="Contenido"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorMenuPrimaryText"
+            android:textSize="@dimen/textBody2" />
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/nota"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#A0FF0000"
-        android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:weightSum="1"
-        android:layout_weight=".85"
-        >
+        android:paddingTop="10dp"
+        android:weightSum="1">
 
         <ImageView
+            android:id="@+id/go_to_video"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_menu_tecnica_youtube"
             android:layout_weight=".8"
-            />
+            android:onClick="go_to_video"
+            app:srcCompat="@drawable/ic_menu_tecnica_youtube" />
 
         <TextView
-            android:layout_weight=".2"
             android:id="@+id/text_instrucciones"
             style="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context="modelo.TecnicaDetailFragment"
-            android:text="Nota: No olvide que usted puede ver un vídeo acerca de esta técnica pulsando sobre el icono de vídeo en la parte superior de la pantalla"
-            android:textSize="12sp"
+            android:layout_weight=".2"
+            android:text="Nota: No olvide que usted puede ver un vídeo acerca de esta técnica pulsando sobre el icono de vídeo ubicado a la izquierda de esta nota o en la parte superior de la pantalla"
             android:textColor="@color/colorIcons"
-            />
+            android:textSize="@dimen/textCaption"
+            tools:context="modelo.TecnicaDetailFragment" />
 
     </LinearLayout>
 
-
-
-
-
-
-
-
-
 </LinearLayout>
+
+
 
 

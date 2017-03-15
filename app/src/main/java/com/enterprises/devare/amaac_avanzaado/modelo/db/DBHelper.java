@@ -94,7 +94,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /* Agrega un nuevo pictograma a la database*/
     //<editor-fold desc="MÉTODO agregarPictograma()">
-    public void agregarPictograma(Pictograma picto) {
+    public void insertPictograma(Pictograma picto) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();

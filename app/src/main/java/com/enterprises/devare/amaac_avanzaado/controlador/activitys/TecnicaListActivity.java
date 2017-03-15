@@ -21,7 +21,10 @@ import com.enterprises.devare.amaac_avanzaado.modelo.dummy.TecnicaRelajacionCont
 import java.util.List;
 
 public class TecnicaListActivity extends AppCompatActivity {
+
     private boolean mTwoPane;
+
+    //<editor-fold desc="MÉTODO CALLBACK onCreate(Bundle savedInstanceState)">
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,53 +34,59 @@ public class TecnicaListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        // Show the Up button in the action bar.
+        //<editor-fold desc="Muestra el botón Arriba en la barra de acción.">
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        //</editor-fold>
 
         View recyclerView = findViewById(R.id.tecnica_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
         if (findViewById(R.id.tecnica_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
+
             mTwoPane = true;
         }
     }
+    //</editor-fold>
 
-
+    //<editor-fold desc="MÉTODO setupRecyclerView(@NonNull RecyclerView recyclerView)">
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(TecnicaRelajacionContent.ITEMS));
     }
+    //</editor-fold>
 
+    //<editor-fold desc="CLASE SimpleItemRecyclerViewAdapter ">
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<TecnicaRelajacionContent.TecnicaRelajacion> mValues;
 
+        //<editor-fold desc="CONSTRUCTOR CON PARAMETROS">
         public SimpleItemRecyclerViewAdapter(List<TecnicaRelajacionContent.TecnicaRelajacion> items) {
             mValues = items;
         }
+        //</editor-fold>
 
+        //<editor-fold desc="MÉTODO onCreateViewHolder(ViewGroup parent, int viewType) ">
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.tecnica_list_content, parent, false);
             return new ViewHolder(view);
         }
+        //</editor-fold>
 
+        //<editor-fold desc="MÉTODO onBindViewHolder(final ViewHolder holder, int position">
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
             // holder.mIdView.setText(mValues.get(position).id);
             holder.mTituloView.setText(mValues.get(position).titulo);
             holder.mResumenView.setText(mValues.get(position).descripcion);
-            holder.mFechaView.setText(mValues.get(position).fecha);
+           // holder.mFechaView.setText(mValues.get(position).fecha);
             holder.mImageView.setImageResource(mValues.get(position).idImagen);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -101,18 +110,22 @@ public class TecnicaListActivity extends AppCompatActivity {
                 }
             });
         }
+        //</editor-fold>
 
+        //<editor-fold desc="MÉTODO getItemCount() ">
         @Override
         public int getItemCount() {
             return mValues.size();
         }
+        //</editor-fold>
 
+        //<editor-fold desc="CLASE ViewHolder">
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             // public final TextView mIdView;
             public final TextView mTituloView;
             public final TextView mResumenView;
-            public final TextView mFechaView;
+            //public final TextView mFechaView;
             public final ImageView mImageView;
 
             public TecnicaRelajacionContent.TecnicaRelajacion mItem;
@@ -123,7 +136,7 @@ public class TecnicaListActivity extends AppCompatActivity {
                 // mIdView = (TextView) view.findViewById(R.id.txt_id);
                 mTituloView = (TextView) view.findViewById(R.id.txt_titulo);
                 mResumenView=(TextView) view.findViewById(R.id.txt_resumen);
-                mFechaView=(TextView) view.findViewById(R.id.txt_fecha);
+                //mFechaView=(TextView) view.findViewById(R.id.txt_fecha);
                 mImageView=(ImageView) view.findViewById(R.id.iv_miniatura);
             }
 
@@ -132,5 +145,7 @@ public class TecnicaListActivity extends AppCompatActivity {
                 return super.toString() + " '" + mTituloView.getText() + "'";
             }
         }
+        //</editor-fold>
     }
+    //</editor-fold>
 }

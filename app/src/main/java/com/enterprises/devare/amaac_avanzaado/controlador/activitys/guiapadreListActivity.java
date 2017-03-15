@@ -2,6 +2,7 @@ package com.enterprises.devare.amaac_avanzaado.controlador.activitys;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
@@ -23,22 +24,12 @@ import java.util.List;
 import com.enterprises.devare.amaac_avanzaado.controlador.fragments.guiapadreDetailFragment;
 import com.enterprises.devare.amaac_avanzaado.modelo.dummy.GuiaPadreContent;
 
-/**
- * An activity representing a list of guias_padre. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link guiapadreDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
+
 public class guiapadreListActivity extends AppCompatActivity {
 
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
     private boolean mTwoPane;
 
+    //<editor-fold desc="MÉTODO CALLBACK onCreate(Bundle savedInstanceState)">
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,62 +39,81 @@ public class guiapadreListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        // Show the Up button in the action bar.
+        //<editor-fold desc="Muestra el botón Arriba en la barra de acción.">
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        //</editor-fold>
 
         View recyclerView = findViewById(R.id.guiapadre_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
         if (findViewById(R.id.guiapadre_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
             mTwoPane = true;
         }
-    }
 
+        cargarDatos();
+
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="MÉTODO cargarDatos()">
+    public void cargarDatos() {
+
+        GuiaPadreContent datos = new GuiaPadreContent();
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("1", getString(R.string.como_usar_app_titulo1).toString(), getString(R.string.como_usar_app_descripcion1).toString(), getString(R.string.como_usar_app_fecha1).toString(), R.drawable.ic_launcher_play_200dp));
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("2", getString(R.string.como_usar_app_titulo2).toString(), getString(R.string.como_usar_app_descripcion2), getString(R.string.como_usar_app_fecha2), R.drawable.ic_menu_guia_padre_customer_service_1));
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("3", getString(R.string.como_usar_app_titulo3), getString(R.string.como_usar_app_descripcion3), getString(R.string.como_usar_app_fecha3), R.drawable.ic_menu_guia_padre_technology));
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("4", getString(R.string.como_usar_app_titulo4), getString(R.string.como_usar_app_descripcion4), getString(R.string.como_usar_app_fecha4), R.drawable.ic_menu_guia_padre_technology));
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("5", getString(R.string.como_usar_app_titulo5), getString(R.string.como_usar_app_descripcion5), getString(R.string.como_usar_app_fecha5), R.drawable.ic_launcher_ejercicios_especificos_200dp));
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("6", getString(R.string.como_usar_app_titulo6), getString(R.string.como_usar_app_descripcion6), getString(R.string.como_usar_app_fecha6), R.drawable.ic_launcher_play_200dp));
+
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="MÉTODO onOptionsItemSelected(MenuItem item)">
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. Use NavUtils to allow users
-            // to navigate up one level in the application structure. For
-            // more details, see the Navigation pattern on Android Design:
-            //
+
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
             NavUtils.navigateUpFromSameTask(this);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+    //</editor-fold>
 
+    //<editor-fold desc="MÉTODO setupRecyclerView(@NonNull RecyclerView recyclerView)">
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(GuiaPadreContent.ITEMS));
     }
+    //</editor-fold>
 
-    public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+    //<editor-fold desc="CLASE SimpleItemRecyclerViewAdapter">
+    public class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<GuiaPadreContent.GuiaPadre> mValues;
 
+        //<editor-fold desc="CONSTRUCTOR">
         public SimpleItemRecyclerViewAdapter(List<GuiaPadreContent.GuiaPadre> items) {
             mValues = items;
         }
+        //</editor-fold>
 
+        //<editor-fold desc="MÉTODO onCreateViewHolder(ViewGroup parent, int viewType)">
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.guiapadre_list_content, parent, false);
             return new ViewHolder(view);
         }
+        //</editor-fold>
 
+        //<editor-fold desc="MÉTODO onBindViewHolder(final ViewHolder holder, int position)">
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
@@ -134,12 +144,16 @@ public class guiapadreListActivity extends AppCompatActivity {
                 }
             });
         }
+        //</editor-fold>
 
+        //<editor-fold desc="MÉTODO  getItemCount()">
         @Override
         public int getItemCount() {
             return mValues.size();
         }
+        //</editor-fold>
 
+        //<editor-fold desc="MÉTODO ViewHolder">
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             // public final TextView mIdView;
@@ -154,9 +168,9 @@ public class guiapadreListActivity extends AppCompatActivity {
                 mView = view;
                 // mIdView = (TextView) view.findViewById(R.id.txt_id);
                 mTituloView = (TextView) view.findViewById(R.id.txt_titulo);
-                mResumenView=(TextView) view.findViewById(R.id.txt_resumen);
-                mFechaView=(TextView) view.findViewById(R.id.txt_fecha);
-                mImageView=(ImageView) view.findViewById(R.id.iv_miniatura);
+                mResumenView = (TextView) view.findViewById(R.id.txt_resumen);
+                mFechaView = (TextView) view.findViewById(R.id.txt_fecha);
+                mImageView = (ImageView) view.findViewById(R.id.iv_miniatura);
             }
 
             @Override
@@ -164,5 +178,8 @@ public class guiapadreListActivity extends AppCompatActivity {
                 return super.toString() + " '" + mTituloView.getText() + "'";
             }
         }
+        //</editor-fold>
     }
+    //</editor-fold>
 }
+ //clase checada

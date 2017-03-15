@@ -16,11 +16,6 @@
             android:title="@string/consejos_relajacion"
             tools:ignore="HardcodedText" />
 
-        <item
-            android:id="@+id/nav_ejercicios_especificos"
-            android:icon="@drawable/ic_menu_black_configuracion_24dp"
-            android:title="@string/ejercicios_especificos"
-            tools:ignore="HardcodedText" />
     </group>
 
     <!--

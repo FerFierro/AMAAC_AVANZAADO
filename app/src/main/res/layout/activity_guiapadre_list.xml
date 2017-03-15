@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="mx.com.ipn.amaac.guiapadreListActivity"
-    android:background="@color/colorPrimary_light"
+    tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.guiapadreListActivity"
+    android:background="@drawable/ic_background_ninos"
     >
 
     <android.support.design.widget.AppBarLayout

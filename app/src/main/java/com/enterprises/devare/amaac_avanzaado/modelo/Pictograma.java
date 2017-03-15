@@ -7,17 +7,28 @@ public class Pictograma {
     //<editor-fold desc="ETIQUETAS">
     public static final int TIPO_PIC_NORMAL=0;
     public static final int TIPO_PIC_SELECCIONADO=1;
-    public static final int CAT_VERBOS =1;
-    public static final int CAT_ALIMENTOS =2;
-    public static final int CAT_FAMILIA =3;
-    public static final int CAT_PROFESIONES =4;
-    public static final int CAT_LUGARES =5;
-    public static final int CAT_ANIMALES =6;
-    public static final int CAT_VOCALES=7;
-    public static final int CAT_CONSONANTES=8;
-    public static final int CAT_BISILABAS=9;
-    public static final int CAT_TRISILABAS=10;
-    public static final int CAT_POLISILABAS=11;
+
+    public static final int CAT_VERBOS_AUX  =1;
+    public static final int CAT_RESPUESTAS  =2;
+    public static final int CAT_VERBOS      =3;
+    public static final int CAT_BEBIDAS     =4;
+    public static final int CAT_FRUTAS      =5;
+    public static final int CAT_VERDURAS    =6;
+    public static final int CAT_COMIDA      =7;
+    public static final int CAT_POSTRES     =8;
+    public static final int CAT_ALIMENTOS   =9;
+    public static final int CAT_ANIMALES    =10;
+    public static final int CAT_OBJETOS     =11;
+    public static final int CAT_ANIMO       =12;
+    public static final int CAT_LUGARES     =13;
+    public static final int CAT_FAMILIA     =14;
+    public static final int CAT_PROFESIONES =15;
+
+    public static final int CAT_VOCALES=16;
+    public static final int CAT_CONSONANTES=17;
+    public static final int CAT_BISILABAS=18;
+    public static final int CAT_TRISILABAS=19;
+    public static final int CAT_POLISILABAS=20;
     //</editor-fold>
 
     private int id;

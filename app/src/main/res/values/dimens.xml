@@ -8,10 +8,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
-    <dimen name="app_bar_height">200dp</dimen>
-    <dimen name="item_width">200dp</dimen>
+    <dimen name="app_bar_height">100dp</dimen>
+    <dimen name="item_width">420dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-
 
     <dimen name="margen_estandar">16dp
     </dimen><!-- La margen estándar hace referencia al espaciado que se usa con mayor frecuencia en Android. -->
@@ -25,4 +24,17 @@
     </dimen><!-- El ancho del panel de lista hace referencia a su tamaño.. -->
 
 
+    <!-- Texto -->
+    <dimen name="textDisplay4">112sp</dimen>
+    <dimen name="textDisplay3">56sp</dimen>
+    <dimen name="textDisplay2">45sp</dimen>
+    <dimen name="textDisplay1">34sp</dimen>
+    <dimen name="textHeadline">24sp</dimen>
+    <dimen name="textTitle">21sp</dimen>
+    <dimen name="textSubheading">17sp</dimen>
+    <dimen name="textBody2">18sp</dimen>
+    <dimen name="textBody1">15sp</dimen>
+    <dimen name="textCaption">13sp</dimen>
+    <dimen name="textButton">11sp</dimen>
+    <dimen name="comoUsarMargen">5dp</dimen>
 </resources>

@@ -1,30 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/articulo_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary_alpha_launcher"
     android:orientation="vertical"
     tools:context=".controlador.activitys.TecnicaDetailActivity">
-
-    <ImageView
-        android:id="@+id/imagen"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
-        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?colorPrimary"
-        android:elevation="2dp"
+        android:background="@color/colorPrimaryMenu"
+        android:elevation="10dp"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/margen_estandar"
-        android:paddingEnd="@dimen/margen_estandar"
-        android:paddingRight="@dimen/margen_estandar"
-        android:paddingStart="@dimen/margen_izquierda_contenido"
-        android:paddingLeft="@dimen/margen_izquierda_contenido"
-        android:paddingTop="@dimen/margen_estandar">
+        tools:ignore="UnusedAttribute">
 
         <TextView
             android:id="@+id/titulo"
@@ -33,35 +23,82 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textIsSelectable="true" />
+            android:paddingLeft="5dp"
+            android:textColor="@color/colorMenuPrimaryText"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/textHeadline"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
 
         <TextView
             android:id="@+id/fecha"
             style="@style/TextAppearance.AppCompat.Subhead.Inverse"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:textColor="@color/colorMenuTertiaryText"
+            android:textSize="@dimen/textSubheading"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:background="@color/colorPrimary_alpha_launcher"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:ignore="NestedWeights" />
+
+        <ImageView
+            android:id="@+id/imagen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="matrix"
+            app:srcCompat="@drawable/ic_tecnica_relajacion_progresiva"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
     </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="13dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="50"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/margen_estandar"
-        android:paddingTop="@dimen/margen_estandar"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
         android:scrollbarStyle="outsideOverlay">
 
         <TextView
             android:id="@+id/contenido"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/margen_izquierda_contenido"
-            android:paddingStart="@dimen/margen_izquierda_contenido"
-            android:paddingEnd="@dimen/margen_estandar"
-            android:paddingRight="@dimen/margen_estandar"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
             android:text="Contenido"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorMenuPrimaryText"
+            android:textSize="@dimen/textBody2"
+            tools:ignore="HardcodedText" />
     </ScrollView>
 
 </LinearLayout>

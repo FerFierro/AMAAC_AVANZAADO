@@ -118,8 +118,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.nav_consejos_relajacion) {
             Intent intent = new Intent(this, TecnicaListActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_ejercicios_especificos) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -12,7 +12,7 @@
         <!-- UI Pantalla de Inicio -->
         <activity
             android:name=".controlador.activitys.SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppFullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,12 +23,12 @@
         <!-- UI Términos y Condiciones -->
         <activity
             android:name=".controlador.activitys.TerminosYCondiciones"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppFullScreenTheme" />
 
         <!-- Inicio de las configuraciones de la aplicación AMAAC -->
         <activity
             android:name=".controlador.activitys.IniciarConfiguraciones"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppFullScreenTheme" />
         <activity
             android:name=".controlador.activitys.MainActivity"
             android:label="@string/app_name"
@@ -55,6 +55,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controlador.activitys.guiapadreListActivity" />
         </activity>
+
+
         <activity
             android:name=".controlador.activitys.TecnicaListActivity"
             android:label="@string/consejos_relajacion"
@@ -74,7 +76,10 @@
                 android:value=".controlador.activitys.TecnicaListActivity" />
         </activity>
 
-        <activity android:name=".controlador.adapters.Comunicador_main" />
+        <activity
+            android:name=".controlador.adapters.Comunicador_main"
+            android:theme="@style/AppFullScreenTheme"/>
+
         <activity android:name=".controlador.adapters.IniciarNivel_main" />
         <activity android:name=".controlador.adapters.Vocales_main" />
         <activity android:name=".controlador.adapters.Consonantes_main" />

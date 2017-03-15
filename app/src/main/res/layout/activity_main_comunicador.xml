@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/colorAccent">
+        android:background="@color/colorPrimary_light">
 
         <include layout="@layout/recycler_view_card_item_frase" />
 
@@ -24,25 +24,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="ScrollViewSize">
 
-            <!-- *********************************************************************Verbos********* -->
-            <include layout="@layout/recycler_view_card" />
-
-            <!-- *********************************************************************Alimentos********* -->
-            <include layout="@layout/recycler_view_card_2" />
-
-            <!-- *********************************************************************Familia*********** -->
-            <include layout="@layout/recycler_view_card_3" />
-
-            <!-- *********************************************************************Profesiones ****** -->
-            <include layout="@layout/recycler_view_card_4" />
-
-            <!-- *********************************************************************Lugares ********** -->
-            <include layout="@layout/recycler_view_card_5" />
-
-            <!-- *********************************************************************Animales ********* -->
-            <include layout="@layout/recycler_view_card_6" />
+            <!-- *********************************************************************Verbos_AUX********* -->
+            <include layout="@layout/recycler_view_card_tablero_verbos_aux" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_respuestas" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_verbos" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_bebidas" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_frutas" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_verduras" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_comida" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_postres" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_alimentos" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_animales" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_objetos" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_animo" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_lugares" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_familia" />
+            <!-- *********************************************************************Respuestas********* -->
+            <include layout="@layout/recycler_view_card_tablero_profesiones" />
 
         </LinearLayout>
 
