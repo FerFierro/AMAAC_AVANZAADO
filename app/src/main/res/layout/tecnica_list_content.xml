@@ -5,11 +5,7 @@
     android:layout_height="@dimen/altura_item"
     android:layout_marginTop="@dimen/margen_estandar"
     android:background="@color/colorPrimary_alpha"
-    android:paddingBottom="2dp"
-    android:paddingLeft="15dp"
-    android:paddingTop="4dp"
     tools:ignore="RtlHardcoded,RtlSymmetry">
-
 
     <TextView
         android:id="@+id/txt_titulo"
@@ -19,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/iv_miniatura"
         android:paddingLeft="15dp"
-        android:text="Título"
+        android:text="@string/txt_titulo"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         android:textColor="@color/colorMenuPrimaryText"
         android:textSize="@dimen/textBody2"
@@ -34,9 +30,9 @@
         android:layout_alignRight="@+id/txt_titulo"
         android:layout_below="@+id/txt_titulo"
         android:paddingLeft="15dp"
-        android:text="Resumen"
+        android:text="@string/resumen"
         android:textColor="@color/colorMenuQuaternaryText"
-        android:textSize="@dimen/textBody1"
+        android:textSize="12sp"
         tools:ignore="HardcodedText,RtlHardcoded,UnknownIdInLayout" />
 
 

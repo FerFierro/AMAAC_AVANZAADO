@@ -26,10 +26,10 @@ public class TecnicaDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //<editor-fold desc="Muestra el botón Arriba en la barra de acción.">
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+         ActionBar actionBar = getSupportActionBar();
+         if (actionBar != null) {
+             actionBar.setDisplayHomeAsUpEnabled(true);
+         }
         //</editor-fold>
 
         // For more information, see the Fragments API guide at:
@@ -69,7 +69,6 @@ public class TecnicaDetailActivity extends AppCompatActivity {
         }
 
         else if(id == R.id.acccion_favoritos) {
-
 
             TextView titulo = (TextView) findViewById(R.id.fecha);
             String link = titulo.getText().toString();

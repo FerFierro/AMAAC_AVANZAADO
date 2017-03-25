@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryMenu"
         android:elevation="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UnusedAttribute">
 
         <TextView
             android:id="@+id/titulo"
@@ -22,11 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="2"
             android:paddingLeft="5dp"
             android:textColor="@color/colorMenuPrimaryText"
             android:textIsSelectable="true"
-            android:textSize="@dimen/textHeadline" />
+            android:textSize="@dimen/textHeadline"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
 
         <TextView
             android:id="@+id/fecha"
@@ -36,41 +37,28 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:textColor="@color/colorMenuTertiaryText"
             android:textSize="@dimen/textSubheading"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="20"
+        android:layout_height="wrap_content"
+        android:layout_weight=".2"
+        android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary_alpha_launcher"
         android:paddingTop="5dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <ImageView
             android:id="@+id/imagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleType="matrix"
-            app:srcCompat="@drawable/ic_menu_guia_padre_customer_service_1" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/ic_menu_guia_padre_customer_service_1"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="13dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -95,7 +83,8 @@
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorMenuPrimaryText"
-            android:textSize="@dimen/textBody2" />
+            android:textSize="@dimen/textBody2"
+            tools:ignore="HardcodedText" />
     </ScrollView>
 
     <LinearLayout
@@ -103,17 +92,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#A0FF0000"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:padding="10dp"
         android:weightSum="1">
 
         <ImageView
             android:id="@+id/go_to_video"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
             android:layout_weight=".8"
             android:onClick="go_to_video"
-            app:srcCompat="@drawable/ic_menu_tecnica_youtube" />
+            app:srcCompat="@drawable/ic_menu_tecnica_youtube"
+            tools:ignore="ContentDescription,RtlHardcoded" />
 
         <TextView
             android:id="@+id/text_instrucciones"
@@ -121,15 +111,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight=".2"
-            android:text="Nota: No olvide que usted puede ver un vídeo acerca de esta técnica pulsando sobre el icono de vídeo ubicado a la izquierda de esta nota o en la parte superior de la pantalla"
+            android:text="@string/nota"
             android:textColor="@color/colorIcons"
             android:textSize="@dimen/textCaption"
             tools:context="modelo.TecnicaDetailFragment" />
 
     </LinearLayout>
 
+
 </LinearLayout>
-
-
 
 

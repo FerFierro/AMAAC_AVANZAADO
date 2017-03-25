@@ -32,12 +32,11 @@ public class guiapadreDetailFragment extends Fragment {
         if (getArguments().containsKey(ID_ARTICULO)) {
 
             itemDetallado = GuiaPadreContent.ITEM_MAP.get(getArguments().getString(ID_ARTICULO));
-
-           /* Activity activity = this.getActivity();
+            Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(itemDetalldo.titulo);//el contenido dentro ded  i barra
-            }*/
+                appBarLayout.setTitle(itemDetallado.titulo);//el contenido dentro ded  i barra
+            }
         }
     }
     //</editor-fold>

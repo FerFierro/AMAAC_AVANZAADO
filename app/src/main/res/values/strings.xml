@@ -167,4 +167,17 @@
     <string name="como_usar_app_fecha6">06/03/2016</string>
     <string name="como_usar_app_fecha7">07/03/2016</string>
 
+    <!--UILayout fragmento_detalle_articulo.xml-->
+    <string name="titulo">Titulo</string>
+    <string name="fecha">Fecha</string>
+
+    <!--UILayout tecnica_list_content.xml-->
+    <string name="resumen">Resumen</string>
+
+    <!--UILayout tecnica_detail.xml-->
+    <string name="nota">
+        Nota: No olvide que usted puede ver un vídeo acerca de esta técnica pulsando sobre el icono de vídeo ubicado a la izquierda de esta nota o en la parte superior de la pantalla
+    </string>
+
+
 </resources>

@@ -48,14 +48,12 @@
         <!-- UI detalle de Como usar la aplicacion -->
         <activity
             android:name=".controlador.activitys.guiapadreDetailActivity"
-            android:label="@string/title_guiapadre_detail"
             android:parentActivityName=".controlador.activitys.guiapadreListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controlador.activitys.guiapadreListActivity" />
         </activity>
-
 
         <activity
             android:name=".controlador.activitys.TecnicaListActivity"

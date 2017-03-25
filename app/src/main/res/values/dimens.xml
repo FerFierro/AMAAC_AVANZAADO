@@ -29,7 +29,7 @@
     <dimen name="textDisplay3">56sp</dimen>
     <dimen name="textDisplay2">45sp</dimen>
     <dimen name="textDisplay1">34sp</dimen>
-    <dimen name="textHeadline">24sp</dimen>
+    <dimen name="textHeadline">20sp</dimen>
     <dimen name="textTitle">21sp</dimen>
     <dimen name="textSubheading">17sp</dimen>
     <dimen name="textBody2">18sp</dimen>
