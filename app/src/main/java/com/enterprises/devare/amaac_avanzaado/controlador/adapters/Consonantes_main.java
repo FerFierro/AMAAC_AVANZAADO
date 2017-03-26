@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
@@ -101,77 +102,10 @@ public class Consonantes_main extends AppCompatActivity {
             final Pictograma object = mValues.get(position);
             System.out.println(object.getNombre());
 
-            ((ConsonantesViewHolder) holder).mVTextVocal.setText(object.getNombre());
-
-            ((ConsonantesViewHolder) holder).mfab1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (fabStateVolume) {
-                        if (mPlayer.isPlaying()) {
-                            mPlayer.stop();
-
-                        }
-                        ((ConsonantesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_play);
-                        fabStateVolume = false;
-
-                    } else {
-                        mPlayer = MediaPlayer.create(Consonantes_main.this, object.getIdSonido());
-                        mPlayer.setLooping(true);
-                        mPlayer.start();
-                        ((ConsonantesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_toast_megaphone_2);
-                        fabStateVolume = true;
-
-                    }
-                }
-            });
-
-            ((ConsonantesViewHolder) holder).mfab2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (fabStateVolume) {
-                        if (mPlayer.isPlaying()) {
-                            mPlayer.stop();
-
-                        }
-                        ((ConsonantesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_play);
-                        fabStateVolume = false;
-
-                    } else {
-                        mPlayer = MediaPlayer.create(Consonantes_main.this, object.getIdSonido2());
-                        mPlayer.setLooping(true);
-                        mPlayer.start();
-                        ((ConsonantesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_toast_megaphone_2);
-                        fabStateVolume = true;
-
-                    }
-                }
-            });
-
-
-            ((ConsonantesViewHolder) holder).mfab3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (fabStateVolume) {
-                        if (mPlayer.isPlaying()) {
-                            mPlayer.stop();
-
-                        }
-                        ((ConsonantesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_play);
-                        fabStateVolume = false;
-
-                    } else {
-                        mPlayer = MediaPlayer.create(Consonantes_main.this, object.getIdSonido3());
-                        mPlayer.setLooping(true);
-                        mPlayer.start();
-                        ((ConsonantesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_toast_megaphone_2);
-                        fabStateVolume = true;
-
-                    }
-                }
-            });
-
-
-
+            ((Consonantes_main.ConsonantesAdaptador.ConsonantesViewHolder) holder).tv_total_ejercicios_vocales.setText("5");
+            ((Consonantes_main.ConsonantesAdaptador.ConsonantesViewHolder) holder).tv_cv_ejercicio_vocal.setText(object.getNombre());
+            ((Consonantes_main.ConsonantesAdaptador.ConsonantesViewHolder) holder).tv_cv_porcentaje_progreso.setText("20%");
+            ((Consonantes_main.ConsonantesAdaptador.ConsonantesViewHolder) holder).progressbar_nivel.setProgress(20);
         }
         //</editor-fold>
 
@@ -182,16 +116,19 @@ public class Consonantes_main extends AppCompatActivity {
 
         //<editor-fold desc="CLASE VocalesViewHolder">
         public class ConsonantesViewHolder extends RecyclerView.ViewHolder {
-            private TextView mVTextVocal;
-            public FloatingActionButton mfab1, mfab2, mfab3;
+            private TextView tv_total_ejercicios_vocales,
+                    tv_cv_ejercicio_vocal,
+                    tv_cv_porcentaje_progreso;
+            ProgressBar progressbar_nivel;
+
 
             public ConsonantesViewHolder(View itemView) {
                 super(itemView);
 
-                mVTextVocal = (TextView) itemView.findViewById(R.id.tv_card_ejercicio_preestablecido);
-                mfab1 = (FloatingActionButton) itemView.findViewById(R.id.fab);
-                mfab2 = (FloatingActionButton) itemView.findViewById(R.id.fab2);
-                mfab3 = (FloatingActionButton) itemView.findViewById(R.id.fab3);
+                tv_total_ejercicios_vocales = (TextView) itemView.findViewById(R.id.tv_total_ejercicios_vocales);
+                tv_cv_ejercicio_vocal = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio_vocal);
+                tv_cv_porcentaje_progreso = (TextView) itemView.findViewById(R.id.tv_cv_porcentaje_progreso);
+                progressbar_nivel = (ProgressBar) itemView.findViewById(R.id.progressbar_nivel);
             }
         }
         //</editor-fold>

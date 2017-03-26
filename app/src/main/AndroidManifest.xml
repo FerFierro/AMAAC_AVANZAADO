@@ -88,7 +88,7 @@
         </activity>
 
         <activity
-            android:name=".controlador.adapters.Vocales_main"
+            android:name=".controlador.adapters.VocalesEjercicios"
             android:label="Vocales"
             android:parentActivityName=".controlador.adapters.IniciarNivel_main">
             <meta-data

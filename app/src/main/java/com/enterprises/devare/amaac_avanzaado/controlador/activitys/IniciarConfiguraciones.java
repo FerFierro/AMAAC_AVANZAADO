@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.adapters.IniciarNivel_main;
-import com.enterprises.devare.amaac_avanzaado.controlador.adapters.Vocales_main;
-import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
+import com.enterprises.devare.amaac_avanzaado.controlador.adapters.VocalesEjercicios;
 
 public class IniciarConfiguraciones extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class IniciarConfiguraciones extends AppCompatActivity {
 
     //<editor-fold desc="VARIABLES DE REFERENCIA">
     IniciarNivel_main init_IniciarNivel_main= new IniciarNivel_main();
-    Vocales_main init_Vocales_main=new Vocales_main();
+    VocalesEjercicios init_Vocales_main=new VocalesEjercicios();
     guiapadreListActivity init_tips_uso_app=new guiapadreListActivity();
     //</editor-fold>
 

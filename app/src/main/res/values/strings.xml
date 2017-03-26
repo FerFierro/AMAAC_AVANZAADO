@@ -179,5 +179,7 @@
         Nota: No olvide que usted puede ver un vídeo acerca de esta técnica pulsando sobre el icono de vídeo ubicado a la izquierda de esta nota o en la parte superior de la pantalla
     </string>
 
-
+    <!--UILayout item_card_view_ejercicio_preestablecido.xml-->
+    <string name="plantilla_porcentaje_progreso">100%</string>
+    <string name="plantilla_vocal">Aa</string>
 </resources>

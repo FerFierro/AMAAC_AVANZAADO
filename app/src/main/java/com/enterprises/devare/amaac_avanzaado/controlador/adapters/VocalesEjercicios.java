@@ -1,16 +1,20 @@
 package com.enterprises.devare.amaac_avanzaado.controlador.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
@@ -22,12 +26,9 @@ import java.util.List;
 
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCALES;
 
-public class Vocales_main extends AppCompatActivity {
+public class VocalesEjercicios extends AppCompatActivity {
 
     //<editor-fold desc="DECLARION DE VARIABLES">
-
-    MediaPlayer mPlayer;
-    private boolean fabStateVolume = false;
     VocalesAdaptador adapter;
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
@@ -46,7 +47,7 @@ public class Vocales_main extends AppCompatActivity {
     }
 
     //<editor-fold desc="MÉTODO iniciarDatos_Vocales_main() CARGA DE DATOS">
-    public void iniciarDatos_Vocales_main(Context contexto){
+    public void iniciarDatos_Vocales_main(Context contexto) {
         DataManager datos = new DataManager();
         datos.Init_Contenido_niveles(contexto);
     }
@@ -72,8 +73,12 @@ public class Vocales_main extends AppCompatActivity {
         System.out.println("Entre a setupRecyclerView");
 
         recyclerView.setAdapter(items);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        }else{
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false));
 
+        }
         //recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         //recyclerView.setLayoutManager( new GridLayoutManager(this, 3,GridLayoutManager.VERTICAL, false));
         //recyclerView.setLayoutManager( new GridLayoutManager(this, 3,GridLayoutManager.HORIZONTAL, false));
@@ -109,76 +114,10 @@ public class Vocales_main extends AppCompatActivity {
             final Pictograma object = mValues.get(position);
             System.out.println(object.getNombre());
 
-            ((VocalesViewHolder) holder).mVTextVocal.setText(object.getNombre());
-
-            ((VocalesViewHolder) holder).mfab1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (fabStateVolume) {
-                        if (mPlayer.isPlaying()) {
-                            mPlayer.stop();
-
-                        }
-                        ((VocalesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_play);
-                        fabStateVolume = false;
-
-                    } else {
-                        mPlayer = MediaPlayer.create(Vocales_main.this, object.getIdSonido());
-                        mPlayer.setLooping(true);
-                        mPlayer.start();
-                        ((VocalesViewHolder) holder).mfab1.setImageResource(R.drawable.ic_toast_megaphone_2);
-                        fabStateVolume = true;
-
-                    }
-                }
-            });
-
-            ((VocalesViewHolder) holder).mfab2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (fabStateVolume) {
-                        if (mPlayer.isPlaying()) {
-                            mPlayer.stop();
-
-                        }
-                        ((VocalesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_play);
-                        fabStateVolume = false;
-
-                    } else {
-                        mPlayer = MediaPlayer.create(Vocales_main.this, object.getIdSonido2());
-                        mPlayer.setLooping(true);
-                        mPlayer.start();
-                        ((VocalesViewHolder) holder).mfab2.setImageResource(R.drawable.ic_toast_megaphone_2);
-                        fabStateVolume = true;
-
-                    }
-                }
-            });
-
-
-            ((VocalesViewHolder) holder).mfab3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (fabStateVolume) {
-                        if (mPlayer.isPlaying()) {
-                            mPlayer.stop();
-
-                        }
-                        ((VocalesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_play);
-                        fabStateVolume = false;
-
-                    } else {
-                        mPlayer = MediaPlayer.create(Vocales_main.this, object.getIdSonido3());
-                        mPlayer.setLooping(true);
-                        mPlayer.start();
-                        ((VocalesViewHolder) holder).mfab3.setImageResource(R.drawable.ic_toast_megaphone_2);
-                        fabStateVolume = true;
-
-                    }
-                }
-            });
-
-
+            ((VocalesViewHolder) holder).tv_total_ejercicios_vocales.setText("1/5");
+            ((VocalesViewHolder) holder).tv_cv_ejercicio_vocal.setText(object.getNombre());
+            ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setText("20%");
+            ((VocalesViewHolder) holder).progressbar_nivel.setProgress(20);
 
         }
         //</editor-fold>
@@ -190,19 +129,25 @@ public class Vocales_main extends AppCompatActivity {
 
         //<editor-fold desc="CLASE VocalesViewHolder">
         public class VocalesViewHolder extends RecyclerView.ViewHolder {
-            private TextView mVTextVocal;
-            public FloatingActionButton mfab1, mfab2, mfab3;
+            private TextView tv_total_ejercicios_vocales,
+                    tv_cv_ejercicio_vocal,
+                    tv_cv_porcentaje_progreso;
+            ProgressBar progressbar_nivel;
+
+
+
 
             public VocalesViewHolder(View itemView) {
                 super(itemView);
 
-                mVTextVocal = (TextView) itemView.findViewById(R.id.tv_card_ejercicio_preestablecido);
-                mfab1 = (FloatingActionButton) itemView.findViewById(R.id.fab);
-                mfab2 = (FloatingActionButton) itemView.findViewById(R.id.fab2);
-                mfab3 = (FloatingActionButton) itemView.findViewById(R.id.fab3);
+                tv_total_ejercicios_vocales = (TextView) itemView.findViewById(R.id.tv_total_ejercicios_vocales);
+                tv_cv_ejercicio_vocal = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio_vocal);
+                tv_cv_porcentaje_progreso = (TextView) itemView.findViewById(R.id.tv_cv_porcentaje_progreso);
+                progressbar_nivel = (ProgressBar) itemView.findViewById(R.id.progressbar_nivel);
+
             }
+            //</editor-fold>
         }
         //</editor-fold>
     }
-    //</editor-fold>
 }

@@ -13,10 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -269,7 +267,7 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
                 switch (mNivel.getNombre()) {
 
                     case "Vocales":
-                        Vocales = new Intent(IniciarNivel_main.this, Vocales_main.class);
+                        Vocales = new Intent(IniciarNivel_main.this, VocalesEjercicios.class);
                         startActivity(Vocales);
                         break;
 
