@@ -25,6 +25,11 @@ public class Pictograma {
     public static final int CAT_PROFESIONES =15;
 
     public static final int CAT_VOCALES=16;
+    public static final int CAT_VOCAL_A=161;
+    public static final int CAT_VOCAL_E=162;
+    public static final int CAT_VOCAL_I=163;
+    public static final int CAT_VOCAL_O=164;
+    public static final int CAT_VOCAL_U=165;
     public static final int CAT_CONSONANTES=17;
     public static final int CAT_BISILABAS=18;
     public static final int CAT_TRISILABAS=19;

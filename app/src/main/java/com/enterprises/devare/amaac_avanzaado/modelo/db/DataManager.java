@@ -23,7 +23,12 @@ import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VERBO
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VERBOS_AUX;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VERDURAS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCALES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_A;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_E;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_I;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_O;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_U;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.TIPO_PIC_NORMAL;
 
 public class DataManager {
@@ -331,6 +336,36 @@ public class DataManager {
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCALES, "Ii", 1, 0, 0, 0));
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCALES, "Oo", 1, 0, 0, 0));
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCALES, "Uu", 1, 0, 0, 0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_A, "A",  1, R.raw.a, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_A, "Ae", 1, R.raw.ae, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_A, "Ai", 1, R.raw.ai, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_A, "Ao", 1, R.raw.ao, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_A, "Au", 1, R.raw.au, 0, 0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "E", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Ea", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Ei", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Eo", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Eu", 1, 0, 0, 0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "I", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Ia", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Ie", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Io", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Iu", 1, 0, 0, 0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_O, "O", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_O, "Oa", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_O, "Oe", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_O, "Oi", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_O, "Ou", 1, 0, 0, 0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_U, "U", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_U, "Ua", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_U, "Ue", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_U, "Ui", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_U, "Uo", 1, 0, 0, 0));
 
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Bb", 1, 0, 0, 0));
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Cc", 1, 0, 0, 0));

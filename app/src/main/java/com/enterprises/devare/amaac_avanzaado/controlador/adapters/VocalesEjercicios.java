@@ -1,30 +1,41 @@
 package com.enterprises.devare.amaac_avanzaado.controlador.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.enterprises.devare.amaac_avanzaado.R;
+import com.enterprises.devare.amaac_avanzaado.modelo.Nivel;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
 
 import java.util.List;
+import java.util.Locale;
 
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCALES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_A;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_E;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_I;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_O;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_U;
 
 public class VocalesEjercicios extends AppCompatActivity {
 
@@ -128,14 +139,14 @@ public class VocalesEjercicios extends AppCompatActivity {
         }
 
         //<editor-fold desc="CLASE VocalesViewHolder">
-        public class VocalesViewHolder extends RecyclerView.ViewHolder {
+        public class VocalesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             private TextView tv_total_ejercicios_vocales,
                     tv_cv_ejercicio_vocal,
                     tv_cv_porcentaje_progreso;
             ProgressBar progressbar_nivel;
+            CardView cv_ejercicios_nivel;
 
-
-
+            public static final String VOCAL_SELECCIONADA="com.enterprises.devare.amaac_avanzaado.controlador.adapters.vocalSeleccionad";
 
             public VocalesViewHolder(View itemView) {
                 super(itemView);
@@ -144,9 +155,51 @@ public class VocalesEjercicios extends AppCompatActivity {
                 tv_cv_ejercicio_vocal = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio_vocal);
                 tv_cv_porcentaje_progreso = (TextView) itemView.findViewById(R.id.tv_cv_porcentaje_progreso);
                 progressbar_nivel = (ProgressBar) itemView.findViewById(R.id.progressbar_nivel);
+                cv_ejercicios_nivel= (CardView) itemView.findViewById(R.id.cv_ejercicios_nivel);
+                cv_ejercicios_nivel.setOnClickListener(this);
 
             }
             //</editor-fold>
+
+            @Override
+            public void onClick(View v) {
+
+                int posicision = getAdapterPosition();
+                final Pictograma object = mValues.get(posicision);
+                Intent ejercicio;
+                ejercicio = new Intent(getApplicationContext(), Ejercicios.class);
+
+                switch (object.getNombre()) {
+
+
+                    case "Aa":
+                        ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_A);
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Ee":
+                        ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_E);
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Ii":
+                        ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_I);
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Oo":
+                        ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_O);
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Uu":
+                        ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_U);
+                        startActivity(ejercicio);
+                        break;
+
+
+                }
+            }
         }
         //</editor-fold>
     }

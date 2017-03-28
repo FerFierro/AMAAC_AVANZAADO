@@ -105,6 +105,12 @@
                 android:value=".controlador.adapters.IniciarNivel_main" />
         </activity>
 
+        <activity
+            android:name=".controlador.adapters.Ejercicios"
+            android:label="ejercicios">
+
+        </activity>
+
     </application>
 
 </manifest>
