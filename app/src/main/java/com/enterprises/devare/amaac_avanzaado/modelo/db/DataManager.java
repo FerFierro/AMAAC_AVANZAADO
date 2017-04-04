@@ -343,17 +343,17 @@ public class DataManager {
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_A, "Ao", 1, R.raw.ao, 0, 0));
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_A, "Au", 1, R.raw.au, 0, 0));
 
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "E", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Ea", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Ei", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Eo", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Eu", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "E",  1, R.raw.e, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Ea", 1, R.raw.e, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Ei", 1, R.raw.e, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Eo", 1, R.raw.e, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_E, "Eu", 1, R.raw.e, 0, 0));
 
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "I", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Ia", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Ie", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Io", 1, 0, 0, 0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Iu", 1, 0, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "I",  1, R.raw.i, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Ia", 1, R.raw.i, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Ie", 1, R.raw.i, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Io", 1, R.raw.i, 0, 0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_I, "Iu", 1, R.raw.i, 0, 0));
 
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_O, "O", 1, 0, 0, 0));
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_O, "Oa", 1, 0, 0, 0));
