@@ -111,6 +111,7 @@
 
         </activity>
 
+        <service android:name=".controlador.servicios.MusicaService" />
     </application>
 
 </manifest>

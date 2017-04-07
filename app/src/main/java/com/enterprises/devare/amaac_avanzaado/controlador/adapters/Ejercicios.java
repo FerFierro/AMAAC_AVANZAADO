@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.enterprises.devare.amaac_avanzaado.R;
+import com.enterprises.devare.amaac_avanzaado.controlador.servicios.MusicaService;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
@@ -40,6 +42,7 @@ public class Ejercicios extends AppCompatActivity {
     Ejercicios.EjercicioAdaptador adapter;
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
+    public static final String ID_Sonido="com.enterprises.devare.amaac_avanzaado.controlador.adapters.SONIDO";
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate()">
@@ -107,9 +110,6 @@ public class Ejercicios extends AppCompatActivity {
 
             View view;
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio, parent, false);
-            Toast.makeText(Ejercicios.this, "oncreate "+parent.getId(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "oncreate "+parent.getChildAt(0), Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "oncreate "+parent.getVisibility(), Toast.LENGTH_SHORT).show();
 
             return new Ejercicios.EjercicioAdaptador.EjerciciosViewHolder(view);
 
@@ -121,30 +121,61 @@ public class Ejercicios extends AppCompatActivity {
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
             final Pictograma object = mValues.get(position);
+            final int nombre=object.getIdSonido();
+            final int habilitado=object.getHabilitado();
+            final boolean habilitadoEjercicio=estadoPictograma(habilitado);
 
                 Toast.makeText(Ejercicios.this, "Posicion " + position, Toast.LENGTH_SHORT).show();
-                 Toast.makeText(Ejercicios.this, "itenView " +holder.itemView, Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "getLayoutPosition " +holder.getLayoutPosition(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "getAdapterPosition " +holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "getItemId " +holder.getItemId(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "getItemViewType " +holder.getItemViewType(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "getAdapterPosition " +holder.getOldPosition(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(Ejercicios.this, "getAdapterPosition " +holder.toString(), Toast.LENGTH_SHORT).show();
-                System.out.println(object.getNombre());
 
                 ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), object.getIdSonido());
                 ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setEnabled(false);
+
+            if (habilitadoEjercicio){
+                ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.INVISIBLE);
+                Toast.makeText(Ejercicios.this, "El estado del pictograma es "+habilitadoEjercicio, Toast.LENGTH_SHORT).show();
+
+
+                ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).ll_controles.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).fab.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).fab2.setEnabled(habilitadoEjercicio);
+
+            }
+            else{
+                ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.VISIBLE);
+                Toast.makeText(Ejercicios.this, "El estado del pictograma es "+habilitadoEjercicio, Toast.LENGTH_SHORT).show();
+                ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).ll_controles.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).fab.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).fab2.setEnabled(habilitadoEjercicio);
+            }
+
+
+                  //  ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.VISIBLE);
+
+
                 ((EjerciciosViewHolder) holder).fab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mediaPlayer.isPlaying()) {
+                        ((EjerciciosViewHolder) holder).fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFFF00")));
+                        Intent i=new Intent(getApplicationContext(),MusicaService.class);
+                        i.putExtra(ID_Sonido,nombre);
+                        startService(i);
+
+                       /* if (mediaPlayer.isPlaying()) {
+
                             mediaPlayer.pause();
                             ((EjerciciosViewHolder) holder).fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FF4081")));
                         } else {
                             ((EjerciciosViewHolder) holder).fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFFF00")));
                             mediaPlayer.start();
-                        }
+                        }*/
 
                         ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setEnabled(true);
                     }
@@ -153,19 +184,37 @@ public class Ejercicios extends AppCompatActivity {
                 ((EjerciciosViewHolder) holder).fab2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mediaPlayer.isPlaying()) {
-                            mediaPlayer.pause();
-                            ((EjerciciosViewHolder) holder).fab2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FF4081")));
-                        }
+                        ((EjerciciosViewHolder) holder).fab2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFFF00")));
+                        Intent i=new Intent(getApplicationContext(),MusicaService.class);
+                        stopService(i);
                     }
                 });
 
+            ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Ejercicios.this, "Estas en el boton siguiente", Toast.LENGTH_SHORT).show();
+                    int nuevaPosicion=position+1;
+                    final Pictograma seteo = mValues.get(nuevaPosicion);
+                          seteo.setHabilitado(1);
+                     onBindViewHolder(holder,nuevaPosicion);
+                    Toast.makeText(Ejercicios.this, "el valor habiltado es ahora "+seteo.getHabilitado()+" "+seteo.getNombre(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
+        public boolean  estadoPictograma(int i){
+            if(i==1){
+                return  true;
+            }else{
+                return false;
+            }
 
         }
         //</editor-fold>
 
-
-        @Override
+                @Override
         public int getItemCount() {
             return mValues.size();
         }
@@ -174,9 +223,11 @@ public class Ejercicios extends AppCompatActivity {
         public class EjerciciosViewHolder extends RecyclerView.ViewHolder {
 
             ImageView iv_cv_bloqueado;
+
             private TextView tv_cv_ejercicio;
             FloatingActionButton fab,fab2;
-            LinearLayout ll_ejercicio;
+            CardView card_view_controles,cv_ejercicio;
+            LinearLayout ll_ejercicio,ll_controles;
             ImageButton Ibtn_cv_ejercicio_siguiente;
 
             public EjerciciosViewHolder(View itemView) {
@@ -185,8 +236,11 @@ public class Ejercicios extends AppCompatActivity {
                 iv_cv_bloqueado = (ImageView) itemView.findViewById(R.id.iv_cv_bloqueado);
                 tv_cv_ejercicio = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio);
                 ll_ejercicio= (LinearLayout) itemView.findViewById(R.id.ll_ejercicio);
+                ll_controles= (LinearLayout) itemView.findViewById(R.id.ll_controles);
                 fab = (FloatingActionButton) itemView.findViewById(R.id.fab);
                 fab2 = (FloatingActionButton) itemView.findViewById(R.id.fab2);
+                card_view_controles = (CardView) itemView.findViewById(R.id.card_view_controles);
+                cv_ejercicio = (CardView) itemView.findViewById(R.id.cv_ejercicio);
                 Ibtn_cv_ejercicio_siguiente = (ImageButton) itemView.findViewById(R.id.Ibtn_cv_ejercicio_siguiente);
 
             }

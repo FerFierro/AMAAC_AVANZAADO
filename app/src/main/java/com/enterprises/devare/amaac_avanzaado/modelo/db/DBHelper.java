@@ -61,8 +61,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String NOMBRE = "nombre";
     public static final String ID_DRAWABLE = "idDrawable";
     public static final String ID_SONIDO = "idSonido";
-    public static final String ID_SONIDO2 = "idSonido2";
-    public static final String ID_SONIDO3 = "idSonido3";
+    public static final String HABILITADO = "habilitado";
+    public static final String COMPLETADO = "completado";
 
     //Nombre de los campos de la tabla nivel
     public static final String ID_NIVEL = "idNivel";
@@ -80,8 +80,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + NOMBRE + " TEXT NOT NULL,"
             + ID_DRAWABLE + " INTEGER,"
             + ID_SONIDO + " INTEGER,"
-            + ID_SONIDO2 + " INTEGER,"
-            + ID_SONIDO3 + " INTEGER);";
+            + HABILITADO + " INTEGER,"
+            + COMPLETADO + " INTEGER);";
 
     //Sentencia para crear la tabla nivel
     public static final String CREATE_TABLE_NIVEL = "CREATE TABLE " + TABLE_NIVEL + " ("
@@ -103,8 +103,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(NOMBRE, picto.getNombre());
         values.put(ID_DRAWABLE, picto.getIdDrawable());
         values.put(ID_SONIDO, picto.getIdSonido());
-        values.put(ID_SONIDO2, picto.getIdSonido2());
-        values.put(ID_SONIDO3, picto.getIdSonido3());
+        values.put(HABILITADO, picto.getHabilitado());
+        values.put(COMPLETADO, picto.getCompletado());
 
         db.insert(TABLE_PICTOGRAMA, null, values); //Insert query to store the record in the database
         db.close();
