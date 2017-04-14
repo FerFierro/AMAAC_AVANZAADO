@@ -15,13 +15,12 @@ public class MusicaService extends Service {
 
     @Override
     public void onCreate() {
-        Toast.makeText(this, "Servicio creado con sonido ", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
     public int onStartCommand(Intent intenc, int flags, int idArranque) {
-        idRaw = intenc.getIntExtra(Ejercicios.ID_Sonido, 0);reproductor = MediaPlayer.create(getApplicationContext(), idRaw);
+        idRaw = intenc.getIntExtra(Ejercicios.ID_Sonido, 0);
+        reproductor = MediaPlayer.create(getApplicationContext(), idRaw);
 
         if (reproductor.isPlaying()) {
 
@@ -29,18 +28,14 @@ public class MusicaService extends Service {
 
         } else {
             reproductor.start();
-        }
 
-        Toast.makeText(this, "id sonido " + idRaw, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "Servicio arrancado " + idArranque, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "Servicio creado con sonido " + idRaw, Toast.LENGTH_SHORT).show();
+        }
 
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "Servicio detenido", Toast.LENGTH_SHORT).show();
         reproductor.stop();
     }
 

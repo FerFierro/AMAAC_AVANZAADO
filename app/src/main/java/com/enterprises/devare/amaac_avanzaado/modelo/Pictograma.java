@@ -136,6 +136,8 @@ public class Pictograma {
     public String toString() {
         return ("Nombre: " + nombre + "\n" +
                 "Categoria: " + categoria + "\n" +
+                "Habiltado: " + habilitado + "\n" +
+                "completado: " + completado + "\n" +
                 "IdDrawable: " + idDrawable + "\n");
     }
     //</editor-fold>

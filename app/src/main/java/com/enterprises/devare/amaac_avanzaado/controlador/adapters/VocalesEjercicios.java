@@ -146,7 +146,7 @@ public class VocalesEjercicios extends AppCompatActivity {
             ProgressBar progressbar_nivel;
             CardView cv_ejercicios_nivel;
 
-            public static final String VOCAL_SELECCIONADA="com.enterprises.devare.amaac_avanzaado.controlador.adapters.vocalSeleccionad";
+            public static final String VOCAL_SELECCIONADA="com.enterprises.devare.amaac_avanzaado.controlador.adapters.vocalSeleccionada";
 
             public VocalesViewHolder(View itemView) {
                 super(itemView);

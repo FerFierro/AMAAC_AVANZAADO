@@ -32,10 +32,6 @@ import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
 import java.util.List;
 
-import static com.enterprises.devare.amaac_avanzaado.R.color.accent_500;
-import static com.enterprises.devare.amaac_avanzaado.R.color.accent_material_dark;
-import static com.enterprises.devare.amaac_avanzaado.R.color.color_animo;
-
 public class Ejercicios extends AppCompatActivity {
 
     //<editor-fold desc="DECLARION DE VARIABLES">
@@ -43,6 +39,8 @@ public class Ejercicios extends AppCompatActivity {
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
     public static final String ID_Sonido="com.enterprises.devare.amaac_avanzaado.controlador.adapters.SONIDO";
+    Intent i;
+    int nuevaPosicion;
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate()">
@@ -50,15 +48,15 @@ public class Ejercicios extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ejercicios);
+
         db = new DBHelper(this);
 
         recycler_ejercicios = (RecyclerView) findViewById(R.id.reciclador_ejercicio_niveles);
         Intent intent=getIntent();
         int categoria;
 
-
-                categoria= intent.getIntExtra(VocalesEjercicios.VocalesAdaptador.VocalesViewHolder.VOCAL_SELECCIONADA,1);
-                InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(categoria));
+        categoria= intent.getIntExtra(VocalesEjercicios.VocalesAdaptador.VocalesViewHolder.VOCAL_SELECCIONADA,1);
+        InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(categoria));
 
 
     }
@@ -71,7 +69,7 @@ public class Ejercicios extends AppCompatActivity {
 
         assert mRecyclerView != null;
         adapter = new Ejercicios.EjercicioAdaptador(items);
-        System.out.println(items.get(4));
+        Toast.makeText(this, "Habilitado es "+items.get(nuevaPosicion).toString(), Toast.LENGTH_SHORT).show();
 
         setupRecyclerView(mRecyclerView, adapter);
 
@@ -85,7 +83,7 @@ public class Ejercicios extends AppCompatActivity {
 
         recyclerView.setAdapter(items);
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         //recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         //recyclerView.setLayoutManager( new GridLayoutManager(this, 3,GridLayoutManager.VERTICAL, false));
@@ -116,6 +114,7 @@ public class Ejercicios extends AppCompatActivity {
         }
         //</editor-fold>
 
+
         //<editor-fold desc="MÉTODO onBindViewHolder">
         @Override
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
@@ -125,7 +124,7 @@ public class Ejercicios extends AppCompatActivity {
             final int habilitado=object.getHabilitado();
             final boolean habilitadoEjercicio=estadoPictograma(habilitado);
 
-                Toast.makeText(Ejercicios.this, "Posicion " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Ejercicios.this, "Posicion " + object.getNombre(), Toast.LENGTH_SHORT).show();
 
                 ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
                 ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setEnabled(false);
@@ -133,7 +132,6 @@ public class Ejercicios extends AppCompatActivity {
             if (habilitadoEjercicio){
                 ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.INVISIBLE);
                 Toast.makeText(Ejercicios.this, "El estado del pictograma es "+habilitadoEjercicio, Toast.LENGTH_SHORT).show();
-
 
                 ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).ll_controles.setEnabled(habilitadoEjercicio);
@@ -164,7 +162,7 @@ public class Ejercicios extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         ((EjerciciosViewHolder) holder).fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFFF00")));
-                        Intent i=new Intent(getApplicationContext(),MusicaService.class);
+                        i=new Intent(getApplicationContext(),MusicaService.class);
                         i.putExtra(ID_Sonido,nombre);
                         startService(i);
 
@@ -193,16 +191,22 @@ public class Ejercicios extends AppCompatActivity {
             ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(Ejercicios.this, "Estas en el boton siguiente", Toast.LENGTH_SHORT).show();
-                    int nuevaPosicion=position+1;
-                    final Pictograma seteo = mValues.get(nuevaPosicion);
-                          seteo.setHabilitado(1);
-                     onBindViewHolder(holder,nuevaPosicion);
-                    Toast.makeText(Ejercicios.this, "el valor habiltado es ahora "+seteo.getHabilitado()+" "+seteo.getNombre(), Toast.LENGTH_SHORT).show();
+                    nuevaPosicion=position+1;
+                    if (nuevaPosicion<mValues.size()){
+                        final Pictograma seteo = mValues.get(nuevaPosicion);
+                        seteo.setHabilitado(1);
+                        seteo.setCompletado(1);
+                        db.updatePictograma(seteo);
+                        adapter.notifyDataSetChanged();
+
+                    }else{
+                        Toast.makeText(Ejercicios.this, "Felicidades Haz terminado esta sección", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 
         }
+
 
         public boolean  estadoPictograma(int i){
             if(i==1){
@@ -247,5 +251,27 @@ public class Ejercicios extends AppCompatActivity {
             //</editor-fold>
         }
         //</editor-fold>
+    }
+
+    @Override
+    protected void onRestart() {
+        Toast.makeText(this, "onRestart", Toast.LENGTH_SHORT).show();
+        super.onRestart();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        stopService(i);
+        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
+        super.onPause();
+
     }
 }

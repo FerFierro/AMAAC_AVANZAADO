@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import com.enterprises.devare.amaac_avanzaado.modelo.Nivel;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
+    Context c;
 
     public static final String NAME_DATABASE = "amaac.sqlite";//Nombre de la Base de Datos
     private static final int DB_SHEME_VERSION = 1;//Version de la DB por si hay una nueva version y haya que actualizar la BD
@@ -21,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //<editor-fold desc="CONSTRUCTOR DBHelper">
     public DBHelper(Context context) {
         super(context, NAME_DATABASE, null, DB_SHEME_VERSION);
+        this.c=context;
     }
     //</editor-fold>
 
@@ -127,7 +130,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     //</editor-fold>
 
-    /* will return the list of all users*/
     //<editor-fold desc="MÉTODO getCategoria_Pictogramas() QUE RETORNA TODOS LOS PICTOGRAMAS POR SU CATEGORIA">
     public List<Pictograma> getCategoria_Pictogramas(int categoria) {
 
@@ -212,17 +214,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /*will be used to update the existing user record*/
     //<editor-fold desc="MÉTODO  updateUser">
-    public int updateUser(Pictograma picto) {
+    public int updatePictograma(Pictograma picto) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
-        values.put(TIPO, picto.getTipo());
-        values.put(CATEGORIA, picto.getCategoria());
-        values.put(NOMBRE, picto.getNombre());
-        values.put(ID_DRAWABLE, picto.getIdDrawable());
+        values.put(HABILITADO, picto.getHabilitado());
+        values.put(COMPLETADO, picto.getCompletado());
         // updating record
-        return db.update(TABLE_PICTOGRAMA, values, ID + " = ?", // update query to make changes to the existing record
-                new String[]{String.valueOf(picto.getId())});
+        Toast.makeText(c, "Se actualizo "+picto.getNombre(), Toast.LENGTH_SHORT).show();
+        return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
+                new String[]{String.valueOf(picto.getNombre())});
+
     }
     //</editor-fold>
 
