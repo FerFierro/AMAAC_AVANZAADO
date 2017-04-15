@@ -66,6 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String ID_SONIDO = "idSonido";
     public static final String HABILITADO = "habilitado";
     public static final String COMPLETADO = "completado";
+    public static final String PROGRESO = "progreso";
 
     //Nombre de los campos de la tabla nivel
     public static final String ID_NIVEL = "idNivel";
@@ -84,7 +85,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + ID_DRAWABLE + " INTEGER,"
             + ID_SONIDO + " INTEGER,"
             + HABILITADO + " INTEGER,"
-            + COMPLETADO + " INTEGER);";
+            + COMPLETADO + " INTEGER,"
+            + PROGRESO + " INTEGER);";
 
     //Sentencia para crear la tabla nivel
     public static final String CREATE_TABLE_NIVEL = "CREATE TABLE " + TABLE_NIVEL + " ("
@@ -108,6 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(ID_SONIDO, picto.getIdSonido());
         values.put(HABILITADO, picto.getHabilitado());
         values.put(COMPLETADO, picto.getCompletado());
+        values.put(PROGRESO, picto.getCompletado());
 
         db.insert(TABLE_PICTOGRAMA, null, values); //Insert query to store the record in the database
         db.close();
@@ -142,7 +145,7 @@ public class DBHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                Pictograma pic = new Pictograma(cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getInt(6), cursor.getInt(7));
+                Pictograma pic = new Pictograma(cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
                 usersList.add(pic);
             } while (cursor.moveToNext());
         }
@@ -160,7 +163,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Pictograma pic = new Pictograma(cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getInt(6), cursor.getInt(7));
+        Pictograma pic = new Pictograma(cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
         return pic;
     }
     //</editor-fold>
@@ -199,6 +202,16 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     //</editor-fold>
 
+    public int obtenerProgreso(String ejercicio) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor mCount = db.rawQuery("select progreso from " + TABLE_PICTOGRAMA+" where NOMBRE="+ejercicio, null);
+        int pross=mCount.getInt(0);
+        mCount.close();
+
+        return pross;
+    }
+
     /* will give the total number of records in the table*/
     //<editor-fold desc="MÉTODO getUsersCount()">
     public int getUsersCount() {
@@ -227,6 +240,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
     //</editor-fold>
+
+    public int updateProgresoEjercicio(String nombre,int progreso) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PROGRESO, progreso);
+        // updating record
+        return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
+                new String[]{String.valueOf(nombre)});
+
+    }
 
     /*to delete the record from the table*/
     //<editor-fold desc="MÉTODO deleteContact()">

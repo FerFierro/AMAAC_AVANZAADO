@@ -23,14 +23,10 @@ public class MusicaService extends Service {
         reproductor = MediaPlayer.create(getApplicationContext(), idRaw);
 
         if (reproductor.isPlaying()) {
-
             reproductor.pause();
-
         } else {
             reproductor.start();
-
         }
-
         return START_STICKY;
     }
 

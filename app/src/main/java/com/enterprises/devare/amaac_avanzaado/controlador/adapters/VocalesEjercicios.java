@@ -127,7 +127,7 @@ public class VocalesEjercicios extends AppCompatActivity {
 
             ((VocalesViewHolder) holder).tv_total_ejercicios_vocales.setText("1/5");
             ((VocalesViewHolder) holder).tv_cv_ejercicio_vocal.setText(object.getNombre());
-            ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setText("20%");
+            ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setText("0%");
             ((VocalesViewHolder) holder).progressbar_nivel.setProgress(20);
 
         }

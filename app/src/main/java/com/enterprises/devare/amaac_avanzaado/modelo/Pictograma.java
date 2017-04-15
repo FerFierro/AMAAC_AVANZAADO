@@ -44,10 +44,11 @@ public class Pictograma {
     public int idSonido;
     public int habilitado;
     public int completado;
+    private int progreso=0;
 
     //<editor-fold desc="CONSTRUCTOR CON PARAMETROS">
 
-    public Pictograma(int tipo,int categoria, String nombre, int idDrawable,  int idSonido, int habilitado, int completado) {
+    public Pictograma(int tipo,int categoria, String nombre, int idDrawable,  int idSonido, int habilitado, int completado, int progreso) {
         this.categoria = categoria;
         this.completado = completado;
         this.habilitado = habilitado;
@@ -56,6 +57,7 @@ public class Pictograma {
         this.idSonido = idSonido;
         this.nombre = nombre;
         this.tipo = tipo;
+        this.progreso=progreso;
     }
 
     //</editor-fold>
@@ -94,6 +96,9 @@ public class Pictograma {
         return tipo;
     }
 
+    public int getProgreso() {
+        return progreso;
+    }
     //</editor-fold>
 
     //<editor-fold desc="MÉTODOS SETTERS">
@@ -130,6 +135,10 @@ public class Pictograma {
         this.tipo = tipo;
     }
 
+    public void setProgreso(int progreso) {
+
+        this.progreso = progreso;
+    }
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO toString()">

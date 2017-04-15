@@ -34,7 +34,7 @@
                 android:layout_gravity="center"
                 android:padding="24dp"
                 app:src="@drawable/ic_android_muestra"
-                android:background="@drawable/shape_circular_nivel_administrador"
+                android:background="@drawable/boton_administrador"
                 app:ignore="ContentDescription" />
 
         </LinearLayout>

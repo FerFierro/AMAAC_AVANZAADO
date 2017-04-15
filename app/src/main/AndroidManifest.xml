@@ -107,7 +107,11 @@
 
         <activity
             android:name=".controlador.adapters.Ejercicios"
-            android:label="ejercicios">
+            android:label="Ejercicios"
+            android:parentActivityName=".controlador.adapters.VocalesEjercicios">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
 
         </activity>
 
