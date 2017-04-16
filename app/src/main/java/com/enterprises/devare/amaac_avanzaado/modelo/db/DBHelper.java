@@ -66,7 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String ID_SONIDO = "idSonido";
     public static final String HABILITADO = "habilitado";
     public static final String COMPLETADO = "completado";
-    public static final String PROGRESO = "progreso";
+    public static final String PROGRESO_EJERCICIO = "progreso_ejercicio";
 
     //Nombre de los campos de la tabla nivel
     public static final String ID_NIVEL = "idNivel";
@@ -86,7 +86,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + ID_SONIDO + " INTEGER,"
             + HABILITADO + " INTEGER,"
             + COMPLETADO + " INTEGER,"
-            + PROGRESO + " INTEGER);";
+            + PROGRESO_EJERCICIO + " INTEGER);";
 
     //Sentencia para crear la tabla nivel
     public static final String CREATE_TABLE_NIVEL = "CREATE TABLE " + TABLE_NIVEL + " ("
@@ -110,7 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(ID_SONIDO, picto.getIdSonido());
         values.put(HABILITADO, picto.getHabilitado());
         values.put(COMPLETADO, picto.getCompletado());
-        values.put(PROGRESO, picto.getCompletado());
+        values.put(PROGRESO_EJERCICIO, picto.getProgreso());
 
         db.insert(TABLE_PICTOGRAMA, null, values); //Insert query to store the record in the database
         db.close();
@@ -202,14 +202,23 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     //</editor-fold>
 
-    public int obtenerProgreso(String ejercicio) {
+    public int obtenerProgreso(int tipoEjercicio) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor mCount = db.rawQuery("select progreso from " + TABLE_PICTOGRAMA+" where NOMBRE="+ejercicio, null);
-        int pross=mCount.getInt(0);
-        mCount.close();
+        Cursor mCount = db.rawQuery("select sum(progreso_ejercicio) as suma from " + TABLE_PICTOGRAMA+" where CATEGORIA="+tipoEjercicio, null);
+        int sum = 0;
+        if (mCount != null) {
+            try {
+                if (mCount.moveToFirst()) {
+                    sum = mCount.getInt(0);
+                }
+            } finally {
+                mCount.close();
+            }
+        }
+        Toast.makeText(c, "la suma del ejercicio"+tipoEjercicio+" es:"+ sum, Toast.LENGTH_SHORT).show();
 
-        return pross;
+        return sum;
     }
 
     /* will give the total number of records in the table*/
@@ -233,24 +242,17 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(HABILITADO, picto.getHabilitado());
         values.put(COMPLETADO, picto.getCompletado());
+        values.put(PROGRESO_EJERCICIO, picto.getProgreso());
         // updating record
-        Toast.makeText(c, "Se actualizo "+picto.getNombre(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(c, "Se actualizo "+picto.getNombre()+"\n"
+                        + "con habilitado= "+picto.getHabilitado()+"\n"
+                        + "con completado="+picto.getCompletado()+"\n"
+                        + "con progreso="+picto.getProgreso(), Toast.LENGTH_SHORT).show();
         return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
                 new String[]{String.valueOf(picto.getNombre())});
 
     }
     //</editor-fold>
-
-    public int updateProgresoEjercicio(String nombre,int progreso) {
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(PROGRESO, progreso);
-        // updating record
-        return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
-                new String[]{String.valueOf(nombre)});
-
-    }
 
     /*to delete the record from the table*/
     //<editor-fold desc="MÉTODO deleteContact()">

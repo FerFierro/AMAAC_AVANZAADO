@@ -41,10 +41,10 @@ public class Pictograma {
     public int categoria;
     public String nombre;
     public int idDrawable;
-    public int idSonido;
-    public int habilitado;
-    public int completado;
-    private int progreso=0;
+    private int idSonido;
+    private int habilitado;
+    private int completado;
+    private int progreso;
 
     //<editor-fold desc="CONSTRUCTOR CON PARAMETROS">
 
@@ -52,7 +52,6 @@ public class Pictograma {
         this.categoria = categoria;
         this.completado = completado;
         this.habilitado = habilitado;
-        this.id = id;
         this.idDrawable = idDrawable;
         this.idSonido = idSonido;
         this.nombre = nombre;
@@ -143,11 +142,12 @@ public class Pictograma {
 
     //<editor-fold desc="MÉTODO toString()">
     public String toString() {
-        return ("Nombre: " + nombre + "\n" +
-                "Categoria: " + categoria + "\n" +
-                "Habiltado: " + habilitado + "\n" +
-                "completado: " + completado + "\n" +
-                "IdDrawable: " + idDrawable + "\n");
+        return ("Nombre: "     + nombre     + "\n" +
+                "Categoria: "  + categoria  + "\n" +
+                "Habilitado: " + habilitado + "\n" +
+                "Completado: " + completado + "\n" +
+                "IdDrawable: " + idDrawable + "\n" +
+                "Progreso: "   + progreso   + "\n");
     }
     //</editor-fold>
 }

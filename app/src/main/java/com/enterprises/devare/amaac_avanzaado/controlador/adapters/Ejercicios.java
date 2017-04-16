@@ -26,6 +26,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogo;
@@ -46,7 +47,7 @@ public class Ejercicios extends AppCompatActivity {
     public static final String ID_Sonido="com.enterprises.devare.amaac_avanzaado.controlador.adapters.SONIDO";
     Intent i;
     int nuevaPosicion;
-
+    int categoria;
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate()">
@@ -59,7 +60,7 @@ public class Ejercicios extends AppCompatActivity {
 
         recycler_ejercicios = (RecyclerView) findViewById(R.id.reciclador_ejercicio_niveles);
         Intent intent=getIntent();
-        int categoria;
+
 
         categoria= intent.getIntExtra(VocalesEjercicios.VocalesAdaptador.VocalesViewHolder.VOCAL_SELECCIONADA,1);
         InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(categoria));
@@ -186,12 +187,16 @@ public class Ejercicios extends AppCompatActivity {
             ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nuevaPosicion=position+1;
+                        nuevaPosicion=position+1;
+                        object.setCompletado(1);
+                        object.setProgreso(20);
+                        db.updatePictograma(object);
+
                     if (nuevaPosicion<mValues.size()){
                         final Pictograma seteo = mValues.get(nuevaPosicion);
                         seteo.setHabilitado(1);
-                        seteo.setCompletado(1);
                         db.updatePictograma(seteo);
+                        Toast.makeText(Ejercicios.this, "Progreso "+object.toString(), Toast.LENGTH_SHORT).show();
                         adapter.notifyDataSetChanged();
                     }else{
                         FragmentManager fragmentManager = getFragmentManager();
@@ -220,7 +225,7 @@ public class Ejercicios extends AppCompatActivity {
         }
 
         //<editor-fold desc="CLASE VocalesViewHolder">
-        public class EjerciciosViewHolder extends RecyclerView.ViewHolder {
+        public class EjerciciosViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
 
             ImageView iv_cv_bloqueado;
 
@@ -242,21 +247,24 @@ public class Ejercicios extends AppCompatActivity {
                 card_view_controles = (CardView) itemView.findViewById(R.id.card_view_controles);
                 cv_ejercicio = (CardView) itemView.findViewById(R.id.cv_ejercicio);
                 Ibtn_cv_ejercicio_siguiente = (ImageButton) itemView.findViewById(R.id.Ibtn_cv_ejercicio_siguiente);
+                cv_ejercicio.setOnClickListener(this);
+            }
+
+            @Override
+            public void onClick(View v) {
+                int posicision = getAdapterPosition();
+                Pictograma ejercicio=mValues.get(posicision);
+                Toast.makeText(Ejercicios.this, "Clickeastes la letra "+ejercicio.getNombre()+"\n"
+                                +"Este ejercicio tiene un progreso de :"+ejercicio.getProgreso()+"\n"
+                                +"su valor de habilitado es :"+ejercicio.getHabilitado()+"\n"
+                                +"su valor de completado es :"+ejercicio.getCompletado()
+                                , Toast.LENGTH_LONG).show();
             }
             //</editor-fold>
         }
         //</editor-fold>
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     @Override
     protected void onPause() {

@@ -123,12 +123,41 @@ public class VocalesEjercicios extends AppCompatActivity {
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
             final Pictograma object = mValues.get(position);
-            System.out.println(object.getNombre());
+            int resultado;
+            switch (object.getNombre()) {
+
+                case "Aa":
+                  resultado=db.obtenerProgreso(CAT_VOCAL_A);
+                    object.setProgreso(resultado);
+                    break;
+
+                case "Ee":
+                    resultado=db.obtenerProgreso(CAT_VOCAL_E);
+                    object.setProgreso(resultado);
+                    break;
+
+                case "Ii": resultado=db.obtenerProgreso(CAT_VOCAL_I);
+                    object.setProgreso(resultado);
+                    break;
+
+                case "Oo":
+                    resultado=db.obtenerProgreso(CAT_VOCAL_O);
+                    object.setProgreso(resultado);
+                    break;
+
+                case "Uu":
+                    resultado=db.obtenerProgreso(CAT_VOCAL_U);
+                    object.setProgreso(resultado);
+                    break;
+
+            }
+            int progresoNivel=object.getProgreso();
+
 
             ((VocalesViewHolder) holder).tv_total_ejercicios_vocales.setText("1/5");
             ((VocalesViewHolder) holder).tv_cv_ejercicio_vocal.setText(object.getNombre());
-            ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setText("0%");
-            ((VocalesViewHolder) holder).progressbar_nivel.setProgress(20);
+            ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setText(progresoNivel+"%");
+            ((VocalesViewHolder) holder).progressbar_nivel.setProgress(progresoNivel);
 
         }
         //</editor-fold>
@@ -171,35 +200,64 @@ public class VocalesEjercicios extends AppCompatActivity {
 
                 switch (object.getNombre()) {
 
-
                     case "Aa":
+                        Toast.makeText(VocalesEjercicios.this, "clikeastes Aa", Toast.LENGTH_SHORT).show();
+                        estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_A);
                         startActivity(ejercicio);
                         break;
 
                     case "Ee":
+                        estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_E);
                         startActivity(ejercicio);
                         break;
 
                     case "Ii":
+                        estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_I);
                         startActivity(ejercicio);
                         break;
 
                     case "Oo":
+                        estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_O);
                         startActivity(ejercicio);
                         break;
 
                     case "Uu":
+                        estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_U);
                         startActivity(ejercicio);
                         break;
 
+                }
 
+            }
+
+            //<editor-fold desc="MÉTODO esHabilitado()">
+            public boolean esHabilitado(int valor){
+                if(valor==1){
+                    return true;
+                }else{
+                    return false;
                 }
             }
+            //</editor-fold>
+
+            //<editor-fold desc="MÉTODO  estadoNivel()">
+            public void estadoNivel(String nombreNivel,Pictograma pictograma){
+                if(esHabilitado(pictograma.getHabilitado())==true){
+                    int progresoNivel=pictograma.getProgreso();
+                    int completado=pictograma.getCompletado();
+                    Toast.makeText(VocalesEjercicios.this, "El nivel "+nombreNivel+" esta habilitado"+
+                            " y el progreso es de : "+progresoNivel+"%"+
+                            "Su valor de completado es: "+completado, Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(VocalesEjercicios.this, "El nivel "+nombreNivel+" No esta habilitado", Toast.LENGTH_SHORT).show();
+                }
+            }
+            //</editor-fold>
         }
         //</editor-fold>
     }
