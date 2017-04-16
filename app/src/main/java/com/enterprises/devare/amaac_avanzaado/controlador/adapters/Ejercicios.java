@@ -48,6 +48,7 @@ public class Ejercicios extends AppCompatActivity {
     Intent i;
     int nuevaPosicion;
     int categoria;
+    String nombreNivel;
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate()">
@@ -63,6 +64,7 @@ public class Ejercicios extends AppCompatActivity {
 
 
         categoria= intent.getIntExtra(VocalesEjercicios.VocalesAdaptador.VocalesViewHolder.VOCAL_SELECCIONADA,1);
+        nombreNivel=intent.getStringExtra(VocalesEjercicios.VocalesAdaptador.VocalesViewHolder.VOCAL_NIVEL);
         InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(categoria));
     }
     //</editor-fold>
@@ -140,8 +142,9 @@ public class Ejercicios extends AppCompatActivity {
                 ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).fab.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).fab2.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).fab.setVisibility(View.VISIBLE);
+                ((EjerciciosViewHolder) holder).fab2.setVisibility(View.VISIBLE);
+                ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
 
             }
             else{
@@ -151,10 +154,11 @@ public class Ejercicios extends AppCompatActivity {
                 ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).fab.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).fab2.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).fab.setVisibility(View.INVISIBLE);
+                ((EjerciciosViewHolder) holder).fab2.setVisibility(View.INVISIBLE);
+                ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
             }
-                  //  ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.VISIBLE);
+                  //
 
                 ((EjerciciosViewHolder) holder).fab.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -201,6 +205,7 @@ public class Ejercicios extends AppCompatActivity {
                     }else{
                         FragmentManager fragmentManager = getFragmentManager();
                         new SeccionTerminadaDialogo().show(fragmentManager, "SeccionTerminadaDialog");
+                        db.updateCampoPictograma(nombreNivel,1);
                     }
                 }
             });

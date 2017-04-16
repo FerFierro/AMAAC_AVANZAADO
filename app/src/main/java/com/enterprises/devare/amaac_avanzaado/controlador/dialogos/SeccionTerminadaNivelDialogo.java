@@ -18,9 +18,9 @@ import com.enterprises.devare.amaac_avanzaado.controlador.adapters.VocalesEjerci
  * Created by Angel on 14/04/2017.
  */
 
-public class SeccionTerminadaDialogo extends DialogFragment{
+public class SeccionTerminadaNivelDialogo extends DialogFragment{
 
-    public SeccionTerminadaDialogo() {
+    public SeccionTerminadaNivelDialogo() {
     }
 
 
@@ -28,16 +28,16 @@ public class SeccionTerminadaDialogo extends DialogFragment{
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return createSeccionTerminadaDialogo();
+        return createSeccionTerminadaNivelDialogoDialogo();
     }
 
 
-    public AlertDialog createSeccionTerminadaDialogo() {
+    public AlertDialog createSeccionTerminadaNivelDialogoDialogo() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View v = inflater.inflate(R.layout.dialogo_seccion_terminada, null);
+        View v = inflater.inflate(R.layout.dialogo_seccion_nivel_terminada, null);
 
         builder.setView(v);
 
@@ -50,7 +50,7 @@ public class SeccionTerminadaDialogo extends DialogFragment{
                         // Ir al siguiente nivel
 
 
-                        Intent i= new Intent(getActivity(), VocalesEjercicios.class);
+                        Intent i= new Intent(getActivity(), IniciarNivel_main.class);
                         startActivity(i);
                         dismiss();
                     }

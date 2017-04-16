@@ -244,15 +244,28 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COMPLETADO, picto.getCompletado());
         values.put(PROGRESO_EJERCICIO, picto.getProgreso());
         // updating record
-        Toast.makeText(c, "Se actualizo "+picto.getNombre()+"\n"
+       /* Toast.makeText(c, "Se actualizo "+picto.getNombre()+"\n"
                         + "con habilitado= "+picto.getHabilitado()+"\n"
                         + "con completado="+picto.getCompletado()+"\n"
-                        + "con progreso="+picto.getProgreso(), Toast.LENGTH_SHORT).show();
+                        + "con progreso="+picto.getProgreso(), Toast.LENGTH_SHORT).show();*/
         return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
                 new String[]{String.valueOf(picto.getNombre())});
 
     }
     //</editor-fold>
+
+    public int updateCampoPictograma(String  nombreNivel,int valor) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COMPLETADO, valor);
+        // updating record
+        /*Toast.makeText(c, "Se actualizo "+nombreNivel+"\n"
+              , Toast.LENGTH_SHORT).show();*/
+        return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
+                new String[]{String.valueOf(nombreNivel)});
+
+    }
 
     /*to delete the record from the table*/
     //<editor-fold desc="MÉTODO deleteContact()">

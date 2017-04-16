@@ -27,7 +27,7 @@
             app:ignore="RtlHardcoded,RtlSymmetry">
 
             <ImageView
-                android:id="@+id/iv_cv_bloqueado"
+                android:id="@+id/iv_cv_ejercicio_nivel_bloqueado"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"

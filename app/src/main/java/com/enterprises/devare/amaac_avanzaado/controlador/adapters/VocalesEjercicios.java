@@ -1,5 +1,6 @@
 package com.enterprises.devare.amaac_avanzaado.controlador.adapters;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.enterprises.devare.amaac_avanzaado.R;
+import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogo;
+import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaNivelDialogo;
 import com.enterprises.devare.amaac_avanzaado.modelo.Nivel;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
@@ -43,6 +46,7 @@ public class VocalesEjercicios extends AppCompatActivity {
     VocalesAdaptador adapter;
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
+    int nuevaPosicion;
 
     //</editor-fold>
 
@@ -122,12 +126,32 @@ public class VocalesEjercicios extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
+            nuevaPosicion=position+1;
             final Pictograma object = mValues.get(position);
+            final int habilitado=object.getHabilitado();
+            final boolean habilitadoEjercicio=estadoPictograma(habilitado);
+            final int completado=object.getCompletado();
+            final boolean completadoEjercicio=estadoPictograma(completado);
             int resultado;
+
+
+            if (completadoEjercicio) {
+
+                if (nuevaPosicion<mValues.size()){
+                    final Pictograma seteo = mValues.get(nuevaPosicion);
+                    seteo.setHabilitado(1);
+                    db.updatePictograma(seteo);
+//                    Toast.makeText(getApplicationContext(), "Progreso "+object.toString(), Toast.LENGTH_SHORT).show();
+                }else{
+                    FragmentManager fragmentManager = getFragmentManager();
+                    new SeccionTerminadaNivelDialogo().show(fragmentManager, "SeccionTerminadaNivelDialog");
+                }
+            }
+
             switch (object.getNombre()) {
 
                 case "Aa":
-                  resultado=db.obtenerProgreso(CAT_VOCAL_A);
+                    resultado=db.obtenerProgreso(CAT_VOCAL_A);
                     object.setProgreso(resultado);
                     break;
 
@@ -152,15 +176,43 @@ public class VocalesEjercicios extends AppCompatActivity {
 
             }
             int progresoNivel=object.getProgreso();
-
-
             ((VocalesViewHolder) holder).tv_total_ejercicios_vocales.setText("1/5");
             ((VocalesViewHolder) holder).tv_cv_ejercicio_vocal.setText(object.getNombre());
             ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setText(progresoNivel+"%");
             ((VocalesViewHolder) holder).progressbar_nivel.setProgress(progresoNivel);
 
+           if (habilitadoEjercicio){
+                ((VocalesViewHolder) holder).iv_cv_ejercicio_nivel_bloqueado.setVisibility(View.INVISIBLE);
+                ((VocalesViewHolder) holder).cv_ejercicios_nivel.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_total_ejercicios_vocales.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_cv_ejercicio_vocal.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).progressbar_nivel.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setVisibility(View.VISIBLE);
+                ((VocalesViewHolder) holder).progressbar_nivel.setVisibility(View.VISIBLE);
+
+            }else{
+                ((VocalesViewHolder) holder).iv_cv_ejercicio_nivel_bloqueado.setVisibility(View.VISIBLE);
+
+                ((VocalesViewHolder) holder).cv_ejercicios_nivel.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_total_ejercicios_vocales.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_cv_ejercicio_vocal.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).progressbar_nivel.setEnabled(habilitadoEjercicio);
+                ((VocalesViewHolder) holder).tv_cv_porcentaje_progreso.setVisibility(View.INVISIBLE);
+                ((VocalesViewHolder) holder).progressbar_nivel.setVisibility(View.INVISIBLE);
+
+            }
         }
         //</editor-fold>
+
+        public boolean  estadoPictograma(int i){
+            if(i==1){
+                return  true;
+            }else{
+                return false;
+            }
+        }
 
         @Override
         public int getItemCount() {
@@ -169,24 +221,27 @@ public class VocalesEjercicios extends AppCompatActivity {
 
         //<editor-fold desc="CLASE VocalesViewHolder">
         public class VocalesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            CardView cv_ejercicios_nivel;
+            ImageView iv_cv_ejercicio_nivel_bloqueado;
             private TextView tv_total_ejercicios_vocales,
                     tv_cv_ejercicio_vocal,
                     tv_cv_porcentaje_progreso;
             ProgressBar progressbar_nivel;
-            CardView cv_ejercicios_nivel;
+
 
             public static final String VOCAL_SELECCIONADA="com.enterprises.devare.amaac_avanzaado.controlador.adapters.vocalSeleccionada";
+            public static final String VOCAL_NIVEL="com.enterprises.devare.amaac_avanzaado.controlador.adapters.vocalNivel";
 
             public VocalesViewHolder(View itemView) {
                 super(itemView);
-
+                cv_ejercicios_nivel= (CardView) itemView.findViewById(R.id.cv_ejercicios_nivel);
+                iv_cv_ejercicio_nivel_bloqueado=(ImageView) itemView.findViewById(R.id.iv_cv_ejercicio_nivel_bloqueado) ;
                 tv_total_ejercicios_vocales = (TextView) itemView.findViewById(R.id.tv_total_ejercicios_vocales);
                 tv_cv_ejercicio_vocal = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio_vocal);
                 tv_cv_porcentaje_progreso = (TextView) itemView.findViewById(R.id.tv_cv_porcentaje_progreso);
                 progressbar_nivel = (ProgressBar) itemView.findViewById(R.id.progressbar_nivel);
-                cv_ejercicios_nivel= (CardView) itemView.findViewById(R.id.cv_ejercicios_nivel);
                 cv_ejercicios_nivel.setOnClickListener(this);
-
             }
             //</editor-fold>
 
@@ -201,33 +256,38 @@ public class VocalesEjercicios extends AppCompatActivity {
                 switch (object.getNombre()) {
 
                     case "Aa":
-                        Toast.makeText(VocalesEjercicios.this, "clikeastes Aa", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(VocalesEjercicios.this, "clikeastes Aa", Toast.LENGTH_SHORT).show();
                         estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_A);
+                        ejercicio.putExtra(VOCAL_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
                     case "Ee":
                         estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_E);
+                        ejercicio.putExtra(VOCAL_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
                     case "Ii":
                         estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_I);
+                        ejercicio.putExtra(VOCAL_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
                     case "Oo":
                         estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_O);
+                        ejercicio.putExtra(VOCAL_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
                     case "Uu":
                         estadoNivel(object.getNombre(),object);
                         ejercicio.putExtra(VOCAL_SELECCIONADA,CAT_VOCAL_U);
+                        ejercicio.putExtra(VOCAL_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
@@ -250,9 +310,9 @@ public class VocalesEjercicios extends AppCompatActivity {
                 if(esHabilitado(pictograma.getHabilitado())==true){
                     int progresoNivel=pictograma.getProgreso();
                     int completado=pictograma.getCompletado();
-                    Toast.makeText(VocalesEjercicios.this, "El nivel "+nombreNivel+" esta habilitado"+
+                    /*Toast.makeText(VocalesEjercicios.this, "El nivel "+nombreNivel+" esta habilitado"+
                             " y el progreso es de : "+progresoNivel+"%"+
-                            "Su valor de completado es: "+completado, Toast.LENGTH_LONG).show();
+                            "Su valor de completado es: "+completado, Toast.LENGTH_LONG).show();*/
                 }else{
                     Toast.makeText(VocalesEjercicios.this, "El nivel "+nombreNivel+" No esta habilitado", Toast.LENGTH_SHORT).show();
                 }
