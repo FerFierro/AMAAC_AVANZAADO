@@ -39,6 +39,7 @@
                 app:ignore="ContentDescription"
                 card_view:srcCompat="@drawable/ic_bloqueado" />
 
+
             <TextView
                 android:id="@+id/tv_cv_ejercicio"
                 android:layout_width="match_parent"
@@ -48,10 +49,36 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/plantilla_vocal"
                 android:textAlignment="center"
-                android:textSize="190sp" />
+                android:textSize="150sp" />
+
+            <TextView
+                android:id="@+id/tv_etiempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textColor="@color/color_respuestas"
+                android:layout_margin="5dp"
+                android:visibility="invisible"
+                />
+
+            <ImageView
+                android:id="@+id/iv_ejercicio"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:background="@drawable/ic_menu_guia_padre_technology"
+                android:visibility="invisible"
+                />
+
+
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+
+
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/tools"
@@ -72,11 +99,11 @@
             android:paddingEnd="10dp"
             android:paddingStart="25dp"
             android:paddingTop="10dp"
-            android:weightSum="3">
+            >
 
             <ImageView
                 android:id="@+id/fab"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="35dp"
                 android:layout_weight="1"
@@ -84,7 +111,11 @@
                 android:clickable="true"
                 android:contentDescription="@string/descripción_play_musica"
                 android:padding="16dp"
-                card_view:srcCompat="@drawable/ic_play" />
+                card_view:srcCompat="@drawable/ic_play"
+                android:layout_gravity="center_horizontal|center_vertical"
+                />
+
+            <!--
 
             <ImageView
                 android:id="@+id/fab2"
@@ -98,15 +129,19 @@
                 android:padding="16dp"
                 card_view:srcCompat="@drawable/ic_stop" />
 
+            -->
+
             <ImageButton
                 android:id="@+id/Ibtn_cv_ejercicio_siguiente"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:contentDescription="@string/descripcion_siguiente"
-                card_view:srcCompat="@drawable/ic_siguiente" />
+                card_view:srcCompat="@drawable/ic_siguiente"
+                android:visibility="invisible"
+                />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

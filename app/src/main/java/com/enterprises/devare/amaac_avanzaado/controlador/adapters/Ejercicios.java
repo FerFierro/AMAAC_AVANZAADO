@@ -10,15 +10,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -45,11 +49,17 @@ public class Ejercicios extends AppCompatActivity {
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
     public static final String ID_Sonido="com.enterprises.devare.amaac_avanzaado.controlador.adapters.SONIDO";
-    Intent i;
     int nuevaPosicion;
     int categoria;
     String nombreNivel;
     //</editor-fold>
+
+    static MediaPlayer mediaPlayer;
+    Thread hilo;
+    int flagBotonPlay= 0;
+    int seguroDeVida=0;
+
+
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate()">
     @Override
@@ -57,17 +67,41 @@ public class Ejercicios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ejercicios);
 
+
         db = new DBHelper(this);
 
         recycler_ejercicios = (RecyclerView) findViewById(R.id.reciclador_ejercicio_niveles);
         Intent intent=getIntent();
 
 
+
+
+
         categoria= intent.getIntExtra(VocalesEjercicios.VocalesAdaptador.VocalesViewHolder.VOCAL_SELECCIONADA,1);
         nombreNivel=intent.getStringExtra(VocalesEjercicios.VocalesAdaptador.VocalesViewHolder.VOCAL_NIVEL);
         InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(categoria));
+
+
+
+
     }
     //</editor-fold>
+
+
+
+
+
+/*
+    @Override
+    public void onBackPressed() {
+        Thread.currentThread().interrupt();
+
+        Toast.makeText(getApplicationContext(), "back", Toast.LENGTH_LONG).show();
+
+        finish();
+    }
+
+*/
 
     //<editor-fold desc="MÉTODO InitAdapter()">
     public void InitAdapter(RecyclerView mRecyclerView, List<Pictograma> items) {
@@ -122,6 +156,27 @@ public class Ejercicios extends AppCompatActivity {
         //</editor-fold>
 
 
+        private String getHRM(int milliseconds )
+        {
+            int seconds = (int) (milliseconds / 1000) % 60 ;
+            int minutes = (int) ((milliseconds / (1000*60)) % 60);
+            int hours   = (int) ((milliseconds / (1000*60*60)) % 24);
+            String aux="";
+            aux=((hours<10)?"0"+hours:hours) + ":" + ((minutes<10)?"0"+minutes:minutes) + ":" + ((seconds<10)?"0"+seconds:seconds);
+            return  aux;
+        }
+
+        public void displayStateAndIsAlive(Thread thread) {
+            // java.lang.Thread.State can be NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED
+            System.out.println("ESTADOHilo");
+            System.out.println("State:" + thread.getState());
+            System.out.println("Is alive?:" + thread.isAlive());
+        }
+
+
+
+
+
         //<editor-fold desc="MÉTODO onBindViewHolder">
         @Override
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
@@ -131,8 +186,14 @@ public class Ejercicios extends AppCompatActivity {
             final int habilitado=object.getHabilitado();
             final boolean habilitadoEjercicio=estadoPictograma(habilitado);
 
+
+
+
+
                 ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
-                ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setEnabled(false);
+                //((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setEnabled(false);
+
+                ((EjerciciosViewHolder) holder).tv_etiempo.setText("00:00:00");
 
             if (habilitadoEjercicio){
                 ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.INVISIBLE);
@@ -140,77 +201,314 @@ public class Ejercicios extends AppCompatActivity {
                 ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).ll_controles.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).tv_etiempo.setEnabled(habilitadoEjercicio);
+
+
                 ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).fab.setVisibility(View.VISIBLE);
-                ((EjerciciosViewHolder) holder).fab2.setVisibility(View.VISIBLE);
-                ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+                //((EjerciciosViewHolder) holder).fab2.setVisibility(View.VISIBLE);
+     //           ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
 
             }
             else{
+
                 ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.VISIBLE);
                 ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).ll_controles.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).tv_etiempo.setEnabled(habilitadoEjercicio);
+
+
                 ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
                 ((EjerciciosViewHolder) holder).fab.setVisibility(View.INVISIBLE);
-                ((EjerciciosViewHolder) holder).fab2.setVisibility(View.INVISIBLE);
-                ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
+               // ((EjerciciosViewHolder) holder).fab2.setVisibility(View.INVISIBLE);
+ //               ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
             }
                   //
 
                 ((EjerciciosViewHolder) holder).fab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+/*
                         i=new Intent(getApplicationContext(),MusicaService.class);
                         i.putExtra(ID_Sonido,nombre);
                         startService(i);
+*/
 
-                       /* if (mediaPlayer.isPlaying()) {
 
-                            mediaPlayer.pause();
-                            ((EjerciciosViewHolder) holder).fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FF4081")));
-                        } else {
-                            ((EjerciciosViewHolder) holder).fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFFF00")));
-                            mediaPlayer.start();
-                        }*/
+                        flagBotonPlay++;
+                        seguroDeVida++;
+                        Log.d("seguroDeVida", "->" + seguroDeVida);
 
-                        ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setEnabled(true);
+
+                        if(mediaPlayer != null){
+                           // Log.d("xxxxxxxxxx", "-> " + mediaPlayer.getCurrentPosition());
+                            mediaPlayer.stop();
+                            //mediaPlayer.release();
+                            //mediaPlayer= null;
+                        }
+
+
+                        /*
+                        System.out.println("////////////////////////");
+                        if(hilo != null){
+                            if(hilo.isAlive()){
+                                displayStateAndIsAlive(hilo);
+                                hilo.interrupt();
+                                System.out.println( "->" + Thread.currentThread().isInterrupted() );
+                                hilo=null;
+                                System.out.println( "->" + Thread.currentThread().isAlive() );
+                            }else{
+                                System.out.println("//HILO NULL//");
+                                displayStateAndIsAlive(hilo);
+                            }
+                            //NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED
+                        }
+                        */
+
+
+
+                            //=======================================================================
+
+                            try {
+
+                                mediaPlayer= MediaPlayer.create(getApplicationContext(), nombre);
+
+                                hilo= new Thread(new Runnable() {
+                                    int i=0;
+                                    int duracion= mediaPlayer.getDuration();
+                                    int posicionActual=-1;
+                                    boolean isMPPlaying=true;
+                                    public void run() {
+
+                                        Log.d("tiempoD", "-> " + duracion);
+                                        while (isMPPlaying){
+
+                                            try {
+                                                Thread.sleep(500);
+
+
+                                                try {
+                                                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                                        public void onCompletion(MediaPlayer mp) {
+                                                            ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+                                                            ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_respuestas));
+                                                            ((EjerciciosViewHolder) holder).fab.setImageResource(R.drawable.ic_play);
+                                                            // hilo.interrupt();
+                                                            Toast.makeText(Ejercicios.this, "MediaPlayer Finished", Toast.LENGTH_SHORT).show();
+                                                            isMPPlaying = false;
+                                                            mediaPlayer.release();
+                                                            mediaPlayer= null;
+                                                            seguroDeVida=0;
+
+
+                                                        }
+                                                    });
+                                                }catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+                                                if(!isMPPlaying) break;
+                                                else{
+                                                    //Log.d("isMPPlaying", ""+ isMPPlaying);
+                                                    posicionActual= mediaPlayer.getCurrentPosition();
+                                                }
+
+
+                                                if(seguroDeVida >= 10){
+                                                    startActivity(new Intent(getApplicationContext(), IniciarNivel_main.class ));
+                                                    System.out.println("Seguro de vida");
+                                                    System.out.println("////////////////////////");
+                                                    displayStateAndIsAlive(hilo);
+                                                    hilo.interrupt();
+                                                    displayStateAndIsAlive(hilo);
+                                                    finish();
+
+                                                }
+
+
+
+
+
+                                                if(posicionActual == 0) i++;
+
+                                                if(i == 2){
+                                                    Log.d("Hilo", "Se repite en 0 la posicionActual");
+                                                    mediaPlayer.stop();
+                                                    //mediaPlayer.release();
+                                                    break;}
+
+
+
+
+
+
+                                                if(posicionActual >= 9500 && posicionActual <= 13500 ) {
+
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
+                                                            ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                        }
+                                                    });
+
+                                                    runOnUiThread(new Runnable() {
+                                                        public void run() {
+                                                            ((EjerciciosViewHolder) holder).iv_ejercicio.setVisibility(View.VISIBLE);
+                                                        }
+                                                    });
+                                                }
+
+                                                else if (posicionActual > 13500 && posicionActual <= 15500){
+
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_bebidas));
+                                                            ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                        }
+                                                    });
+
+                                                }
+
+                                                else {
+
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.INVISIBLE);
+                                                        }
+                                                    });
+
+                                                    runOnUiThread(new Runnable() {
+                                                        public void run() {
+                                                            ((EjerciciosViewHolder) holder).iv_ejercicio.setVisibility(View.INVISIBLE);
+                                                        }
+                                                    });
+                                                }
+
+
+
+//                                                Log.d("tiempoPA", "-> " + posicionActual);
+
+
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+
+                                        System.out.println("////////////////////////");
+                                        displayStateAndIsAlive(hilo);
+                                        hilo.interrupt();
+                                        displayStateAndIsAlive(hilo);
+                                        //mediaPlayer.stop();
+                                        //mediaPlayer.release();
+                                        //mediaPlayer= null;
+
+
+                                    }
+                                });
+
+
+                            }catch (Exception e){}
+
+
+                            //=======================================================================
+
+
+                        switch (flagBotonPlay){
+                            case 1:
+                                hilo.start();
+                                mediaPlayer.start();
+                                ((EjerciciosViewHolder) holder).fab.setImageResource(R.drawable.ic_stop);
+                                Log.d("numHilos", "HilosFinal: " + Thread.activeCount());
+                            break;
+
+                            case 2:
+                                mediaPlayer.stop();
+                                ((EjerciciosViewHolder) holder).fab.setImageResource(R.drawable.ic_play);
+                                Log.d("numHilos", "HilosFinal: " + Thread.activeCount());
+                                flagBotonPlay= 0;
+                             }
+
                     }
                 });
 
+
+
+
+            /*
                 ((EjerciciosViewHolder) holder).fab2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i=new Intent(getApplicationContext(),MusicaService.class);
-                        stopService(i);
+                        Log.d("numHilos", "HilosF: " + Thread.activeCount());
+                        if(mediaPlayer!=null){
+                            hilo.interrupt();
+                        }
+
                     }
                 });
+
+            */
+
 
             ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        nuevaPosicion=position+1;
+                    flagBotonPlay=0;
+                    seguroDeVida=0;
+
+                    nuevaPosicion=position+1;
+                    if(object.getCompletado() != 1){
+                        Log.d("nivel", "desbloqueando nivel" );
+
                         object.setCompletado(1);
                         object.setProgreso(20);
                         db.updatePictograma(object);
 
-                    if (nuevaPosicion<mValues.size()){
-                        final Pictograma seteo = mValues.get(nuevaPosicion);
-                        seteo.setHabilitado(1);
-                        db.updatePictograma(seteo);
-                        Toast.makeText(Ejercicios.this, "Progreso "+object.toString(), Toast.LENGTH_SHORT).show();
-                        adapter.notifyDataSetChanged();
-                    }else{
-                        FragmentManager fragmentManager = getFragmentManager();
-                        new SeccionTerminadaDialogo().show(fragmentManager, "SeccionTerminadaDialog");
-                        db.updateCampoPictograma(nombreNivel,1);
+                        if (nuevaPosicion<mValues.size()){
+                            final Pictograma seteo = mValues.get(nuevaPosicion);
+                            seteo.setHabilitado(1);
+                            db.updatePictograma(seteo);
+                            Toast.makeText(Ejercicios.this, "Progreso "+object.toString(), Toast.LENGTH_SHORT).show();
+                            adapter.notifyDataSetChanged();
+                        }else{
+                            FragmentManager fragmentManager = getFragmentManager();
+                            new SeccionTerminadaDialogo().show(fragmentManager, "SeccionTerminadaDialog");
+                            db.updateCampoPictograma(nombreNivel,1);
+                        }
+
                     }
+
+                    Log.d("numHilos", "HilosF: " + Thread.activeCount());
+                    recycler_ejercicios.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            if( !((nuevaPosicion) == adapter.getItemCount()) )     recycler_ejercicios.smoothScrollToPosition( nuevaPosicion );
+
+
+                            Log.d("recyclerV", "getItemCount: " + adapter.getItemCount() );
+                            Log.d("recyclerV", "posicionActual: " + position );
+                            Log.d("recyclerV", "posicionNueva: " + nuevaPosicion );
+
+                        }
+                    });
+
+
+
+
                 }
             });
 
         }
+
+
+
 
 
         public boolean  estadoPictograma(int i){
@@ -234,8 +532,8 @@ public class Ejercicios extends AppCompatActivity {
 
             ImageView iv_cv_bloqueado;
 
-            private TextView tv_cv_ejercicio;
-            ImageView fab,fab2;
+            private TextView tv_cv_ejercicio, tv_etiempo;
+            ImageView fab,fab2, iv_ejercicio;
             CardView card_view_controles,cv_ejercicio;
             LinearLayout ll_ejercicio,ll_controles;
             ImageButton Ibtn_cv_ejercicio_siguiente;
@@ -245,10 +543,14 @@ public class Ejercicios extends AppCompatActivity {
 
                 iv_cv_bloqueado = (ImageView) itemView.findViewById(R.id.iv_cv_bloqueado);
                 tv_cv_ejercicio = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio);
+                tv_etiempo= (TextView) itemView.findViewById(R.id.tv_etiempo);
+
                 ll_ejercicio= (LinearLayout) itemView.findViewById(R.id.ll_ejercicio);
                 ll_controles= (LinearLayout) itemView.findViewById(R.id.ll_controles);
                 fab = (ImageView) itemView.findViewById(R.id.fab);
-                fab2 = (ImageView) itemView.findViewById(R.id.fab2);
+                //fab2 = (ImageView) itemView.findViewById(R.id.fab2);
+                iv_ejercicio = (ImageView) itemView.findViewById(R.id.iv_ejercicio);
+
                 card_view_controles = (CardView) itemView.findViewById(R.id.card_view_controles);
                 cv_ejercicio = (CardView) itemView.findViewById(R.id.cv_ejercicio);
                 Ibtn_cv_ejercicio_siguiente = (ImageButton) itemView.findViewById(R.id.Ibtn_cv_ejercicio_siguiente);
@@ -273,7 +575,6 @@ public class Ejercicios extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        stopService(i);
         super.onPause();
     }
 
