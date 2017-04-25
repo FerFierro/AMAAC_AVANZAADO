@@ -2,7 +2,6 @@ package com.enterprises.devare.amaac_avanzaado.controlador.activitys;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
@@ -21,11 +20,11 @@ import com.enterprises.devare.amaac_avanzaado.R;
 
 import java.util.List;
 
-import com.enterprises.devare.amaac_avanzaado.controlador.fragments.guiapadreDetailFragment;
+import com.enterprises.devare.amaac_avanzaado.controlador.fragments.GuiapadreDetailFragment;
 import com.enterprises.devare.amaac_avanzaado.modelo.dummy.GuiaPadreContent;
 
 
-public class guiapadreListActivity extends AppCompatActivity {
+public class GuiapadreListActivity extends AppCompatActivity {
 
     private boolean mTwoPane;
 
@@ -64,11 +63,12 @@ public class guiapadreListActivity extends AppCompatActivity {
 
         GuiaPadreContent datos = new GuiaPadreContent();
         datos.agregarItem(new GuiaPadreContent.GuiaPadre("1", getString(R.string.como_usar_app_titulo1).toString(), getString(R.string.como_usar_app_descripcion1).toString(), getString(R.string.como_usar_app_fecha1).toString(), R.drawable.ic_launcher_play_200dp));
-        datos.agregarItem(new GuiaPadreContent.GuiaPadre("2", getString(R.string.como_usar_app_titulo2).toString(), getString(R.string.como_usar_app_descripcion2), getString(R.string.como_usar_app_fecha2), R.drawable.ic_menu_guia_padre_customer_service_1));
-        datos.agregarItem(new GuiaPadreContent.GuiaPadre("3", getString(R.string.como_usar_app_titulo3), getString(R.string.como_usar_app_descripcion3), getString(R.string.como_usar_app_fecha3), R.drawable.ic_menu_guia_padre_technology));
-        datos.agregarItem(new GuiaPadreContent.GuiaPadre("4", getString(R.string.como_usar_app_titulo4), getString(R.string.como_usar_app_descripcion4), getString(R.string.como_usar_app_fecha4), R.drawable.ic_menu_guia_padre_technology));
-        datos.agregarItem(new GuiaPadreContent.GuiaPadre("5", getString(R.string.como_usar_app_titulo5), getString(R.string.como_usar_app_descripcion5), getString(R.string.como_usar_app_fecha5), R.drawable.ic_launcher_ejercicios_especificos_200dp));
-        datos.agregarItem(new GuiaPadreContent.GuiaPadre("6", getString(R.string.como_usar_app_titulo6), getString(R.string.como_usar_app_descripcion6), getString(R.string.como_usar_app_fecha6), R.drawable.ic_launcher_play_200dp));
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("2", getString(R.string.como_usar_app_titulo2).toString(), getString(R.string.como_usar_app_descripcion2), getString(R.string.como_usar_app_fecha2), R.drawable.ic_launcher_creador_frases_200dp));
+        datos.agregarItem(new GuiaPadreContent.GuiaPadre("3", getString(R.string.como_usar_app_titulo3), getString(R.string.como_usar_app_descripcion3), getString(R.string.como_usar_app_fecha3), R.drawable.ic_launcher_ejercicios_especificos_200dp));
+
+//        datos.agregarItem(new GuiaPadreContent.GuiaPadre("4", getString(R.string.como_usar_app_titulo4), getString(R.string.como_usar_app_descripcion4), getString(R.string.como_usar_app_fecha4), R.drawable.ic_menu_guia_padre_technology));
+//        datos.agregarItem(new GuiaPadreContent.GuiaPadre("5", getString(R.string.como_usar_app_titulo5), getString(R.string.como_usar_app_descripcion5), getString(R.string.como_usar_app_fecha5), R.drawable.ic_launcher_ejercicios_especificos_200dp));
+//        datos.agregarItem(new GuiaPadreContent.GuiaPadre("6", getString(R.string.como_usar_app_titulo6), getString(R.string.como_usar_app_descripcion6), getString(R.string.como_usar_app_fecha6), R.drawable.ic_launcher_play_200dp));
 
     }
     //</editor-fold>
@@ -128,16 +128,16 @@ public class guiapadreListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(guiapadreDetailFragment.ID_ARTICULO, holder.mItem.id);
-                        guiapadreDetailFragment fragment = new guiapadreDetailFragment();
+                        arguments.putString(GuiapadreDetailFragment.ID_ARTICULO, holder.mItem.id);
+                        GuiapadreDetailFragment fragment = new GuiapadreDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.guiapadre_detail_container, fragment)
                                 .commit();
                     } else {
                         Context context = v.getContext();
-                        Intent intent = new Intent(context, guiapadreDetailActivity.class);
-                        intent.putExtra(guiapadreDetailFragment.ID_ARTICULO, holder.mItem.id);
+                        Intent intent = new Intent(context, GuiapadreDetailActivity.class);
+                        intent.putExtra(GuiapadreDetailFragment.ID_ARTICULO, holder.mItem.id);
 
                         context.startActivity(intent);
                     }

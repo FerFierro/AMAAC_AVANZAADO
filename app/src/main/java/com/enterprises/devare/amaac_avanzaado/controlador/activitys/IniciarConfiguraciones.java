@@ -23,7 +23,7 @@ public class IniciarConfiguraciones extends AppCompatActivity {
     //<editor-fold desc="VARIABLES DE REFERENCIA">
     IniciarNivel_main init_IniciarNivel_main= new IniciarNivel_main();
     VocalesEjercicios init_Vocales_main=new VocalesEjercicios();
-    guiapadreListActivity init_tips_uso_app=new guiapadreListActivity();
+    GuiapadreListActivity init_tips_uso_app=new GuiapadreListActivity();
     //</editor-fold>
 
 

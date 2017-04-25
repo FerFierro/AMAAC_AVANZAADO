@@ -47,7 +47,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_verbos"
+        android:background="@color/color_respuestas"
         android:paddingTop="5dp"
         android:layout_weight=".4"
         android:paddingBottom="5dp">
@@ -58,8 +58,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/ic_tecnica_relajacion_progresiva"
-            tools:ignore="ContentDescription" />
-
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"
+            android:padding="50dp"
+            />
     </LinearLayout>
 
     <ScrollView
@@ -69,6 +71,7 @@
         android:layout_marginBottom="16dp"
        >
 
+        <!--
         <TextView
             android:id="@+id/contenido"
             android:layout_width="match_parent"
@@ -82,7 +85,17 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorMenuPrimaryText"
             android:textSize="@dimen/textBody2"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            />
+
+        -->
+
+        <WebView
+            android:id="@+id/contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
     </ScrollView>
 
 </LinearLayout>

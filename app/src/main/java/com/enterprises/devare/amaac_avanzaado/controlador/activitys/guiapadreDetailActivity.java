@@ -9,9 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.enterprises.devare.amaac_avanzaado.R;
-import com.enterprises.devare.amaac_avanzaado.controlador.fragments.guiapadreDetailFragment;
+import com.enterprises.devare.amaac_avanzaado.controlador.fragments.GuiapadreDetailFragment;
 
-public class guiapadreDetailActivity extends AppCompatActivity {
+public class GuiapadreDetailActivity extends AppCompatActivity {
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate(Bundle savedInstanceState)">
     @Override
@@ -32,9 +32,9 @@ public class guiapadreDetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
 
             Bundle arguments = new Bundle();
-            arguments.putString(guiapadreDetailFragment.ID_ARTICULO,
-                    getIntent().getStringExtra(guiapadreDetailFragment.ID_ARTICULO));
-            guiapadreDetailFragment fragment = new guiapadreDetailFragment();
+            arguments.putString(GuiapadreDetailFragment.ID_ARTICULO,
+                    getIntent().getStringExtra(GuiapadreDetailFragment.ID_ARTICULO));
+            GuiapadreDetailFragment fragment = new GuiapadreDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction().add(R.id.guiapadre_detail_container, fragment).commit();
         }
@@ -48,7 +48,7 @@ public class guiapadreDetailActivity extends AppCompatActivity {
         if (id == android.R.id.home) {
 
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            NavUtils.navigateUpTo(this, new Intent(this, guiapadreListActivity.class));
+            NavUtils.navigateUpTo(this, new Intent(this, GuiapadreListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -36,7 +36,7 @@
 
         <!-- UI de Como usar la aplicacion -->
         <activity
-            android:name=".controlador.activitys.guiapadreListActivity"
+            android:name=".controlador.activitys.GuiapadreListActivity"
             android:label="@string/guia_padre"
             android:parentActivityName=".controlador.activitys.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -47,12 +47,12 @@
 
         <!-- UI detalle de Como usar la aplicacion -->
         <activity
-            android:name=".controlador.activitys.guiapadreDetailActivity"
-            android:parentActivityName=".controlador.activitys.guiapadreListActivity"
+            android:name=".controlador.activitys.GuiapadreDetailActivity"
+            android:parentActivityName=".controlador.activitys.GuiapadreListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controlador.activitys.guiapadreListActivity" />
+                android:value=".controlador.activitys.GuiapadreListActivity" />
         </activity>
 
         <activity

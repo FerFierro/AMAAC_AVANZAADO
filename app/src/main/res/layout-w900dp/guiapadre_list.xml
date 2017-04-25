@@ -9,7 +9,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.guiapadreListActivity">
+    tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.GuiapadreListActivity">
 
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +19,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.guiapadreListActivity"
+        tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.GuiapadreListActivity"
         tools:listitem="@layout/guiapadre_list_content" />
 
     <FrameLayout

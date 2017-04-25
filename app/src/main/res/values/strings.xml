@@ -98,25 +98,22 @@
 
     <!--                  UI como usar la aplicación?                 -->
     <!--  Titulos -->
-    <string name="como_usar_app_titulo1">¿Cómo avanzar en los niveles?</string>
-    <string name="como_usar_app_titulo2">¿Cómo usar los niveles?</string>
-    <string name="como_usar_app_titulo3">¿Cómo usar el modulo ejercicicios?</string>
-    <string name="como_usar_app_titulo4">¿Cómo usar el tablero de comunicación?</string>
+    <string name="como_usar_app_titulo1">¿Cómo usar la sección principal?</string>
+    <string name="como_usar_app_titulo2">¿Cómo usar el tablero de comunicación?</string>
+    <string name="como_usar_app_titulo3">Técnica de relajación</string>
+
+    <string name="como_usar_app_titulo4">Titulo4</string>
     <string name="como_usar_app_titulo5">Titulo 5</string>
     <string name="como_usar_app_titulo6">Titulo 6</string>
     <string name="como_usar_app_titulo7">Titulo7</string>
 
     <!--  Descripción -->
     <string name="como_usar_app_descripcion1">
-        \n El trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem
-        Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido
-        trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado
-        desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto
-        estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es
-        reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum
-        usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto
-        estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es
-        reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de de Finibus Bonorum et Malorum por Cicero son también reproducidas en su forma original exacta, acompañadas por versiones en Inglés de la traducción realizada en 1914 por H. Rackham.
+        En esta sección usted encontrará 5 diferentes niveles (Vocales, Consonantes, Monosílabas, Bisílabas y Polisílabas) los cuales contienen diferentes ejercicios de ritmo los cuales ayudarán al niño a desarrollar su aparato fonador (todos los órganos involucrados en el habla). Es importante que la primera vez que se use esta sección el niño se encuentre con un adulto el cual le explique el correcto uso de la aplicación. \n\n
+
+        Paso 1: Es importante que el niño se encuentre en un estado de relajación antes de comenzar cada ejercicio, usted puede ver diversas formas de relajación en la opción Técnicas de relajación contenida en este menú.\n
+        Paso 2: Al iniciar un ejercicio el niño debera de seguir las instrucciones reproducidas por voz pero el usted deberá ver que el niño inhale aire correctamente para que posteriormente realice correctamente cada ejercicio.
+
 
     </string>
     <string name="como_usar_app_descripcion2">
@@ -143,25 +140,16 @@
         reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de de Finibus Bonorum et Malorum por Cicero son también reproducidas en su forma original exacta, acompañadas por versiones en Inglés de la traducción realizada en 1914 por H. Rackham.
 
     </string>
-    <string name="como_usar_app_descripcion4">
-        \n El trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem
-        Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido
-        trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado
-        desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto
-        estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es
-        reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum
-        usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto
-        estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es
-        reproducido trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de de Finibus Bonorum et Malorum por Cicero son también reproducidas en su forma original exacta, acompañadas por versiones en Inglés de la traducción realizada en 1914 por H. Rackham.
-        </string>
+    <string name="como_usar_app_descripcion4">Descripción 4</string>
     <string name="como_usar_app_descripcion5">Descripción 5</string>
     <string name="como_usar_app_descripcion6">Descripción 6</string>
     <string name="como_usar_app_descripcion7">Descripción 7</string>
 
     <!--  Fechas -->
-    <string name="como_usar_app_fecha1">01/03/2016</string>
-    <string name="como_usar_app_fecha2">02/03/2016</string>
-    <string name="como_usar_app_fecha3">03/03/2016</string>
+    <string name="como_usar_app_fecha1"></string>
+    <string name="como_usar_app_fecha2"></string>
+    <string name="como_usar_app_fecha3"></string>
+
     <string name="como_usar_app_fecha4">04/03/2016</string>
     <string name="como_usar_app_fecha5">05/03/2016</string>
     <string name="como_usar_app_fecha6">06/03/2016</string>

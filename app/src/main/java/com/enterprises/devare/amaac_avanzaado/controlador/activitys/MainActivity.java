@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         if (id == R.id.nav_guia_padre) {
-            Intent intent = new Intent(this, guiapadreListActivity.class);
+            Intent intent = new Intent(this, GuiapadreListActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_consejos_relajacion) {

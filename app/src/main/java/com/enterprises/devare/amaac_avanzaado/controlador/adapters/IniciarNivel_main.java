@@ -232,6 +232,11 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
         }
         //</editor-fold>
 
+
+
+
+
+
         //<editor-fold desc="CLASE NivelViewHolder">
         public class NivelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

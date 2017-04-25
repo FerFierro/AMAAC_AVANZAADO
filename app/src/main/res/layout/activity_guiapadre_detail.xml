@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_background_ninos"
     android:fitsSystemWindows="true"
-    tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.guiapadreDetailActivity"
+    tools:context="com.enterprises.devare.amaac_avanzaado.controlador.activitys.GuiapadreDetailActivity"
     tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout

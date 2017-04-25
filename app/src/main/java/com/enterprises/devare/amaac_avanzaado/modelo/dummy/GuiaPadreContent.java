@@ -21,8 +21,11 @@ public class GuiaPadreContent{
 
 
     public static void agregarItem(GuiaPadre item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+
+        if(ITEMS.size()<3) {
+           ITEMS.add(item);
+           ITEM_MAP.put(item.id, item);
+        }
     }
 
     public static class GuiaPadre {

@@ -7,20 +7,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.modelo.dummy.GuiaPadreContent;
 
-public class guiapadreDetailFragment extends Fragment {
+public class GuiapadreDetailFragment extends Fragment {
 
     public static final String ID_ARTICULO = "item_id";
 
     private GuiaPadreContent.GuiaPadre itemDetallado;
 
     //<editor-fold desc="CONSTRUCTOR">
-    public guiapadreDetailFragment() {
+    public GuiapadreDetailFragment() {
     }
     //</editor-fold>
 
@@ -52,7 +54,37 @@ public class guiapadreDetailFragment extends Fragment {
             //((TextView) v.findViewById(R.id.tecnica_detail_guia_de_uso)).setText(itemDetallado.descripcion);
             ((TextView) v.findViewById(R.id.titulo)).setText(itemDetallado.titulo);
             ((TextView) v.findViewById(R.id.fecha)).setText(itemDetallado.fecha);
-            ((TextView) v.findViewById(R.id.contenido)).setText(itemDetallado.descripcion);
+
+
+//            ((TextView) v.findViewById(R.id.contenido)).setText(itemDetallado.descripcion);
+
+            WebSettings ws = ((WebView) v.findViewById(R.id.contenido)).getSettings();
+            ws.setJavaScriptEnabled(true);
+
+            switch (itemDetallado.id){
+                case "1":
+                    ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina.html");
+                    break;
+                case "2":
+                    ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina2.html");
+                    break;
+                case "3":
+                    ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina3.html");
+                    break;
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
             ImageView myImageView = (ImageView) v.findViewById(R.id.imagen);
             myImageView.setImageResource(itemDetallado.idImagen);
         }
