@@ -1,8 +1,5 @@
 # AMAAC
 
-AMAAC es una propuesta de    una    aplicación    móvil    alternativa    y aumentativa para la interacción, comunicación, 
-desarrollo de sus capacidades y participación a los niños particularmente de 3  a  4  años  en  la  Ciudad  de  México  
-con dificultades en la comunicación oral y verbal. Mediante  la  cual  el  niño  podrá  comunicarse mediante pictogramas
-y reproducir por voz el texto de la frase construida con la finalidad de evitar  dificultades  en  el  aprendizaje  de  
-la lectoescritura  y  bajo  rendimiento  escolar,  lo que  a  su  vez  genera  problemas  relacionados con la conducta y 
-las emociones.
+AMAAC es un proyecto que pretende desarrollar una aplicación móvil alternativa  y aumentativa de comunicación para niños de 3 a 4 años con dificultades en la comunicación oral y verbal como medio de apoyo necesario para que el  niño  con  discapacidad  del  habla  y  lenguaje  pueda  comunicarse,  interactuar,  desarrollar  sus capacidades  y participar en el mundo que lo rodea en igualdad de condiciones y con las mismas oportunidades.  El niñopodrá  ejercitar  su  fluidez en  el lenguaje  medianteuna  serie  de  ejercicios contenidos en diferentes niveles,así como comunicarse mediante pictogramas y reproducir por voz el texto de la frase construida.
+
+Con  el  desarrollo  de  la  aplicación  móvil  se  busca  que  el  niño  con  discapacidad  del  habla  pueda comunicarse,  interactuar,  desarrollar  sus  capacidades  y  participar  en  el  mundo  que  lo  rodea  en igualdad  de  condiciones  y  con  las  mismas  oportunidades  ,así  como  fomentar  el  uso  de  estas aplicaciones ,por otro lado, hablando del aspecto metodológico, el diseño de la aplicación móvil puede ser de gran utilidad para aquellas personas relacionadas en la investigación y tratamiento de a  comunicación  aumentativa  y  alternativa.  Es  decir,  puede  servir  como  punto  de  partida  para futuras implementaciones u mejoras
