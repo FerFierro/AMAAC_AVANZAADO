@@ -12,7 +12,7 @@ import android.widget.Button;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.adapters.IniciarNivel_main;
-import com.enterprises.devare.amaac_avanzaado.controlador.adapters.VocalesEjercicios;
+import com.enterprises.devare.amaac_avanzaado.controlador.adapters.VocalesEjercicios_main;
 
 /**
  * Created by Angel on 14/04/2017.

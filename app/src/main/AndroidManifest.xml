@@ -88,8 +88,8 @@
         </activity>
 
         <activity
-            android:name=".controlador.adapters.VocalesEjercicios"
-            android:label="Vocales"
+            android:name=".controlador.adapters.VocalesEjercicios_main"
+            android:label="Nivel Vocales"
             android:parentActivityName=".controlador.adapters.IniciarNivel_main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -97,8 +97,35 @@
         </activity>
 
         <activity
-            android:name=".controlador.adapters.Consonantes_main"
-            android:label="Consonantes"
+            android:name=".controlador.adapters.ConsonantesEjercicios_main"
+            android:label="Nivel Consonantes"
+            android:parentActivityName=".controlador.adapters.IniciarNivel_main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+        </activity>
+
+        <activity
+            android:name=".controlador.adapters.MonosilabasEjercicios_main"
+            android:label="Nivel Monosilabas"
+            android:parentActivityName=".controlador.adapters.IniciarNivel_main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+        </activity>
+
+        <activity
+            android:name=".controlador.adapters.BisilabasEjercicios_main"
+            android:label="Nivel Bisilabas"
+            android:parentActivityName=".controlador.adapters.IniciarNivel_main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+        </activity>
+
+        <activity
+            android:name=".controlador.adapters.PolisilabasEjercicios_main"
+            android:label="Nivel Polisilabas"
             android:parentActivityName=".controlador.adapters.IniciarNivel_main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -107,15 +134,56 @@
 
         <activity
             android:name=".controlador.adapters.Ejercicios"
-            android:label="Ejercicios"
-            android:parentActivityName=".controlador.adapters.VocalesEjercicios">
+            android:label="Ejercicios Vocales"
+            android:parentActivityName=".controlador.adapters.VocalesEjercicios_main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controlador.adapters.IniciarNivel_main" />
 
         </activity>
 
-        <service android:name=".controlador.servicios.MusicaService" />
+        <activity
+        android:name=".controlador.adapters.EjerciciosConsonantes"
+        android:label="Ejercicios Consonantes"
+        android:parentActivityName=".controlador.adapters.ConsonantesEjercicios_main">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".controlador.adapters.IniciarNivel_main" />
+
+         </activity>
+
+        <activity
+            android:name=".controlador.adapters.EjerciciosMonosilabas"
+            android:label="Ejercicios Monosilabas"
+            android:parentActivityName=".controlador.adapters.MonosilabasEjercicios_main">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+
+        </activity>
+
+        <activity
+            android:name=".controlador.adapters.EjerciciosBisilabas"
+            android:label="Ejercicios Bisilabas"
+            android:parentActivityName=".controlador.adapters.BisilabasEjercicios_main">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+
+        </activity>
+
+        <activity
+            android:name=".controlador.adapters.EjerciciosPolisilabas"
+            android:label="Ejercicios Polisilabas"
+            android:parentActivityName=".controlador.adapters.PolisilabasEjercicios_main">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controlador.adapters.IniciarNivel_main" />
+
+        </activity>
     </application>
 
 </manifest>

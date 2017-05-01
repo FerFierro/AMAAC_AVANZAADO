@@ -30,10 +30,57 @@ public class Pictograma {
     public static final int CAT_VOCAL_I = 163;
     public static final int CAT_VOCAL_O = 164;
     public static final int CAT_VOCAL_U = 165;
+
     public static final int CAT_CONSONANTES = 17;
-    public static final int CAT_BISILABAS = 18;
-    public static final int CAT_TRISILABAS = 19;
+    public static final int CAT_CONSONANTES_B = 171;
+    public static final int CAT_CONSONANTES_C = 172;
+    public static final int CAT_CONSONANTES_D = 173;
+    public static final int CAT_CONSONANTES_F = 174;
+    public static final int CAT_CONSONANTES_G = 175;
+    public static final int CAT_CONSONANTES_H = 176;
+    public static final int CAT_CONSONANTES_J = 177;
+    public static final int CAT_CONSONANTES_K = 178;
+    public static final int CAT_CONSONANTES_L = 179;
+    public static final int CAT_CONSONANTES_M = 1710;
+    public static final int CAT_CONSONANTES_N = 1711;
+    public static final int CAT_CONSONANTES_P = 1712;
+    public static final int CAT_CONSONANTES_Q = 1713;
+    public static final int CAT_CONSONANTES_R = 1714;
+    public static final int CAT_CONSONANTES_S = 1715;
+    public static final int CAT_CONSONANTES_T = 1716;
+    public static final int CAT_CONSONANTES_V = 1717;
+    public static final int CAT_CONSONANTES_W = 1718;
+    public static final int CAT_CONSONANTES_X = 1719;
+    public static final int CAT_CONSONANTES_Y = 1720;
+    public static final int CAT_CONSONANTES_Z = 1721;
+
+    public static final int CAT_MONOSILABAS = 18;
+    public static final int CAT_MONOSILABAS_COMIDA = 181;
+    public static final int CAT_MONOSILABAS_BEBIDAS = 182;
+    public static final int CAT_MONOSILABAS_RESPUESTAS = 183;
+    public static final int CAT_MONOSILABAS_ANIMALES = 184;
+    public static final int CAT_MONOSILABAS_VERBOS = 185;
+    public static final int CAT_MONOSILABAS_FAMILIA = 186;
+    public static final int CAT_MONOSILABAS_OBJETOS = 187;
+
+    public static final int CAT_BISILABAS = 19;
+    public static final int CAT_BISILABAS_BEBIDAS = 191;
+    public static final int CAT_BISILABAS_FRUTAS = 192;
+    public static final int CAT_BISILABAS_VERDURAS = 193;
+    public static final int CAT_BISILABAS_COMIDA = 194;
+    public static final int CAT_BISILABAS_COMIDA_GENERAL = 195;
+    public static final int CAT_BISILABAS_VERBOS_AUX = 196;
+    public static final int CAT_BISILABAS_ANIMALES = 197;
+    public static final int CAT_BISILABAS_VERBOS = 198;
+    public static final int CAT_BISILABAS_FAMILIA = 199;
+    public static final int CAT_BISILABAS_ESTADOS_ANIMO = 1910;
+    public static final int CAT_BISILABAS_LUGARES = 1911;
+    public static final int CAT_BISILABAS_OBJETOS = 1912;
+
     public static final int CAT_POLISILABAS = 20;
+    public static final int CAT_POLISILABAS_BEBIDAS = 201;
+    public static final int CAT_POLISILABAS_FRUTAS = 202;
+
     //</editor-fold>
 
     private int id;
@@ -48,7 +95,7 @@ public class Pictograma {
 
     //<editor-fold desc="CONSTRUCTOR CON PARAMETROS">
 
-    public Pictograma(int tipo,int categoria, String nombre, int idDrawable,  int idSonido, int habilitado, int completado, int progreso) {
+    public Pictograma(int tipo, int categoria, String nombre, int idDrawable, int idSonido, int habilitado, int completado, int progreso) {
         this.categoria = categoria;
         this.completado = completado;
         this.habilitado = habilitado;
@@ -56,7 +103,7 @@ public class Pictograma {
         this.idSonido = idSonido;
         this.nombre = nombre;
         this.tipo = tipo;
-        this.progreso=progreso;
+        this.progreso = progreso;
     }
 
     //</editor-fold>
@@ -142,12 +189,12 @@ public class Pictograma {
 
     //<editor-fold desc="MÉTODO toString()">
     public String toString() {
-        return ("Nombre: "     + nombre     + "\n" +
-                "Categoria: "  + categoria  + "\n" +
+        return ("Nombre: " + nombre + "\n" +
+                "Categoria: " + categoria + "\n" +
                 "Habilitado: " + habilitado + "\n" +
                 "Completado: " + completado + "\n" +
                 "IdDrawable: " + idDrawable + "\n" +
-                "Progreso: "   + progreso   + "\n");
+                "Progreso: " + progreso + "\n");
     }
     //</editor-fold>
 }

@@ -202,6 +202,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     //</editor-fold>
 
+    //<editor-fold desc="MÉTODO QUE DEVUELVE EL PROGRESO OBTENIDO EN CADA NIVEL">
     public int obtenerProgreso(int tipoEjercicio) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -216,12 +217,30 @@ public class DBHelper extends SQLiteOpenHelper {
                 mCount.close();
             }
         }
-        Toast.makeText(c, "la suma del ejercicio"+tipoEjercicio+" es:"+ sum, Toast.LENGTH_SHORT).show();
 
         return sum;
     }
+    //</editor-fold>
 
-    /* will give the total number of records in the table*/
+    //<editor-fold desc="MÉTODO QUE DEVUELVE LA CANTIDAD DE EJERCICIOS COMPLETADOS">
+    public int ejerciciosCompletos(int tipoEjercicio) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor mCount = db.rawQuery("select sum(completado) as suma from " + TABLE_PICTOGRAMA+" where CATEGORIA="+tipoEjercicio, null);
+        int sum = 0;
+        if (mCount != null) {
+            try {
+                if (mCount.moveToFirst()) {
+                    sum = mCount.getInt(0);
+                }
+            } finally {
+                mCount.close();
+            }
+        }
+        return sum;
+    }
+    //</editor-fold>
+
     //<editor-fold desc="MÉTODO getUsersCount()">
     public int getUsersCount() {
 
@@ -234,7 +253,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     //</editor-fold>
 
-    /*will be used to update the existing user record*/
     //<editor-fold desc="MÉTODO  updateUser">
     public int updatePictograma(Pictograma picto) {
 
@@ -243,31 +261,33 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(HABILITADO, picto.getHabilitado());
         values.put(COMPLETADO, picto.getCompletado());
         values.put(PROGRESO_EJERCICIO, picto.getProgreso());
-        // updating record
-       /* Toast.makeText(c, "Se actualizo "+picto.getNombre()+"\n"
-                        + "con habilitado= "+picto.getHabilitado()+"\n"
-                        + "con completado="+picto.getCompletado()+"\n"
-                        + "con progreso="+picto.getProgreso(), Toast.LENGTH_SHORT).show();*/
         return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
                 new String[]{String.valueOf(picto.getNombre())});
 
     }
     //</editor-fold>
 
+    public int updatePictogramaNivel(Nivel nivel) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PROGRESSO, nivel.getProgresso());
+        return db.update(TABLE_NIVEL, values, NOMBRE + " = ?", // update query to make changes to the existing record
+                new String[]{String.valueOf(nivel.getNombre())});
+
+    }
+
     public int updateCampoPictograma(String  nombreNivel,int valor) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(COMPLETADO, valor);
-        // updating record
-        /*Toast.makeText(c, "Se actualizo "+nombreNivel+"\n"
-              , Toast.LENGTH_SHORT).show();*/
+
         return db.update(TABLE_PICTOGRAMA, values, NOMBRE + " = ?", // update query to make changes to the existing record
                 new String[]{String.valueOf(nombreNivel)});
 
     }
 
-    /*to delete the record from the table*/
     //<editor-fold desc="MÉTODO deleteContact()">
     public void deleteContact(Pictograma user) {
 

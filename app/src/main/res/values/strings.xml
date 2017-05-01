@@ -175,10 +175,12 @@
     <string name="descripción_play_musica">Es el botón para reproducir la música</string>
     <string name="descripcion_stop_musica">Es el botón para parar la música</string>
     <string name="descripcion_siguiente">Es el botón para habilitar el siguiente ejercicio</string>
+    <string name="descripcion_imagen_temporizador">Imágen del temporizador</string>
 
     <!--Layout dialogo_seccion_terminada.xml-->
     <string name="continuar">CONTINUAR</string>
     <string name="msj_felicidades">FELICIDADES</string>
     <string name="msj_terminastes">Haz terminado esta sección</string>
     <string name="descripcion_imagen_dialogo">Es la imágen representativa del diálogo</string>
+
 </resources>

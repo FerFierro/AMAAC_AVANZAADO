@@ -11,11 +11,47 @@ import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_ALIME
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_ANIMALES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_ANIMO;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BEBIDAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_ANIMALES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_BEBIDAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_COMIDA;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_COMIDA;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_B;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_C;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_D;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_F;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_G;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_H;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_J;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_K;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_L;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_M;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_N;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_P;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_Q;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_R;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_S;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_T;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_V;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_W;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_X;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_Y;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES_Z;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_FAMILIA;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_FRUTAS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_LUGARES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_ANIMALES;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_BEBIDAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_COMIDA;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_FAMILIA;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_OBJETOS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_RESPUESTAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_VERBOS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_OBJETOS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_BEBIDAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_FRUTAS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POSTRES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_PROFESIONES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_RESPUESTAS;
@@ -310,16 +346,12 @@ public class DataManager {
     public void Init_Niveles(Context cn) {
 
         DBHelper dbHandler = new DBHelper(cn);
-        System.out.println("*******************************************************************************");
-        System.out.println("Entre a Init_Niveles");
 
-        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Vocales", 90,       R.drawable.ic_android_muestra));
-        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Consonantes", 50,   R.drawable.ic_android_muestra));
-        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Bisilabas", 100,    R.drawable.ic_android_muestra));
-        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Trisilabas", 25,    R.drawable.ic_android_muestra));
-        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Polisilabas", 60,   R.drawable.ic_android_muestra));
-
-        System.out.println("Se cargaron todos los datos en la bd");
+        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Vocales",        0,    R.drawable.ic_android_muestra));
+        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Consonantes",    0,    R.drawable.ic_android_muestra));
+        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Monosilabas",    0,    R.drawable.ic_android_muestra));
+        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Bisilabas",      0,    R.drawable.ic_android_muestra));
+        dbHandler.agregarNivel(new Nivel(VISTA_NORMAL, "Polisilabas",    0,    R.drawable.ic_android_muestra));
 
     }
     //</editor-fold>
@@ -367,27 +399,256 @@ public class DataManager {
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_U, "Ui", 1, R.raw.ui    ,0,0,0));
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_VOCAL_U, "Uo", 1, R.raw.uo    ,0,0,0));
 
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Bb", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Cc", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Dd", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ff", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Gg", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Hh", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Jj", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Kk", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ll", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Mm", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Nn", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Pp", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Qq", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Rr", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ss", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Tt", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Vv", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ww", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Xx", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Yy", 1, 0,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Zz", 1, 0,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Bb", 1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Cc", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Dd", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ff", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Gg", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Hh", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Jj", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Kk", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ll", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Mm", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Nn", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Pp", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Qq", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Rr", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ss", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Tt", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Vv", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Ww", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Xx", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Yy", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES, "Zz", 1, R.raw.u ,0,0,0));
+
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_B, "B",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_B, "Ba", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_B, "Be", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_B, "Bi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_B, "Bo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_B, "Bu", 1, R.raw.u ,0,0,0));
+
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_C, "C",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_C, "Ca", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_C, "Ce", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_C, "Ci", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_C, "Co", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_C, "Cu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_D, "D",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_D, "Da", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_D, "De", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_D, "Di", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_D, "Do", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_D, "Du", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_F, "F",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_F, "Fa", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_F, "Fe", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_F, "Fi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_F, "Fo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_F, "Fu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_G, "G",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_G, "Ga", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_G, "Ge", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_G, "Gi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_G, "Go", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_G, "Gu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_H, "H",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_H, "Ha", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_H, "He", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_H, "Hi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_H, "Ho", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_H, "Hu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_J, "J",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_J, "Ja", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_J, "Je", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_J, "Ji", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_J, "Jo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_J, "Ju", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_K, "K",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_K, "Ka", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_K, "Ke", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_K, "Ki", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_K, "Ko", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_K, "Ku", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_L, "L",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_L, "La", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_L, "Le", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_L, "Li", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_L, "Lo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_L, "Lu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_M, "M",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_M, "Ma", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_M, "Me", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_M, "Mi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_M, "Mo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_M, "Mu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_N, "N",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_N, "Na", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_N, "Ne", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_N, "Ni", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_N, "No", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_N, "Nu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_P, "P",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_P, "Pa", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_P, "Pe", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_P, "Pi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_P, "Po", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_P, "Pu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Q, "Q",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Q, "Qa", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Q, "Qe", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Q, "Qi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Q, "Qo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Q, "Qu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_R, "R",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_R, "Ra", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_R, "Re", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_R, "Ri", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_R, "Ro", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_R, "Ru", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_S, "S",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_S, "Sa", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_S, "Se", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_S, "Si", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_S, "So", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_S, "Su", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_T, "T",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_T, "Ta", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_T, "Te", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_T, "Ti", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_T, "To", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_T, "Tu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_V, "V",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_V, "Va", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_V, "Ve", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_V, "Vi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_V, "Vo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_V, "Vu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_W, "W",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_W, "Wa", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_W, "We", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_W, "Wi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_W, "Wo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_W, "Wu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_X, "X",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_X, "Xa", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_X, "Xe", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_X, "Xi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_X, "Xo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_X, "Xu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Y, "Y",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Y, "Ya", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Y, "Ye", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Y, "Yi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Y, "Yo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Y, "Yu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Z, "Z",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Z, "Za", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Z, "Ze", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Z, "Zi", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Z, "Zo", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_CONSONANTES_Z, "Zu", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Animales",    1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Bebidas",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Comida",      1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Familia",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Objetos",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Respuestas",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Verbos",      1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_ANIMALES, "Pez",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_ANIMALES, "Res",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_ANIMALES, "Ñu",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_ANIMALES, "Yak",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_ANIMALES, "Boa",  1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_BEBIDAS, "Té",  1, R.raw.u ,1,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_COMIDA, "Pan",  1, R.raw.u ,1,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_FAMILIA, "Tío",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_FAMILIA, "Tía",  1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_OBJETOS, "Hoy",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_OBJETOS, "Luz",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_OBJETOS, "Paz",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_OBJETOS, "Pis",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_OBJETOS, "sol",  1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_RESPUESTAS, "Sí",   1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_RESPUESTAS, "No",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_RESPUESTAS, "Bien", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_RESPUESTAS, "Mal",  1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_VERBOS, "Ser",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_VERBOS, "Dar",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_VERBOS, "Ir",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_VERBOS, "Ver",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_VERBOS, "Huir", 1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Animales",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Bebidas",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Comida",    1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Delfín",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Gato",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Hiena",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Koala",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "León",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Mono",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Oso",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Quetzal", 1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Vaca",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, "Zorro",   1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_BEBIDAS, "Jugo",     1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_BEBIDAS, "Leche",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_BEBIDAS, "Agua",     1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_COMIDA, "Arroz",   1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_COMIDA, "Carne",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_COMIDA, "Hiena",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_COMIDA, "Huevo",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_COMIDA, "Queso",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_COMIDA, "Pollo",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_COMIDA, "Sopa",    1, R.raw.u ,0,0,0));
+
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Bebidas",   1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Frutas",    1, R.raw.u ,0,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_BEBIDAS, "Refresco",   1, R.raw.u ,1,0,0));
+
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Cereza",    1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Sandía",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Platano",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Durazno",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Naranja",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Manzana",   1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Papaya",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_FRUTAS, "Toronja",   1, R.raw.u ,0,0,0));
 
         System.out.println("Se cargaron todos los datos en la bd");
     }

@@ -28,10 +28,11 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.enterprises.devare.amaac_avanzaado.modelo.Nivel.VISTA_NORMAL;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCALES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_CONSONANTES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS;
-import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_TRISILABAS;
 
 
 public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech.OnInitListener {
@@ -171,26 +172,50 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
             Nivel object = mValues.get(position);
+            int sumaProgresoNiveles;
             if (object != null) switch (object.getTipo()) {
 
                 case VISTA_NORMAL:
-                    ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
                     switch (object.getNombre()) {
 
                         case "Vocales":
-                            ((NivelViewHolder) holder).mVTextProgreso.setText(0 + "/" + db.count(CAT_VOCALES));
+                            sumaProgresoNiveles=db.obtenerProgreso(CAT_VOCALES);
+                            object.setProgresso(sumaProgresoNiveles/db.count(CAT_VOCALES));
+                            db.updatePictogramaNivel(object);
+                            ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                            ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_VOCALES)+ "/" + db.count(CAT_VOCALES));
                             break;
 
                         case "Consonantes":
-                            ((NivelViewHolder) holder).mVTextProgreso.setText(0 + "/" + db.count(CAT_CONSONANTES));
+                            sumaProgresoNiveles=db.obtenerProgreso(CAT_CONSONANTES);
+                            object.setProgresso(sumaProgresoNiveles/db.count(CAT_CONSONANTES));
+                            db.updatePictogramaNivel(object);
+                            ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                            ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_CONSONANTES)+ "/" + db.count(CAT_CONSONANTES));
+                            break;
+
+                        case "Monosilabas":
+                            sumaProgresoNiveles=db.obtenerProgreso(CAT_MONOSILABAS);
+                            object.setProgresso(sumaProgresoNiveles/db.count(CAT_MONOSILABAS));
+                            db.updatePictogramaNivel(object);
+                            ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                            ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_MONOSILABAS) + "/" + db.count(CAT_MONOSILABAS));
                             break;
 
                         case "Bisilabas":
-                            ((NivelViewHolder) holder).mVTextProgreso.setText(0 + "/" + db.count(CAT_BISILABAS));
+                            sumaProgresoNiveles=db.obtenerProgreso(CAT_BISILABAS);
+                            object.setProgresso(sumaProgresoNiveles/db.count(CAT_BISILABAS));
+                            db.updatePictogramaNivel(object);
+                            ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                            ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_BISILABAS) + "/" + db.count(CAT_BISILABAS));
                             break;
 
-                        case "Trisilabas":
-                            ((NivelViewHolder) holder).mVTextProgreso.setText(0 + "/" + db.count(CAT_TRISILABAS));
+                        case "Polisilabas":
+                            sumaProgresoNiveles=db.obtenerProgreso(CAT_POLISILABAS);
+                            object.setProgresso(sumaProgresoNiveles/db.count(CAT_POLISILABAS));
+                            db.updatePictogramaNivel(object);
+                            ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                            ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_POLISILABAS) + "/" + db.count(CAT_POLISILABAS));
                             break;
 
                     }
@@ -244,7 +269,6 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
             private TextView mVTextViewNivel,mVTextProgreso;
             private ProgressBar mvProgressBarNivel;
 
-
             public NivelViewHolder(View itemView) {
                 super(itemView);
 
@@ -261,7 +285,7 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
 
                 int posicision = getAdapterPosition();
                 Nivel mNivel = mValues.get(posicision);
-                Intent Vocales, Consonantes, Bisilabas, Trisilabas, Polisilabas;
+                Intent Vocales, Consonantes, Monosilabas, Bisilabas, Polisilabas;
 
                 methodsManager.Init_Toast(v, null, mNivel);
 
@@ -272,25 +296,28 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
                 switch (mNivel.getNombre()) {
 
                     case "Vocales":
-                        Vocales = new Intent(IniciarNivel_main.this, VocalesEjercicios.class);
+                        Vocales = new Intent(IniciarNivel_main.this, VocalesEjercicios_main.class);
                         startActivity(Vocales);
                         break;
 
                     case "Consonantes":
-                        Consonantes = new Intent(IniciarNivel_main.this, Consonantes_main.class);
+                        Consonantes = new Intent(IniciarNivel_main.this, ConsonantesEjercicios_main.class);
                         startActivity(Consonantes);
                         break;
 
-                    case "Bisilabas":
-                        Toast.makeText(IniciarNivel_main.this, "Entrastes a la seccion Consonantes", Toast.LENGTH_SHORT).show();
+                    case "Monosilabas":
+                        Monosilabas = new Intent(IniciarNivel_main.this, MonosilabasEjercicios_main.class);
+                        startActivity(Monosilabas);
                         break;
 
-                    case "Trisilabas":
-                        Toast.makeText(IniciarNivel_main.this, "Entrastes a la seccion Consonantes", Toast.LENGTH_SHORT).show();
+                    case "Bisilabas":
+                        Bisilabas = new Intent(IniciarNivel_main.this,  BisilabasEjercicios_main.class);
+                        startActivity(Bisilabas);
                         break;
 
                     case "Polisilabas":
-                        Toast.makeText(IniciarNivel_main.this, "Entrastes a la seccion Consonantes", Toast.LENGTH_SHORT).show();
+                        Polisilabas = new Intent(IniciarNivel_main.this,  PolisilabasEjercicios_main.class);
+                        startActivity(Polisilabas);
                         break;
                 }
             }

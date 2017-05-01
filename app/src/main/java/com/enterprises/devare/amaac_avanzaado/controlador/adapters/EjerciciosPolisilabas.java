@@ -1,36 +1,21 @@
 package com.enterprises.devare.amaac_avanzaado.controlador.adapters;
 
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogo;
@@ -39,12 +24,10 @@ import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
 import java.util.List;
 
-import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_A;
-
-public class Ejercicios extends AppCompatActivity {
+public class EjerciciosPolisilabas extends AppCompatActivity {
 
     //<editor-fold desc="DECLARION DE VARIABLES">
-    Ejercicios.EjercicioAdaptador adapter;
+    EjerciciosPolisilabas.EjercicioAdaptador adapter;
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
     int nuevaPosicion;
@@ -68,8 +51,8 @@ public class Ejercicios extends AppCompatActivity {
         recycler_ejercicios = (RecyclerView) findViewById(R.id.reciclador_ejercicio_niveles);
         Intent intent = getIntent();
 
-        categoria = intent.getIntExtra(VocalesEjercicios_main.VocalesAdaptador.VocalesViewHolder.VOCAL_SELECCIONADA, 1);
-        nombreNivel = intent.getStringExtra(VocalesEjercicios_main.VocalesAdaptador.VocalesViewHolder.VOCAL_NIVEL);
+        categoria = intent.getIntExtra(PolisilabasEjercicios_main.PolisilabasAdaptador.PolisilabasViewHolder.POLISILABA_SELECCIONADA, 1);
+        nombreNivel = intent.getStringExtra(PolisilabasEjercicios_main.PolisilabasAdaptador.PolisilabasViewHolder.POLISILABA_NIVEL);
         InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(categoria));
 
     }
@@ -80,7 +63,7 @@ public class Ejercicios extends AppCompatActivity {
     public void InitAdapter(RecyclerView mRecyclerView, List<Pictograma> items) {
 
         assert mRecyclerView != null;
-        adapter = new Ejercicios.EjercicioAdaptador(items);
+        adapter = new EjerciciosPolisilabas.EjercicioAdaptador(items);
 
         setupRecyclerView(mRecyclerView, adapter);
 
@@ -88,7 +71,7 @@ public class Ejercicios extends AppCompatActivity {
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO setupRecyclerView()">
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView, Ejercicios.EjercicioAdaptador items) {
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView, EjerciciosPolisilabas.EjercicioAdaptador items) {
 
         recyclerView.setAdapter(items);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -119,7 +102,7 @@ public class Ejercicios extends AppCompatActivity {
             View view;
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio, parent, false);
 
-            return new Ejercicios.EjercicioAdaptador.EjerciciosViewHolder(view);
+            return new EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder(view);
         }
         //</editor-fold>
 
@@ -154,7 +137,8 @@ public class Ejercicios extends AppCompatActivity {
             final boolean habilitadoEjercicio = estadoPictograma(habilitado);
 
 
-            ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
+            ((EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
+            ((EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setTextSize(60);
 
             ((EjerciciosViewHolder) holder).tv_etiempo.setText("00:00:00");
 
@@ -162,13 +146,12 @@ public class Ejercicios extends AppCompatActivity {
                 ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.INVISIBLE);
 
                 //<editor-fold desc="SE HABILITAN LOS VIEWS DE LA INTERFAZ">
-                ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).ll_controles.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).tv_etiempo.setEnabled(habilitadoEjercicio);
-
-                ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(true);
+                ((EjerciciosViewHolder) holder).ll_controles.setEnabled(true);
+                ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(true);
+                ((EjerciciosViewHolder) holder).tv_etiempo.setEnabled(true);
+                ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(true);
+                ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(true);
                 //</editor-fold>
                 ((EjerciciosViewHolder) holder).fab.setVisibility(View.VISIBLE);
 
@@ -176,12 +159,12 @@ public class Ejercicios extends AppCompatActivity {
 
                 //<editor-fold desc="SE MUESTRAN LOS VIEWS DESABILITADOS">
                 ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.VISIBLE);
-                ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).ll_controles.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).tv_etiempo.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(habilitadoEjercicio);
-                ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(habilitadoEjercicio);
+                ((EjerciciosViewHolder) holder).ll_ejercicio.setEnabled(false);
+                ((EjerciciosViewHolder) holder).ll_controles.setEnabled(false);
+                ((EjerciciosViewHolder) holder).tv_cv_ejercicio.setEnabled(false);
+                ((EjerciciosViewHolder) holder).tv_etiempo.setEnabled(false);
+                ((EjerciciosViewHolder) holder).card_view_controles.setEnabled(false);
+                ((EjerciciosViewHolder) holder).cv_ejercicio.setEnabled(false);
                 //</editor-fold>
                 ((EjerciciosViewHolder) holder).fab.setVisibility(View.INVISIBLE);
 
@@ -217,7 +200,7 @@ public class Ejercicios extends AppCompatActivity {
                                         try {
                                             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                                 public void onCompletion(MediaPlayer mp) {
-                                                    ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+                                                    ((EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_respuestas));
                                                     ((EjerciciosViewHolder) holder).fab.setImageResource(R.drawable.ic_play);
 
