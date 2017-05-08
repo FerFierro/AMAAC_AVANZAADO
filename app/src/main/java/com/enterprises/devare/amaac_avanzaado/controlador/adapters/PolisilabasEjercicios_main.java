@@ -11,6 +11,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,17 @@ import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
 
 import java.util.List;
 
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_ESTADOS_ANIMO;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_MONOSILABAS_ANIMALES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_ANIMALES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_BEBIDAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_COMIDA;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_ESTADOS_ANIMO;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_FAMILIA;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_FRUTAS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_OBJETOS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_POLISILABAS_VERBOS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCALES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_A;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_VOCAL_E;
@@ -109,7 +117,7 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             View view;
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_ejercicio_preestablecido, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_ejercicio_preestablecido_imagen, parent, false);
             return new PolisilabasViewHolder(view);
 
         }
@@ -142,27 +150,71 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
             }
             //</editor-fold>
 
+
+
             switch (object.getNombre()) {
-
-                case "Bebidas":
-                    resultado=db.obtenerProgreso(CAT_POLISILABAS_BEBIDAS);
+                case "Animales":
+                    resultado=db.obtenerProgreso(CAT_POLISILABAS_ANIMALES);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
-                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_BEBIDAS)+"/"+db.count(CAT_POLISILABAS_BEBIDAS));
+                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_ANIMALES)+"/"+db.count(CAT_POLISILABAS_ANIMALES));
+                    ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animales );
                     break;
 
-                case "Frutas":
-                    resultado=db.obtenerProgreso(CAT_POLISILABAS_FRUTAS);
+
+                case "Comida":
+                    resultado=db.obtenerProgreso(CAT_POLISILABAS_COMIDA);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
-                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_FRUTAS)+"/"+db.count(CAT_POLISILABAS_FRUTAS));
+                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_COMIDA)+"/"+db.count(CAT_POLISILABAS_COMIDA));
+                    ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
+
+
+                case "Familia":
+                    resultado=db.obtenerProgreso(CAT_POLISILABAS_FAMILIA);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_FAMILIA)+"/"+db.count(CAT_POLISILABAS_FAMILIA));
+                    ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_familia );
+                    break;
+
+                case "Objetos":
+                    resultado=db.obtenerProgreso(CAT_POLISILABAS_OBJETOS);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_OBJETOS)+"/"+db.count(CAT_POLISILABAS_OBJETOS));
+                    ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_objetos );
+                    break;
+
+                case "Animo":
+                    resultado=db.obtenerProgreso(CAT_POLISILABAS_ESTADOS_ANIMO);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_ESTADOS_ANIMO)+"/"+db.count(CAT_POLISILABAS_ESTADOS_ANIMO));
+                    ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animo );
+                    break;
+
+                case "Verbos":
+                    resultado=db.obtenerProgreso(CAT_POLISILABAS_VERBOS);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((PolisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_POLISILABAS_VERBOS)+"/"+db.count(CAT_POLISILABAS_VERBOS));
+                    ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_verbos );
+                    break;
+
+
+
+
+
+
+
 
             }
             int progresoNivel=object.getProgreso();
 
             ((PolisilabasViewHolder) holder).tv_cv_ejercicio_vocal.setText(object.getNombre());
-            ((PolisilabasViewHolder) holder).tv_cv_ejercicio_vocal.setTextSize(45);
+            ((PolisilabasViewHolder) holder).tv_cv_ejercicio_vocal.setTextSize(25);
             ((PolisilabasViewHolder) holder).tv_cv_porcentaje_progreso.setText(progresoNivel+"%");
             ((PolisilabasViewHolder) holder).progressbar_nivel.setProgress(progresoNivel);
 
@@ -212,12 +264,11 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
         public class PolisilabasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             CardView cv_ejercicios_nivel;
-            ImageView iv_cv_ejercicio_nivel_bloqueado;
+            ImageView iv_cv_ejercicio_nivel_bloqueado, iv_cv_ejercicio;
             private TextView tv_total_ejercicios_vocales,
                     tv_cv_ejercicio_vocal,
                     tv_cv_porcentaje_progreso;
             ProgressBar progressbar_nivel;
-
 
             public static final String POLISILABA_SELECCIONADA="com.enterprises.devare.amaac_avanzaado.controlador.adapters.polisilabaSeleccionada";
             public static final String POLISILABA_NIVEL="com.enterprises.devare.amaac_avanzaado.controlador.adapters.polisilabaNivel";
@@ -226,6 +277,9 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
                 super(itemView);
                 cv_ejercicios_nivel= (CardView) itemView.findViewById(R.id.cv_ejercicios_nivel);
                 iv_cv_ejercicio_nivel_bloqueado=(ImageView) itemView.findViewById(R.id.iv_cv_ejercicio_nivel_bloqueado) ;
+                iv_cv_ejercicio=(ImageView) itemView.findViewById(R.id.iv_cv_ejercicio) ;
+
+
                 tv_total_ejercicios_vocales = (TextView) itemView.findViewById(R.id.tv_total_ejercicios_vocales);
                 tv_cv_ejercicio_vocal = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio_vocal);
                 tv_cv_porcentaje_progreso = (TextView) itemView.findViewById(R.id.tv_cv_porcentaje_progreso);
@@ -245,18 +299,58 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
 
                 switch (object.getNombre()) {
 
+
+                    case "Animales":
+                        ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_ANIMALES);
+                        ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
                     case "Bebidas":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_BEBIDAS);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Frutas":
-                        ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_FRUTAS);
+                    case "Comida":
+                        ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_COMIDA);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
+
+                    case "Familia":
+                        ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_FAMILIA);
+                        ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Objetos":
+                        ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_OBJETOS);
+                        ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Animo":
+                        ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_ESTADOS_ANIMO);
+                        ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Verbos":
+                        ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_VERBOS);
+                        ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
                 }
+
+
+
+
+
+
+
+
 
             }
             //</editor-fold>

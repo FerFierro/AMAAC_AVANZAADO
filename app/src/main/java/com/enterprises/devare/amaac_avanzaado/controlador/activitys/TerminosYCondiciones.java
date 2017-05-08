@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
+import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
 
 public class TerminosYCondiciones extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +20,8 @@ public class TerminosYCondiciones extends AppCompatActivity implements View.OnCl
     Button btn_tyc_aceptar, btn_tyc_rechazar;
     SharedPreferences preferences;
     CharSequence textoInterpretado;
+
+
     //</editor-fold>
 
     @Override
@@ -71,6 +74,8 @@ public class TerminosYCondiciones extends AppCompatActivity implements View.OnCl
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("opcion", true);
                 editor.commit();
+
+
 
                 Intent intent = new Intent(this, IniciarConfiguraciones.class);
                 startActivity(intent);

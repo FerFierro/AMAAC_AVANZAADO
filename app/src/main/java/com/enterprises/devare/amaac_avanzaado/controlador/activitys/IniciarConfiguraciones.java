@@ -13,6 +13,7 @@ import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.adapters.ConsonantesEjercicios_main;
 import com.enterprises.devare.amaac_avanzaado.controlador.adapters.IniciarNivel_main;
 import com.enterprises.devare.amaac_avanzaado.controlador.adapters.VocalesEjercicios_main;
+import com.enterprises.devare.amaac_avanzaado.modelo.db.DataManager;
 
 public class IniciarConfiguraciones extends AppCompatActivity {
 
@@ -44,6 +45,8 @@ public class IniciarConfiguraciones extends AppCompatActivity {
         inicializarDBAMAAC();
 
         ATCargaDatos.execute();
+        DataManager datos = new DataManager();
+        datos.inicializar_pictogramas(this);
 
     }
 

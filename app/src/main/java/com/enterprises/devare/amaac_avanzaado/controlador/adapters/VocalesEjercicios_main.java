@@ -3,6 +3,7 @@ package com.enterprises.devare.amaac_avanzaado.controlador.adapters;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -43,6 +44,12 @@ public class VocalesEjercicios_main extends AppCompatActivity {
     private RecyclerView recycler_ejercicios;
     int nuevaPosicion;
 
+
+    SharedPreferences preferences;
+    boolean NIVEL_OK;
+
+
+
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate()">
@@ -54,6 +61,11 @@ public class VocalesEjercicios_main extends AppCompatActivity {
 
         recycler_ejercicios = (RecyclerView) findViewById(R.id.reciclador_ejercicio_niveles);
         InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(CAT_VOCALES));
+
+//Comprueba si ya se completo este nivel
+        preferences = getSharedPreferences("NIVEL_OK", MODE_PRIVATE);
+        NIVEL_OK = preferences.getBoolean("nivel_ok", false);
+
 
     }
     //</editor-fold>
@@ -134,8 +146,19 @@ public class VocalesEjercicios_main extends AppCompatActivity {
                     seteo.setHabilitado(1);
                     db.updatePictograma(seteo);
                 }else{
-                    FragmentManager fragmentManager = getFragmentManager();
-                    new SeccionTerminadaNivelDialogo().show(fragmentManager, "SeccionTerminadaNivelDialog");
+
+                    if(!NIVEL_OK){
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putBoolean("nivel_ok", true);
+                        editor.commit();
+
+                        FragmentManager fragmentManager = getFragmentManager();
+                        new SeccionTerminadaNivelDialogo().show(fragmentManager, "SeccionTerminadaNivelDialog");
+                    }
+
+
+
+
                 }
             }
             //</editor-fold>

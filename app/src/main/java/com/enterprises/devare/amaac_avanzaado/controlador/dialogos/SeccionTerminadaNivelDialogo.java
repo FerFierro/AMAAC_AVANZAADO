@@ -3,6 +3,7 @@ package com.enterprises.devare.amaac_avanzaado.controlador.dialogos;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -21,6 +22,7 @@ import com.enterprises.devare.amaac_avanzaado.controlador.adapters.VocalesEjerci
 public class SeccionTerminadaNivelDialogo extends DialogFragment{
 
     public SeccionTerminadaNivelDialogo() {
+
     }
 
 
@@ -52,7 +54,12 @@ public class SeccionTerminadaNivelDialogo extends DialogFragment{
 
                         Intent i= new Intent(getActivity(), IniciarNivel_main.class);
                         startActivity(i);
+
                         dismiss();
+
+
+
+
                     }
                 }
         );

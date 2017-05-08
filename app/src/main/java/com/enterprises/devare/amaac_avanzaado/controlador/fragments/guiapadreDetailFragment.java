@@ -63,10 +63,10 @@ public class GuiapadreDetailFragment extends Fragment {
 
             switch (itemDetallado.id){
                 case "1":
-                    ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina.html");
+                    ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina2.html");
                     break;
                 case "2":
-                    ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina2.html");
+                    ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina.html");
                     break;
                 case "3":
                     ((WebView) v.findViewById(R.id.contenido)).loadUrl("file:///android_asset/pagina3.html");

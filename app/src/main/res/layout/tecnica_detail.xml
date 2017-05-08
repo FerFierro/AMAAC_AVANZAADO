@@ -53,10 +53,14 @@
         <ImageView
             android:id="@+id/imagen"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             app:srcCompat="@drawable/ic_menu_guia_padre_customer_service_1"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            android:scaleType="centerCrop"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            />
 
     </LinearLayout>
 

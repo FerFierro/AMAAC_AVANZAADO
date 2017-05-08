@@ -29,6 +29,10 @@ import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISIL
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_ANIMALES;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_BEBIDAS;
 import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_COMIDA;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_ESTADOS_ANIMO;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_FAMILIA;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_OBJETOS;
+import static com.enterprises.devare.amaac_avanzaado.modelo.Pictograma.CAT_BISILABAS_VERBOS;
 
 public class BisilabasEjercicios_main extends AppCompatActivity {
 
@@ -95,7 +99,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             View view;
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_ejercicio_preestablecido, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_ejercicio_preestablecido_imagen, parent, false);
             return new BisilabasViewHolder(view);
 
         }
@@ -135,6 +139,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((BisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_BISILABAS_ANIMALES)+"/"+db.count(CAT_BISILABAS_ANIMALES));
+                    ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animales );
                     break;
 
                 case "Bebidas":
@@ -142,6 +147,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((BisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_BISILABAS_BEBIDAS)+"/"+db.count(CAT_BISILABAS_BEBIDAS));
+                    ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
 
                 case "Comida":
@@ -149,7 +155,48 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((BisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_BISILABAS_COMIDA)+"/"+db.count(CAT_BISILABAS_COMIDA));
+                    ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
+
+
+                case "Familia":
+                    resultado=db.obtenerProgreso(CAT_BISILABAS_FAMILIA);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((BisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_BISILABAS_FAMILIA)+"/"+db.count(CAT_BISILABAS_FAMILIA));
+                    ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_familia );
+                    break;
+
+                case "Objetos":
+                    resultado=db.obtenerProgreso(CAT_BISILABAS_OBJETOS);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((BisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_BISILABAS_OBJETOS)+"/"+db.count(CAT_BISILABAS_OBJETOS));
+                    ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_objetos );
+                    break;
+
+                case "Animo":
+                    resultado=db.obtenerProgreso(CAT_BISILABAS_ESTADOS_ANIMO);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((BisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_BISILABAS_ESTADOS_ANIMO)+"/"+db.count(CAT_BISILABAS_ESTADOS_ANIMO));
+                    ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animo );
+                    break;
+
+                case "Verbos":
+                    resultado=db.obtenerProgreso(CAT_BISILABAS_VERBOS);
+                    object.setProgreso(resultado);
+                    db.updatePictograma(object);
+                    ((BisilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_BISILABAS_VERBOS)+"/"+db.count(CAT_BISILABAS_VERBOS));
+                    ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_verbos );
+                    break;
+
+
+
+
+
+
+
 
 
             }
@@ -206,7 +253,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
         public class BisilabasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             CardView cv_ejercicios_nivel;
-            ImageView iv_cv_ejercicio_nivel_bloqueado;
+            ImageView iv_cv_ejercicio_nivel_bloqueado, iv_cv_ejercicio;
             private TextView tv_total_ejercicios_vocales,
                     tv_cv_ejercicio_vocal,
                     tv_cv_porcentaje_progreso;
@@ -220,6 +267,9 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                 super(itemView);
                 cv_ejercicios_nivel= (CardView) itemView.findViewById(R.id.cv_ejercicios_nivel);
                 iv_cv_ejercicio_nivel_bloqueado=(ImageView) itemView.findViewById(R.id.iv_cv_ejercicio_nivel_bloqueado) ;
+                iv_cv_ejercicio=(ImageView) itemView.findViewById(R.id.iv_cv_ejercicio) ;
+
+
                 tv_total_ejercicios_vocales = (TextView) itemView.findViewById(R.id.tv_total_ejercicios_vocales);
                 tv_cv_ejercicio_vocal = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio_vocal);
                 tv_cv_porcentaje_progreso = (TextView) itemView.findViewById(R.id.tv_cv_porcentaje_progreso);
@@ -245,17 +295,46 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                         startActivity(ejercicio);
                         break;
 
-                    case "Bebidas":
-                        ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_BEBIDAS);
-                        ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
-                        startActivity(ejercicio);
-                        break;
-
                     case "Comida":
                         ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_COMIDA);
                         ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
+
+                    case "Familia":
+                        ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_FAMILIA);
+                        ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Objetos":
+                        ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_OBJETOS);
+                        ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Animo":
+                        ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_ESTADOS_ANIMO);
+                        ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
+                    case "Verbos":
+                        ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_VERBOS);
+                        ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
+                        startActivity(ejercicio);
+                        break;
+
+
+
+
+
+
+
+
+
+
+
                 }
 
             }

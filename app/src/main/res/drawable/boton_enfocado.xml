@@ -4,7 +4,7 @@
     <!-- Contenido -->
     <item android:bottom="4dp">
         <shape android:shape="oval">
-            <solid android:color="@color/color_comida" />
+            <solid android:color="@color/colorPrimary_alpha" />
             <corners android:radius="4dip" />
         </shape>
     </item>

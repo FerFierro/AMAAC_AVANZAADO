@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogo;
+import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogoBisi;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
@@ -100,7 +101,7 @@ public class EjerciciosBisilabas extends AppCompatActivity {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             View view;
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio_imagen, parent, false);
 
             return new EjerciciosBisilabas.EjercicioBisilabasAdaptador.EjerciciosViewHolder(view);
         }
@@ -137,8 +138,7 @@ public class EjerciciosBisilabas extends AppCompatActivity {
             final boolean habilitadoEjercicio = estadoPictograma(habilitado);
 
 
-            ((EjerciciosBisilabas.EjercicioBisilabasAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
-            ((EjerciciosBisilabas.EjercicioBisilabasAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setTextSize(80);
+            ((EjerciciosBisilabas.EjercicioBisilabasAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setImageResource(Integer.parseInt( object.getNombre() ) );
 
 
             ((EjerciciosViewHolder) holder).tv_etiempo.setText("00:00:00");
@@ -238,13 +238,13 @@ public class EjerciciosBisilabas extends AppCompatActivity {
                                             break;
                                         }
 
-                                        if (posicionActual >= 9500 && posicionActual <= 13500) {
+                                        if (posicionActual >= 10500 && posicionActual <= 14500) {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM( 17500 - posicionActual ) );
                                                 }
                                             });
 
@@ -253,13 +253,13 @@ public class EjerciciosBisilabas extends AppCompatActivity {
                                                     ((EjerciciosViewHolder) holder).iv_ejercicio_item_ejercicio.setVisibility(View.VISIBLE);
                                                 }
                                             });
-                                        } else if (posicionActual > 13500 && posicionActual <= 15500) {
+                                        } else if (posicionActual > 14500 && posicionActual <= 17500) {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_bebidas));
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM( 17500 - posicionActual));
                                                 }
                                             });
 
@@ -320,7 +320,7 @@ public class EjerciciosBisilabas extends AppCompatActivity {
                 public void onClick(View v) {
                     flagBotonPlay = 0;
                     seguroDeVida = 0;
-
+                    ((EjerciciosBisilabas.EjercicioBisilabasAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
                     nuevaPosicion = position + 1;
                     if (object.getCompletado() != 1) {
 
@@ -336,7 +336,7 @@ public class EjerciciosBisilabas extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                         } else {
                             FragmentManager fragmentManager = getFragmentManager();
-                            new SeccionTerminadaDialogo().show(fragmentManager, "SeccionTerminadaDialog");
+                            new SeccionTerminadaDialogoBisi().show(fragmentManager, "SeccionTerminadaDialog");
                             db.updateCampoPictograma(nombreNivel_Bisilabas, 1);
                         }
 
@@ -380,8 +380,8 @@ public class EjerciciosBisilabas extends AppCompatActivity {
         //<editor-fold desc="CLASE VocalesViewHolder">
         public class EjerciciosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-            private TextView tv_cv_ejercicio, tv_etiempo;
-            private ImageView iv_cv_bloqueado,fab,iv_ejercicio_item_ejercicio;
+            private TextView tv_etiempo;
+            private ImageView tv_cv_ejercicio, iv_cv_bloqueado,fab,iv_ejercicio_item_ejercicio;
             private CardView card_view_controles, cv_ejercicio;
             private LinearLayout ll_ejercicio, ll_controles;
             private ImageButton Ibtn_cv_ejercicio_siguiente;
@@ -390,7 +390,7 @@ public class EjerciciosBisilabas extends AppCompatActivity {
                 super(itemView);
 
                 iv_cv_bloqueado = (ImageView) itemView.findViewById(R.id.iv_cv_bloqueado);
-                tv_cv_ejercicio = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio);
+                tv_cv_ejercicio = (ImageView) itemView.findViewById(R.id.tv_cv_ejercicio);
                 tv_etiempo = (TextView) itemView.findViewById(R.id.tv_etiempo);
 
                 ll_ejercicio = (LinearLayout) itemView.findViewById(R.id.ll_ejercicio);
@@ -413,7 +413,8 @@ public class EjerciciosBisilabas extends AppCompatActivity {
     //</editor-fold>
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();
-    }
+     }
 }

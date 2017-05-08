@@ -2,6 +2,7 @@ package com.enterprises.devare.amaac_avanzaado.controlador.adapters;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -58,6 +59,12 @@ public class ConsonantesEjercicios_main extends AppCompatActivity {
     private DBHelper db;
     private RecyclerView recycler_ejercicios;
     int nuevaPosicion;
+
+
+    SharedPreferences preferences;
+    boolean NIVEL_OK;
+
+
     //</editor-fold>
 
     //<editor-fold desc="MÉTODO CALLBACK onCreate()">
@@ -69,6 +76,9 @@ public class ConsonantesEjercicios_main extends AppCompatActivity {
 
         recycler_ejercicios = (RecyclerView) findViewById(R.id.reciclador_ejercicio_niveles);
         InitAdapter(recycler_ejercicios, db.getCategoria_Pictogramas(CAT_CONSONANTES));
+        //Comprueba si ya se completo este nivel
+        preferences = getSharedPreferences("NIVEL_OK", MODE_PRIVATE);
+        NIVEL_OK = preferences.getBoolean("nivel_consonantes_ok", false);
 
     }
     //</editor-fold>
@@ -131,7 +141,7 @@ public class ConsonantesEjercicios_main extends AppCompatActivity {
             final int completado = object.getCompletado();
             final boolean completadoEjercicio = estadoPictograma(completado);
             int resultado;
-            Toast.makeText(ConsonantesEjercicios_main.this, object.getProgreso()+"% "+object.getNombre(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(ConsonantesEjercicios_main.this, object.getProgreso()+"% "+object.getNombre(), Toast.LENGTH_SHORT).show();
 
             if (completadoEjercicio) {
 
@@ -140,8 +150,15 @@ public class ConsonantesEjercicios_main extends AppCompatActivity {
                     seteo.setHabilitado(1);
                     db.updatePictograma(seteo);
                 } else {
-                    FragmentManager fragmentManager = getFragmentManager();
-                    new SeccionTerminadaNivelDialogo().show(fragmentManager, "SeccionTerminadaNivelDialog");
+
+                    if(!NIVEL_OK){
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putBoolean("nivel_consonantes_ok", true);
+                        editor.commit();
+
+                        FragmentManager fragmentManager = getFragmentManager();
+                        new SeccionTerminadaNivelDialogo().show(fragmentManager, "SeccionTerminadaNivelDialog");
+                    }
                 }
             }
 

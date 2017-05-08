@@ -107,7 +107,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             View view;
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_ejercicio_preestablecido, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view_ejercicio_preestablecido_imagen, parent, false);
             return new MonosilabasViewHolder(view);
 
         }
@@ -147,6 +147,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((MonosilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_MONOSILABAS_ANIMALES)+"/"+db.count(CAT_MONOSILABAS_ANIMALES));
+                    ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animales );
                     break;
 
                 case "Bebidas":
@@ -154,6 +155,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((MonosilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_MONOSILABAS_BEBIDAS)+"/"+db.count(CAT_MONOSILABAS_BEBIDAS));
+                    ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
 
                 case "Comida":
@@ -161,6 +163,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((MonosilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_MONOSILABAS_COMIDA)+"/"+db.count(CAT_MONOSILABAS_COMIDA));
+                    ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
 
                 case "Familia":
@@ -168,6 +171,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((MonosilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_MONOSILABAS_FAMILIA)+"/"+db.count(CAT_MONOSILABAS_FAMILIA));
+                    ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_familia );
                     break;
 
                 case "Objetos":
@@ -175,6 +179,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((MonosilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_MONOSILABAS_OBJETOS)+"/"+db.count(CAT_MONOSILABAS_OBJETOS));
+                    ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_objetos );
                     break;
 
                 case "Respuestas":
@@ -182,6 +187,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((MonosilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_MONOSILABAS_RESPUESTAS)+"/"+db.count(CAT_MONOSILABAS_RESPUESTAS));
+                    ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_respuesta );
                     break;
 
                 case "Verbos":
@@ -189,6 +195,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
                     ((MonosilabasViewHolder) holder).tv_total_ejercicios_vocales.setText(db.ejerciciosCompletos(CAT_MONOSILABAS_VERBOS)+"/"+db.count(CAT_MONOSILABAS_VERBOS));
+                    ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_verbos );
                     break;
 
             }
@@ -245,7 +252,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
         public class MonosilabasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             CardView cv_ejercicios_nivel;
-            ImageView iv_cv_ejercicio_nivel_bloqueado;
+            ImageView iv_cv_ejercicio_nivel_bloqueado, iv_cv_ejercicio;
             private TextView tv_total_ejercicios_vocales,
                     tv_cv_ejercicio_vocal,
                     tv_cv_porcentaje_progreso;
@@ -259,6 +266,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                 super(itemView);
                 cv_ejercicios_nivel= (CardView) itemView.findViewById(R.id.cv_ejercicios_nivel);
                 iv_cv_ejercicio_nivel_bloqueado=(ImageView) itemView.findViewById(R.id.iv_cv_ejercicio_nivel_bloqueado) ;
+                iv_cv_ejercicio= (ImageView)itemView.findViewById(R.id.iv_cv_ejercicio);
                 tv_total_ejercicios_vocales = (TextView) itemView.findViewById(R.id.tv_total_ejercicios_vocales);
                 tv_cv_ejercicio_vocal = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio_vocal);
                 tv_cv_porcentaje_progreso = (TextView) itemView.findViewById(R.id.tv_cv_porcentaje_progreso);

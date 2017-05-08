@@ -91,8 +91,11 @@ public class Comunicador_main extends AppCompatActivity implements TextToSpeech.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_comunicador);
 
+
+
+
         tts = new TextToSpeech(this, this);
-        datos.inicializar_pictogramas(this);
+
 
         inicializarComponentesUI();
         inicializarAdaptador();

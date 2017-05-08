@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogo;
+import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogoPoli;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
@@ -100,7 +101,7 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             View view;
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio_imagen, parent, false);
 
             return new EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder(view);
         }
@@ -137,8 +138,7 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
             final boolean habilitadoEjercicio = estadoPictograma(habilitado);
 
 
-            ((EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
-            ((EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setTextSize(60);
+            ((EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setImageResource(Integer.parseInt( object.getNombre() ) );
 
             ((EjerciciosViewHolder) holder).tv_etiempo.setText("00:00:00");
 
@@ -235,13 +235,13 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
                                             break;
                                         }
 
-                                        if (posicionActual >= 9500 && posicionActual <= 13500) {
+                                        if (posicionActual >= 14500 && posicionActual <= 25500) {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(  25500 - posicionActual ));
                                                 }
                                             });
 
@@ -250,16 +250,6 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
                                                     ((EjerciciosViewHolder) holder).iv_ejercicio_item_ejercicio.setVisibility(View.VISIBLE);
                                                 }
                                             });
-                                        } else if (posicionActual > 13500 && posicionActual <= 15500) {
-
-                                            ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_bebidas));
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
-                                                }
-                                            });
-
                                         } else {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
@@ -317,7 +307,7 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
                 public void onClick(View v) {
                     flagBotonPlay = 0;
                     seguroDeVida = 0;
-
+                    ((EjerciciosPolisilabas.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
                     nuevaPosicion = position + 1;
                     if (object.getCompletado() != 1) {
 
@@ -333,7 +323,7 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                         } else {
                             FragmentManager fragmentManager = getFragmentManager();
-                            new SeccionTerminadaDialogo().show(fragmentManager, "SeccionTerminadaDialog");
+                            new SeccionTerminadaDialogoPoli().show(fragmentManager, "SeccionTerminadaDialog");
                             db.updateCampoPictograma(nombreNivel, 1);
                         }
 
@@ -377,17 +367,18 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
         //<editor-fold desc="CLASE VocalesViewHolder">
         public class EjerciciosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-            private TextView tv_cv_ejercicio, tv_etiempo;
-            private ImageView iv_cv_bloqueado,fab,iv_ejercicio_item_ejercicio;
+            private TextView tv_etiempo;
+            private ImageView tv_cv_ejercicio, iv_cv_bloqueado,fab,iv_ejercicio_item_ejercicio;
             private CardView card_view_controles, cv_ejercicio;
             private LinearLayout ll_ejercicio, ll_controles;
             private ImageButton Ibtn_cv_ejercicio_siguiente;
+
 
             public EjerciciosViewHolder(View itemView) {
                 super(itemView);
 
                 iv_cv_bloqueado = (ImageView) itemView.findViewById(R.id.iv_cv_bloqueado);
-                tv_cv_ejercicio = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio);
+                tv_cv_ejercicio = (ImageView) itemView.findViewById(R.id.tv_cv_ejercicio);
                 tv_etiempo = (TextView) itemView.findViewById(R.id.tv_etiempo);
 
                 ll_ejercicio = (LinearLayout) itemView.findViewById(R.id.ll_ejercicio);
@@ -410,7 +401,9 @@ public class EjerciciosPolisilabas extends AppCompatActivity {
     //</editor-fold>
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();
+
     }
 }

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -176,6 +177,11 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
             if (object != null) switch (object.getTipo()) {
 
                 case VISTA_NORMAL:
+
+                    Log.d("xyz", "-> " + object.getNombre() + " " + object.getProgresso() );
+
+
+
                     switch (object.getNombre()) {
 
                         case "Vocales":

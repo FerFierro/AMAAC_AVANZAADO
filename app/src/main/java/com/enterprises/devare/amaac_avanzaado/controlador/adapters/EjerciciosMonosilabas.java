@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogo;
+import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogoMono;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
@@ -100,7 +101,7 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             View view;
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ejercicio_imagen, parent, false);
 
             return new EjerciciosMonosilabas.EjercicioMonosilabasAdaptador.EjerciciosViewHolder(view);
         }
@@ -137,7 +138,7 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
             final boolean habilitadoEjercicio = estadoPictograma(habilitado);
 
 
-            ((EjerciciosMonosilabas.EjercicioMonosilabasAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
+            ((EjerciciosMonosilabas.EjercicioMonosilabasAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setImageResource(Integer.parseInt( object.getNombre() ) );
 
 
             ((EjerciciosViewHolder) holder).tv_etiempo.setText("00:00:00");
@@ -237,13 +238,13 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
                                             break;
                                         }
 
-                                        if (posicionActual >= 9500 && posicionActual <= 13500) {
+                                        if (posicionActual >= 9500 && posicionActual <= 15500) {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM( 15500 - posicionActual));
                                                 }
                                             });
 
@@ -252,16 +253,6 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
                                                     ((EjerciciosViewHolder) holder).iv_ejercicio_item_ejercicio.setVisibility(View.VISIBLE);
                                                 }
                                             });
-                                        } else if (posicionActual > 13500 && posicionActual <= 15500) {
-
-                                            ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_bebidas));
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
-                                                }
-                                            });
-
                                         } else {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
@@ -320,6 +311,7 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
                     flagBotonPlay = 0;
                     seguroDeVida = 0;
 
+                    ((EjerciciosMonosilabas.EjercicioMonosilabasAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
                     nuevaPosicion = position + 1;
                     if (object.getCompletado() != 1) {
 
@@ -335,7 +327,7 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                         } else {
                             FragmentManager fragmentManager = getFragmentManager();
-                            new SeccionTerminadaDialogo().show(fragmentManager, "SeccionTerminadaDialog");
+                            new SeccionTerminadaDialogoMono().show(fragmentManager, "SeccionTerminadaDialog");
                             db.updateCampoPictograma(nombreNivel_Monosilabas, 1);
                         }
 
@@ -379,8 +371,8 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
         //<editor-fold desc="CLASE VocalesViewHolder">
         public class EjerciciosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-            private TextView tv_cv_ejercicio, tv_etiempo;
-            private ImageView iv_cv_bloqueado,fab,iv_ejercicio_item_ejercicio;
+            private TextView tv_etiempo;
+            private ImageView tv_cv_ejercicio, iv_cv_bloqueado,fab,iv_ejercicio_item_ejercicio;
             private CardView card_view_controles, cv_ejercicio;
             private LinearLayout ll_ejercicio, ll_controles;
             private ImageButton Ibtn_cv_ejercicio_siguiente;
@@ -389,7 +381,7 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
                 super(itemView);
 
                 iv_cv_bloqueado = (ImageView) itemView.findViewById(R.id.iv_cv_bloqueado);
-                tv_cv_ejercicio = (TextView) itemView.findViewById(R.id.tv_cv_ejercicio);
+                tv_cv_ejercicio = (ImageView) itemView.findViewById(R.id.tv_cv_ejercicio);
                 tv_etiempo = (TextView) itemView.findViewById(R.id.tv_etiempo);
 
                 ll_ejercicio = (LinearLayout) itemView.findViewById(R.id.ll_ejercicio);
@@ -412,7 +404,9 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
     //</editor-fold>
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();
+
     }
 }

@@ -154,11 +154,39 @@ public class Ejercicios extends AppCompatActivity {
             final boolean habilitadoEjercicio = estadoPictograma(habilitado);
 
 
-            ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
 
+            /*
+            *
+            * */
+
+            Pictograma objectAUX=null;
+            if (position>=1){
+                objectAUX = mValues.get(position-1);
+            }
+
+            int habilitadoAUX;
+            boolean habilitadoEjercicioAUX=true;
+            int completadoAUX;
+            boolean completadoEjercicioAUX=true;
+
+            boolean resultAUX;
+
+            if(objectAUX != null){
+                habilitadoAUX = objectAUX.getHabilitado();
+                habilitadoEjercicioAUX = estadoPictograma(habilitado);
+
+                completadoAUX = objectAUX.getHabilitado();
+                completadoEjercicioAUX = estadoPictograma(habilitado);
+            }
+
+            resultAUX= completadoEjercicioAUX && habilitadoEjercicio;
+
+
+
+            ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).tv_cv_ejercicio.setText(object.getNombre());
             ((EjerciciosViewHolder) holder).tv_etiempo.setText("00:00:00");
 
-            if (habilitadoEjercicio) {
+            if (habilitadoEjercicio && resultAUX ) {
                 ((EjerciciosViewHolder) holder).iv_cv_bloqueado.setVisibility(View.INVISIBLE);
 
                 //<editor-fold desc="SE HABILITAN LOS VIEWS DE LA INTERFAZ">
@@ -195,6 +223,10 @@ public class Ejercicios extends AppCompatActivity {
                     flagBotonPlay++;
                     seguroDeVida++;
 
+
+                   // Toast.makeText(getApplicationContext(), ""+ object.toString() , Toast.LENGTH_LONG).show();
+
+
                     if (mediaPlayer != null) {
                         mediaPlayer.stop();
                     }
@@ -217,7 +249,12 @@ public class Ejercicios extends AppCompatActivity {
                                         try {
                                             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                                 public void onCompletion(MediaPlayer mp) {
-                                                    ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+
+
+//                                                    ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+
+                                                    ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_respuestas));
                                                     ((EjerciciosViewHolder) holder).fab.setImageResource(R.drawable.ic_play);
 
@@ -258,7 +295,7 @@ public class Ejercicios extends AppCompatActivity {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(15500 - posicionActual));
                                                 }
                                             });
 
@@ -273,7 +310,7 @@ public class Ejercicios extends AppCompatActivity {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_bebidas));
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(15500 - posicionActual));
                                                 }
                                             });
 
@@ -335,8 +372,11 @@ public class Ejercicios extends AppCompatActivity {
                     flagBotonPlay = 0;
                     seguroDeVida = 0;
 
+                   // Toast.makeText(getApplicationContext(), ""+ object.toString() , Toast.LENGTH_LONG).show();
+                    ((Ejercicios.EjercicioAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
+
                     nuevaPosicion = position + 1;
-                    if (object.getCompletado() != 1) {
+                    if (object.getCompletado() != 1 && object.getHabilitado()==1) {
 
                         object.setCompletado(1);
                         int numEjercicios=db.count(categoria);
@@ -426,8 +466,12 @@ public class Ejercicios extends AppCompatActivity {
     }
     //</editor-fold>
 
+
+
     @Override
     protected void onPause() {
-        super.onPause();
+        super.onStop();
     }
+
+
 }

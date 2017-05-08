@@ -80,7 +80,16 @@ public class Pictograma {
     public static final int CAT_POLISILABAS = 20;
     public static final int CAT_POLISILABAS_BEBIDAS = 201;
     public static final int CAT_POLISILABAS_FRUTAS = 202;
-
+    public static final int CAT_POLISILABAS_VERDURAS = 203;
+    public static final int CAT_POLISILABAS_COMIDA = 204;
+    public static final int CAT_POLISILABAS_COMIDA_GENERAL = 205;
+    public static final int CAT_POLISILABAS_VERBOS_AUX = 206;
+    public static final int CAT_POLISILABAS_ANIMALES = 207;
+    public static final int CAT_POLISILABAS_VERBOS = 208;
+    public static final int CAT_POLISILABAS_FAMILIA = 209;
+    public static final int CAT_POLISILABAS_ESTADOS_ANIMO = 2010;
+    public static final int CAT_POLISILABAS_LUGARES = 2011;
+    public static final int CAT_POLISILABAS_OBJETOS = 2012;
     //</editor-fold>
 
     private int id;

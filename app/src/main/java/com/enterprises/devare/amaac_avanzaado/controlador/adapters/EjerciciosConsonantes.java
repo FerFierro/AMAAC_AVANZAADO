@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.enterprises.devare.amaac_avanzaado.R;
 import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogo;
+import com.enterprises.devare.amaac_avanzaado.controlador.dialogos.SeccionTerminadaDialogoConsonantes;
 import com.enterprises.devare.amaac_avanzaado.modelo.Pictograma;
 import com.enterprises.devare.amaac_avanzaado.modelo.db.DBHelper;
 
@@ -203,7 +204,10 @@ public class EjerciciosConsonantes extends AppCompatActivity {
                                         try {
                                             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                                 public void onCompletion(MediaPlayer mp) {
-                                                    ((EjerciciosConsonantes.EjercicioConsonantesAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+                                                    //((EjerciciosConsonantes.EjercicioConsonantesAdaptador.EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+
+                                                    ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.VISIBLE);
+
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_respuestas));
                                                     ((EjerciciosViewHolder) holder).fab.setImageResource(R.drawable.ic_play);
 
@@ -238,13 +242,13 @@ public class EjerciciosConsonantes extends AppCompatActivity {
                                             break;
                                         }
 
-                                        if (posicionActual >= 9500 && posicionActual <= 13500) {
+                                        if (posicionActual >= 9500 && posicionActual <= 15500) {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(15500- posicionActual ));
                                                 }
                                             });
 
@@ -253,16 +257,6 @@ public class EjerciciosConsonantes extends AppCompatActivity {
                                                     ((EjerciciosViewHolder) holder).iv_ejercicio_item_ejercicio.setVisibility(View.VISIBLE);
                                                 }
                                             });
-                                        } else if (posicionActual > 13500 && posicionActual <= 15500) {
-
-                                            ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_bebidas));
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(posicionActual - 9500));
-                                                }
-                                            });
-
                                         } else {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
@@ -321,6 +315,8 @@ public class EjerciciosConsonantes extends AppCompatActivity {
                     flagBotonPlay = 0;
                     seguroDeVida = 0;
 
+                    ((EjerciciosViewHolder) holder).Ibtn_cv_ejercicio_siguiente.setVisibility(View.INVISIBLE);
+
                     nuevaPosicion = position + 1;
                     if (object.getCompletado() != 1) {
 
@@ -336,8 +332,9 @@ public class EjerciciosConsonantes extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                         } else {
                             FragmentManager fragmentManager = getFragmentManager();
-                            new SeccionTerminadaDialogo().show(fragmentManager, "SeccionTerminadaDialog");
+                            new SeccionTerminadaDialogoConsonantes().show(fragmentManager, "SeccionTerminadaDialog");
                             db.updateCampoPictograma(nombreNivel_Consonantes, 1);
+
                         }
 
                     }
@@ -413,7 +410,9 @@ public class EjerciciosConsonantes extends AppCompatActivity {
     //</editor-fold>
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();
     }
+
 }
