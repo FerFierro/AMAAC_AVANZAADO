@@ -57,7 +57,6 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
 
         tts = new TextToSpeech(this, this);
         db = new DBHelper(this);
-
         recycler_nivel = (RecyclerView) findViewById(R.id.reciclador_iniciar_nivel);
         InitAdapter(recycler_nivel, db.getAllNiveles());
 
@@ -174,52 +173,175 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
 
             Nivel object = mValues.get(position);
             int sumaProgresoNiveles;
+
+/*
+            Log.d("position", "-> " + position);
+            Log.d("count", "1 -> " + db.count(CAT_VOCALES));
+            Log.d("count", "2 -> " + db.count(CAT_CONSONANTES));
+            Log.d("count", "3 -> " + db.count(CAT_MONOSILABAS));
+            Log.d("count", "4 -> " + db.count(CAT_BISILABAS));
+            Log.d("count", "5 -> " + db.count(CAT_POLISILABAS));
+*/
+
+
+
+
+            if (object != null){
+
+
+                switch (object.getNombre()) {
+
+                    case "Vocales":
+                        sumaProgresoNiveles = db.obtenerProgreso(CAT_VOCALES);
+                        object.setProgresso(sumaProgresoNiveles / db.count(CAT_VOCALES));
+                        db.updatePictogramaNivel(object);
+
+                        ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                        ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_VOCALES) + "/" + db.count(CAT_VOCALES));
+
+
+                        break;
+
+                    case "Consonantes":
+                        sumaProgresoNiveles = db.obtenerProgreso(CAT_CONSONANTES);
+                        object.setProgresso(sumaProgresoNiveles / db.count(CAT_CONSONANTES));
+                        db.updatePictogramaNivel(object);
+
+                        ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                        ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_CONSONANTES) + "/" + db.count(CAT_CONSONANTES));
+                        break;
+
+                    case "Monosilabas":
+                        sumaProgresoNiveles = db.obtenerProgreso(CAT_MONOSILABAS);
+                        object.setProgresso(sumaProgresoNiveles / db.count(CAT_MONOSILABAS));
+                        db.updatePictogramaNivel(object);
+
+                        ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                        ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_MONOSILABAS) + "/" + db.count(CAT_MONOSILABAS));
+                        break;
+
+                    case "Bisilabas":
+                        sumaProgresoNiveles = db.obtenerProgreso(CAT_BISILABAS);
+                        object.setProgresso(sumaProgresoNiveles / db.count(CAT_BISILABAS));
+                        db.updatePictogramaNivel(object);
+
+                        ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                        ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_BISILABAS) + "/" + db.count(CAT_BISILABAS));
+                        break;
+
+                    case "Polisilabas":
+                        sumaProgresoNiveles = db.obtenerProgreso(CAT_POLISILABAS);
+                        object.setProgresso(sumaProgresoNiveles / db.count(CAT_POLISILABAS));
+                        db.updatePictogramaNivel(object);
+
+                        ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
+                        ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_POLISILABAS) + "/" + db.count(CAT_POLISILABAS));
+                        break;
+
+                }
+
+            ((NivelViewHolder) holder).mVImageNivel.setImageResource(object.getIdDrawable());
+            ((NivelViewHolder) holder).mvProgressBarNivel.setProgress(object.getProgresso());
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
             if (object != null) switch (object.getTipo()) {
 
                 case VISTA_NORMAL:
 
-                    Log.d("xyz", "-> " + object.getNombre() + " " + object.getProgresso() );
+                    //Log.d("xyz", "-> " + object.getNombre() + " " + object.getProgresso() );
 
 
 
                     switch (object.getNombre()) {
 
                         case "Vocales":
+                            Log.d("nivelVocales", "0 -> " + object.toString()  );
                             sumaProgresoNiveles=db.obtenerProgreso(CAT_VOCALES);
+                            Log.d("nivelVocales", "1 -> " + sumaProgresoNiveles);
                             object.setProgresso(sumaProgresoNiveles/db.count(CAT_VOCALES));
+                            Log.d("nivelVocales", "2 -> " + db.count(CAT_VOCALES));
                             db.updatePictogramaNivel(object);
+                            Log.d("nivelVocales", "3 -> " + object.toString()  );
+
                             ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
                             ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_VOCALES)+ "/" + db.count(CAT_VOCALES));
+
+
+
+
                             break;
 
                         case "Consonantes":
+                            Log.d("nivelConsonantes", "0 -> " + object.toString()  );
                             sumaProgresoNiveles=db.obtenerProgreso(CAT_CONSONANTES);
+                            Log.d("nivelConsonantes", "1 -> " + sumaProgresoNiveles  );
                             object.setProgresso(sumaProgresoNiveles/db.count(CAT_CONSONANTES));
+                            Log.d("nivelConsonantes", "2 -> " + db.count(CAT_CONSONANTES)  );
                             db.updatePictogramaNivel(object);
+                            Log.d("nivelConsonantes", "3 -> " + object.toString()  );
+
                             ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
                             ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_CONSONANTES)+ "/" + db.count(CAT_CONSONANTES));
                             break;
 
                         case "Monosilabas":
+                            Log.d("nivelMonosilabas", "0 -> " + object.toString()  );
                             sumaProgresoNiveles=db.obtenerProgreso(CAT_MONOSILABAS);
+                            Log.d("nivelMonosilabas", "1 -> " + sumaProgresoNiveles  );
                             object.setProgresso(sumaProgresoNiveles/db.count(CAT_MONOSILABAS));
+                            Log.d("nivelMonosilabas", "2 -> " + db.count(CAT_MONOSILABAS)  );
                             db.updatePictogramaNivel(object);
+                            Log.d("nivelMonosilabas", "3 -> " + object.toString()  );
+
                             ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
                             ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_MONOSILABAS) + "/" + db.count(CAT_MONOSILABAS));
                             break;
 
                         case "Bisilabas":
+                            Log.d("nivelBisilabas", "0 -> " + object.toString()  );
                             sumaProgresoNiveles=db.obtenerProgreso(CAT_BISILABAS);
+                            Log.d("nivelBisilabas", "1 -> " + sumaProgresoNiveles  );
                             object.setProgresso(sumaProgresoNiveles/db.count(CAT_BISILABAS));
+                            Log.d("nivelBisilabas", "2 -> " + db.count(CAT_BISILABAS)  );
                             db.updatePictogramaNivel(object);
+                            Log.d("nivelBisilabas", "3 -> " + object.toString()  );
+
                             ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
                             ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_BISILABAS) + "/" + db.count(CAT_BISILABAS));
                             break;
 
                         case "Polisilabas":
+                            Log.d("nivelPolisilabas", "0 -> " + object.toString()  );
                             sumaProgresoNiveles=db.obtenerProgreso(CAT_POLISILABAS);
+                            Log.d("nivelPolisilabas", "1 -> " + sumaProgresoNiveles  );
                             object.setProgresso(sumaProgresoNiveles/db.count(CAT_POLISILABAS));
+                            Log.d("nivelPolisilabas", "2 -> " + db.count(CAT_POLISILABAS)  );
                             db.updatePictogramaNivel(object);
+                            Log.d("nivelPolisilabas", "3 -> " + object.toString()  );
+
                             ((NivelViewHolder) holder).mVTextViewNivel.setText(object.getNombre() + " " + object.getProgresso() + "%");
                             ((NivelViewHolder) holder).mVTextProgreso.setText(db.ejerciciosCompletos(CAT_POLISILABAS) + "/" + db.count(CAT_POLISILABAS));
                             break;
@@ -230,12 +352,16 @@ public class IniciarNivel_main extends AppCompatActivity implements TextToSpeech
                     ((NivelViewHolder) holder).mvProgressBarNivel.setProgress(object.getProgresso());
                     break;
 
-                    /* case TIPO_PIC_SELECCIONADO:
-                         ((FraseViewHolder) holder).mNombreViewFrase.setText(object.nombre);
-                         ((FraseViewHolder) holder).mImageViewFrase.setImageResource(object.getIdDrawable());
-                         ((FraseViewHolder) holder).cv.setCardBackgroundColor(getBackground_CardView(object.getCategoria()));
-                         break; */
+                    // case TIPO_PIC_SELECCIONADO:
+                         //((FraseViewHolder) holder).mNombreViewFrase.setText(object.nombre);
+                         //((FraseViewHolder) holder).mImageViewFrase.setImageResource(object.getIdDrawable());
+                         //((FraseViewHolder) holder).cv.setCardBackgroundColor(getBackground_CardView(object.getCategoria()));
+                         //break;
             }
+
+            */
+
+
 
             // holder.mVTextView.setText(object.nombre);
             //holder.mVImage.setBackgroundResource(getBackground2(items.get(position).categoria));

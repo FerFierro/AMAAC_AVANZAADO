@@ -134,7 +134,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
 
             switch (object.getNombre()) {
 
-                case "Animales":
+                case "Animales II":
                     resultado=db.obtenerProgreso(CAT_BISILABAS_ANIMALES);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -142,7 +142,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animales );
                     break;
 
-                case "Bebidas":
+                case "Bebidas II":
                     resultado=db.obtenerProgreso(CAT_BISILABAS_BEBIDAS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -150,7 +150,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
 
-                case "Comida":
+                case "Comida II":
                     resultado=db.obtenerProgreso(CAT_BISILABAS_COMIDA);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -159,7 +159,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     break;
 
 
-                case "Familia":
+                case "Familia II":
                     resultado=db.obtenerProgreso(CAT_BISILABAS_FAMILIA);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -167,7 +167,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_familia );
                     break;
 
-                case "Objetos":
+                case "Objetos II":
                     resultado=db.obtenerProgreso(CAT_BISILABAS_OBJETOS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -175,7 +175,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_objetos );
                     break;
 
-                case "Animo":
+                case "Animo II":
                     resultado=db.obtenerProgreso(CAT_BISILABAS_ESTADOS_ANIMO);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -183,7 +183,7 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
                     ((BisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animo );
                     break;
 
-                case "Verbos":
+                case "Verbos II":
                     resultado=db.obtenerProgreso(CAT_BISILABAS_VERBOS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -289,37 +289,37 @@ public class BisilabasEjercicios_main extends AppCompatActivity {
 
                 switch (object.getNombre()) {
 
-                    case "Animales":
+                    case "Animales II":
                         ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_ANIMALES);
                         ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Comida":
+                    case "Comida II":
                         ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_COMIDA);
                         ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Familia":
+                    case "Familia II":
                         ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_FAMILIA);
                         ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Objetos":
+                    case "Objetos II":
                         ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_OBJETOS);
                         ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Animo":
+                    case "Animo II":
                         ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_ESTADOS_ANIMO);
                         ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Verbos":
+                    case "Verbos II":
                         ejercicio.putExtra(BISILABA_SELECCIONADA,CAT_BISILABAS_VERBOS);
                         ejercicio.putExtra(BISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);

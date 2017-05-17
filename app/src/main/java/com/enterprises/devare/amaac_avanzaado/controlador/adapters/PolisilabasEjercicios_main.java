@@ -152,8 +152,10 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
 
 
 
+
+
             switch (object.getNombre()) {
-                case "Animales":
+                case "Animales III":
                     resultado=db.obtenerProgreso(CAT_POLISILABAS_ANIMALES);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -162,7 +164,7 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
                     break;
 
 
-                case "Comida":
+                case "Comida III":
                     resultado=db.obtenerProgreso(CAT_POLISILABAS_COMIDA);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -171,7 +173,7 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
                     break;
 
 
-                case "Familia":
+                case "Familia III":
                     resultado=db.obtenerProgreso(CAT_POLISILABAS_FAMILIA);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -179,7 +181,7 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
                     ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_familia );
                     break;
 
-                case "Objetos":
+                case "Objetos III":
                     resultado=db.obtenerProgreso(CAT_POLISILABAS_OBJETOS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -187,7 +189,7 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
                     ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_objetos );
                     break;
 
-                case "Animo":
+                case "Animo III":
                     resultado=db.obtenerProgreso(CAT_POLISILABAS_ESTADOS_ANIMO);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -195,7 +197,7 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
                     ((PolisilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animo );
                     break;
 
-                case "Verbos":
+                case "Verbos III":
                     resultado=db.obtenerProgreso(CAT_POLISILABAS_VERBOS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -300,43 +302,43 @@ public class PolisilabasEjercicios_main extends AppCompatActivity {
                 switch (object.getNombre()) {
 
 
-                    case "Animales":
+                    case "Animales III":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_ANIMALES);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Bebidas":
+                    case "Bebidas III":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_BEBIDAS);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Comida":
+                    case "Comida III":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_COMIDA);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Familia":
+                    case "Familia III":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_FAMILIA);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Objetos":
+                    case "Objetos III":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_OBJETOS);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Animo":
+                    case "Animo III":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_ESTADOS_ANIMO);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Verbos":
+                    case "Verbos III":
                         ejercicio.putExtra(POLISILABA_SELECCIONADA,CAT_POLISILABAS_VERBOS);
                         ejercicio.putExtra(POLISILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);

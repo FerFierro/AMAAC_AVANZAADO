@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -315,10 +316,13 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
                     nuevaPosicion = position + 1;
                     if (object.getCompletado() != 1) {
 
+                        Log.d("xxx", "-> " + object.toString());
                         object.setCompletado(1);
                         int numEjercicios=db.count(categoria);
                         object.setProgreso(100/numEjercicios);
                         db.updatePictograma(object);
+                        Log.d("xxx", "-> " + object.toString());
+
 
                         if (nuevaPosicion < mValues.size()) {
                             final Pictograma seteo = mValues.get(nuevaPosicion);
@@ -403,10 +407,37 @@ public class EjerciciosMonosilabas extends AppCompatActivity {
     }
     //</editor-fold>
 
+
     @Override
-    protected void onPause()
-    {
-        super.onPause();
+    protected void onDestroy() {
+        super.onDestroy();
+//        Toast.makeText(getApplicationContext(), "onDestroy", Toast.LENGTH_LONG).show();
+        if(mediaPlayer != null && mediaPlayer.getCurrentPosition()>0)
+            mediaPlayer.stop();
 
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //Toast.makeText(getApplicationContext(), "onStop", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+//        Toast.makeText(getApplicationContext(), "onPause", Toast.LENGTH_LONG).show();
+        if(mediaPlayer != null && mediaPlayer.getCurrentPosition()>0)
+            mediaPlayer.pause();
+
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+//        Toast.makeText(getApplicationContext(), "onResume", Toast.LENGTH_LONG).show();
+        if(mediaPlayer != null && mediaPlayer.getCurrentPosition()>0 )
+            mediaPlayer.start();
+    }
+
 }

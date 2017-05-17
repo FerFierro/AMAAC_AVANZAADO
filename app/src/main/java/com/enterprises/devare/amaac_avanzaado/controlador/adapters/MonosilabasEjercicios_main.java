@@ -142,7 +142,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
 
             switch (object.getNombre()) {
 
-                case "Animales":
+                case "Animales I":
                     resultado=db.obtenerProgreso(CAT_MONOSILABAS_ANIMALES);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -150,7 +150,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_animales );
                     break;
 
-                case "Bebidas":
+                case "Bebidas I":
                     resultado=db.obtenerProgreso(CAT_MONOSILABAS_BEBIDAS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -158,7 +158,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
 
-                case "Comida":
+                case "Comida I":
                     resultado=db.obtenerProgreso(CAT_MONOSILABAS_COMIDA);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -166,7 +166,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_comida );
                     break;
 
-                case "Familia":
+                case "Familia I":
                     resultado=db.obtenerProgreso(CAT_MONOSILABAS_FAMILIA);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -174,7 +174,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_familia );
                     break;
 
-                case "Objetos":
+                case "Objetos I":
                     resultado=db.obtenerProgreso(CAT_MONOSILABAS_OBJETOS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -182,7 +182,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_objetos );
                     break;
 
-                case "Respuestas":
+                case "Respuestas I":
                     resultado=db.obtenerProgreso(CAT_MONOSILABAS_RESPUESTAS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -190,7 +190,7 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
                     ((MonosilabasViewHolder) holder).iv_cv_ejercicio.setImageResource( R.drawable.ic_seccion_respuesta );
                     break;
 
-                case "Verbos":
+                case "Verbos I":
                     resultado=db.obtenerProgreso(CAT_MONOSILABAS_VERBOS);
                     object.setProgreso(resultado);
                     db.updatePictograma(object);
@@ -286,43 +286,43 @@ public class MonosilabasEjercicios_main extends AppCompatActivity {
 
                 switch (object.getNombre()) {
 
-                    case "Animales":
+                    case "Animales I":
                         ejercicio.putExtra(MONOSILABA_SELECCIONADA,CAT_MONOSILABAS_ANIMALES);
                         ejercicio.putExtra(MONOSILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Bebidas":
+                    case "Bebidas I":
                         ejercicio.putExtra(MONOSILABA_SELECCIONADA,CAT_MONOSILABAS_BEBIDAS);
                         ejercicio.putExtra(MONOSILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Comida":
+                    case "Comida I":
                         ejercicio.putExtra(MONOSILABA_SELECCIONADA,CAT_MONOSILABAS_COMIDA);
                         ejercicio.putExtra(MONOSILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Familia":
+                    case "Familia I":
                         ejercicio.putExtra(MONOSILABA_SELECCIONADA,CAT_MONOSILABAS_FAMILIA);
                         ejercicio.putExtra(MONOSILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Objetos":
+                    case "Objetos I":
                         ejercicio.putExtra(MONOSILABA_SELECCIONADA,CAT_MONOSILABAS_OBJETOS);
                         ejercicio.putExtra(MONOSILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Respuestas":
+                    case "Respuestas I":
                         ejercicio.putExtra(MONOSILABA_SELECCIONADA,CAT_MONOSILABAS_RESPUESTAS);
                         ejercicio.putExtra(MONOSILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);
                         break;
 
-                    case "Verbos":
+                    case "Verbos I":
                         ejercicio.putExtra(MONOSILABA_SELECCIONADA,CAT_MONOSILABAS_VERBOS);
                         ejercicio.putExtra(MONOSILABA_NIVEL,object.getNombre());
                         startActivity(ejercicio);

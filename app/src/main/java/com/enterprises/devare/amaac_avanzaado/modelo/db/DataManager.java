@@ -542,12 +542,12 @@ public class DataManager {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Animales",    1, R.raw.u ,1,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Comida",     1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Familia",     1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Objetos",     1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Respuestas",  1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Verbos",      1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Animales I",    1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Comida I",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Familia I",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Objetos I",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Respuestas I",  1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS, "Verbos I",      1, R.raw.u ,0,0,0));
 
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_ANIMALES, ""+R.drawable.ic_tablero_animales_pez,  1, R.raw.pez ,1,0,0));
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_MONOSILABAS_ANIMALES, ""+R.drawable.ic_tablero_animales_res  ,  1, R.raw.res ,0,0,0));
@@ -581,12 +581,12 @@ public class DataManager {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Animales",  1, R.raw.u ,1,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Comida",    1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Familia",     1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Objetos",     1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Animo",      1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Verbos",      1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Animales II",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Comida II",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Familia II",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Objetos II",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Animo II",      1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS, "Verbos II",      1, R.raw.u ,0,0,0));
 
 
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_BISILABAS_ANIMALES, ""+R.drawable.ic_tablero_animales_delfin,  1, R.raw.delfin ,1,0,0));
@@ -698,12 +698,12 @@ public class DataManager {
 
 
         /////////////////////////////////////////////////////////////////////////
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Animales",  1, R.raw.u ,1,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Comida",    1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Familia",     1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Objetos",     1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Animo",      1, R.raw.u ,0,0,0));
-        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Verbos",      1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Animales III",  1, R.raw.u ,1,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Comida III",    1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Familia III",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Objetos III",     1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Animo III",      1, R.raw.u ,0,0,0));
+        dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS, "Verbos III",      1, R.raw.u ,0,0,0));
 
 
         dbHandler.insertPictograma(new Pictograma(TIPO_PIC_NORMAL, CAT_POLISILABAS_ANIMALES, ""+R.drawable.ic_tablero_animales_ardilla,    1, R.raw.ardilla ,1,0,0));
