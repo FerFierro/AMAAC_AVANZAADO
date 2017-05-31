@@ -5,7 +5,7 @@
 
     <color name="colorPrimaryDark">#0288D1</color>
     <color name="colorPrimary_light">#B3E5FC</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FFBC00</color>
     <color name="colorPrimary_text">#212121</color>
     <color name="colorSecondary_text">#757575</color>
     <color name="colorIcons">#ffffff</color>
@@ -29,10 +29,11 @@
     <color name="color_animales">#B870FF</color>
     <color name="color_objetos">#FF00FF</color>
     <color name="color_animo">#FF0080</color>
-    <color name="color_lugares">#FF0040</color>
+    <color name="color_lugares">#FF0020</color>
     <color name="color_familia">#848484</color>
     <color name="color_profesiones">#CCCCCC</color>
 
+    <color name="color_marco">#EFB30C</color>
 
     <!-- MENU: GuiaTutor -->
 

@@ -19,7 +19,9 @@
             android:layout_height="match_parent"
             android:id="@+id/iv_card_toast"
             app:srcCompat="@drawable/ic_toast_megaphone_2"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            />
 
         <TextView
             android:layout_width="match_parent"

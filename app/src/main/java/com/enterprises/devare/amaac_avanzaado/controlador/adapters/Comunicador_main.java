@@ -95,7 +95,8 @@ public class Comunicador_main extends AppCompatActivity implements TextToSpeech.
 
 
         tts = new TextToSpeech(this, this);
-
+        Locale locSpanish = new Locale("spa", "MEX");
+        tts.setLanguage(locSpanish);
 
         inicializarComponentesUI();
         inicializarAdaptador();

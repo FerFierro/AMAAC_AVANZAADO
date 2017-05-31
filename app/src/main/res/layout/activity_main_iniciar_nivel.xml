@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_vertical_margin"
-    tools:context="com.enterprises.devare.amaac_avanzaado.controlador.adapters.IniciarNivel_main">
+    tools:context="com.enterprises.devare.amaac_avanzaado.controlador.adapters.IniciarNivel_main"
+    android:background="@color/colorPrimary_alpha"
+    >
 
     <include layout="@layout/recycler_view_iniciar_nivel" />
 

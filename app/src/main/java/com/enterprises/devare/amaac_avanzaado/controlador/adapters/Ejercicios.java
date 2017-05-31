@@ -289,19 +289,38 @@ public class Ejercicios extends AppCompatActivity {
                                             break;
                                         }
 
-                                        if (posicionActual >= 9500 && posicionActual <= 13500) {
+
+                                        if (posicionActual >= 5500 && posicionActual <= 9500) {
 
                                             ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
-                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(15500 - posicionActual));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(9500 - posicionActual));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_lugares));
                                                 }
                                             });
 
                                             runOnUiThread(new Runnable() {
                                                 public void run() {
+                                                    ((EjerciciosViewHolder) holder).iv_ejercicio_item_ejercicio.setImageResource(R.drawable.ic_niveles_respirar);
                                                     ((EjerciciosViewHolder) holder).iv_ejercicio_item_ejercicio.setVisibility(View.VISIBLE);
+                                                }
+                                            });
+                                        }else if (posicionActual >= 9500 && posicionActual <= 13500) {
+
+                                            ((EjerciciosViewHolder) holder).tv_etiempo.post(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                   ((EjerciciosViewHolder) holder).tv_etiempo.setVisibility(View.VISIBLE);
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setText(getHRM(15500 - posicionActual));
+                                                    ((EjerciciosViewHolder) holder).tv_etiempo.setTextColor(getResources().getColor(R.color.color_respuestas));
+                                                }
+                                            });
+
+                                            runOnUiThread(new Runnable() {
+                                                public void run() {
+                                                    ((EjerciciosViewHolder) holder).iv_ejercicio_item_ejercicio.setImageResource(R.drawable.ic_menu_guia_padre_technology);
                                                 }
                                             });
                                         } else if (posicionActual > 13500 && posicionActual <= 15500) {

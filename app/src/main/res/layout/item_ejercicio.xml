@@ -55,7 +55,7 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:textAlignment="center"
                 android:textSize="24sp"
-                android:textColor="@color/color_respuestas"
+                android:textColor="@color/color_lugares"
                 android:layout_margin="5dp"
                 android:visibility="invisible"/>
 
